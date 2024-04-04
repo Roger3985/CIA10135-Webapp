@@ -42,6 +42,10 @@ public class NoticeService {
         return dao.findByPrimaryKey(notNo);
     }
 
+    public void deleteNO(Integer notNo) {
+        dao.delete(notNo);
+    }
+
     public NoticeVO getOneNO(Integer notNo) {
         return dao.findByPrimaryKey(notNo);
     }

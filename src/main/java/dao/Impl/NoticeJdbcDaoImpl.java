@@ -17,12 +17,11 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
     String passwd = "11689dWS";
 
     private static final String INSERT_NO = "INSERT INTO notice (memNo, notContent, notTime, notStat) VALUES (?, ?, ?, ?)";
+
     private static final String GET_ALL_NO = "SELECT notNo, memNo, notContent, notTime, notStat FROM notice";
     private static final String GET_ONE_NO = "SELECT notNo, memNo, notContent, notTime, notStat FROM notice WHERE notNo = ?";;
-    private static final String GET_NO_ByMemNo_MEM = "SELECT notNo , memNo, notContent, notTime, notStat FROM notice where notice = ? order by memNo";
 
-    private static final String DELETE_NO = "DELETE FROM notice where notNo = ?";
-    private static final String DELETE_MEM = "DELETE FROM member where memNo = ?";
+    private static final String DELETE = "DELETE FROM notice where notNo = ?";
 
     private static final String UPDATE = "UPDATE notice SET memNo = ?, notContent = ?, notTime = ?, notStat = ? WHERE notNo = ?";
 
@@ -123,6 +122,45 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
 
     @Override
     public void delete(Integer notNo) {
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(DELETE);
+
+            pstmt.setInt(1, notNo);
+
+            pstmt.executeUpdate();
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
 
     }
 

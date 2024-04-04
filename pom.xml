@@ -120,6 +120,13 @@
       <version>1.2.5</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+      <version>9.0.65</version>
+    </dependency>
+
     <!-- websocket -->                                    <!-- spring-boot 已內建依賴，但預設未下載 -->
     <dependency>
       <groupId>javax.websocket</groupId>

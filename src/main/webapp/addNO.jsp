@@ -198,14 +198,26 @@
                                 <td><font color="red">${errorMsgs.notTime}</font></td>
                             </tr>
                             <tr>
-                                <td>讀取狀態</td>
-                                <td><input type="text" name="notStat" class="form-control" value="0" size="45" required="required" data-validation-required-message="請輸入讀取狀態"/></td>
-                                <td><font color="red">${errorMsgs.notStat}</font></td>
+                                <td>讀取狀態:</td>
+                                <td>
+                                    <select name="notStat" class="form-control">
+                                        <option value="0" ${empty param.notStat || param.notStat == '0' ? 'selected' : ''}>待讀取</option>
+                                        <option value="1" ${param.notStat == '1' ? 'selected' : ''}>已讀取</option>
+                                    </select>
+                                </td>
+                                <td>${errorMsgs.notStat}</td>
                             </tr>
                         </table>
                         <br>
                     <input type="hidden" name="action" value="insert">
                     <input type="submit" class="form-control" value="送出新增">
+                        <table id="table">
+                            <tr>
+                                <td>
+                                    <h4><a href="select_page.jsp">回首頁</a></h4>
+                                </td>
+                            </tr>
+                        </table>
                 </form>
             </div>
         </div>
