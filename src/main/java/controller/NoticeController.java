@@ -35,9 +35,9 @@ public class NoticeController extends HttpServlet {
             throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
-        // String action = req.getParameter("action");
+        String action = req.getParameter("action");
 
-        // if ("insert".equals(action)) { // 來自addNO.jsp的請求
+        if ("insert".equals(action)) { // 來自addNO.jsp的請求
 
             Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
             req.setAttribute("errorMsgs", errorMsgs);
@@ -91,6 +91,7 @@ public class NoticeController extends HttpServlet {
             String url = "/emp/listAllEmp.jsp";
             RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
             successView.forward(req, res);
+        }
     }
 }
 
