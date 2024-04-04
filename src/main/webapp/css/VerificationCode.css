@@ -1,0 +1,61 @@
+body{
+    background-color:rgba(170, 170, 170, 0.42);
+}
+
+.CodeCheck {
+    width: 500px;
+    border:1px solid #bb8787;
+    border-radius:15px;
+    padding:15px;
+    margin:120px auto;
+}
+
+#Info{
+    padding:10px 70px;
+    background-color:#f2dede;
+    color:#ab5755;
+    border-radius:5px;
+    border:2px solid #a57a7a;
+    font-size:18px;
+}
+
+.CodeCheck p{
+    font-weight:bolder;
+    margin-bottom:0;
+    font-family:monospace;
+    margin-left:70px;
+}
+
+#Inpt,
+#Ans {
+    font-size: 15px;
+    width: 90px;
+    text-align: center;
+    height:26px;
+}
+
+#Inpt{
+    border:0px;
+    background-color:#ccc;
+    margin-left:70px;
+    font-weight:bold;
+    letter-spacing:4px;
+}
+
+#Ans {
+    margin-top: 0px;
+    margin-left:-5px;
+    width:120px;
+    outline:0px;
+    border:1px solid #a9a9a9;
+    height:24px;
+}
+
+#Info {
+    text-align: center;
+    margin: 3px;
+}
+
+button{
+    padding:5px 10px;
+}

@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="UTF-8">
     <title>新增通知訊息 - addNO.jsp</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -25,7 +26,22 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
+    <style>
+        /* 設置送出表單按鈕的外部容器 */
+        .submit-btn-container {
+            /* 添加陰影效果 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* 或者添加邊框效果 */
+            border: 1px solid #ccc;
+            /* 調整外邊距和內邊距以符合你的需求 */
+            margin: 10px;
+            padding: 10px;
+            /* 背景顏色 */
+            background-color: #f8f9fa;
+            /* 圓角 */
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <!-- Topbar Start -->
@@ -198,7 +214,7 @@
                                 <td><font color="red">${errorMsgs.notTime}</font></td>
                             </tr>
                             <tr>
-                                <td>讀取狀態:</td>
+                                <td>讀取狀態</td>
                                 <td>
                                     <select name="notStat" class="form-control">
                                         <option value="0" ${empty param.notStat || param.notStat == '0' ? 'selected' : ''}>待讀取</option>
@@ -209,8 +225,41 @@
                             </tr>
                         </table>
                         <br>
+                        <div class="CodeCheck">
+                            <p id="Info">驗證碼</p>
+                            <input type="text" id="Inpt" disabled>
+                            <input type="text" id="Ans">
+                            <br>
+                            <button id="Check" class="submit-btn-container">檢查驗證碼是否正確</button>
+                            <button id="Gen" class="submit-btn-container">產生新的驗證碼</button>
+                            <script src="js/VerificationCode.js"></script>
+                        </div>
+                        <br>
                     <input type="hidden" name="action" value="insert">
-                    <input type="submit" class="form-control" value="送出新增">
+                    <input type="submit" class="submit-btn-container" value="送出新增">
+                        <script>
+                            // 獲取表單元素
+                            var form = document.querySelector('form[name="form1"]');
+                            // 監聽表單提交事件
+                            form.addEventListener('submit', function(event) {
+                                // 阻止表單默認提交行為
+                                event.preventDefault();
+                                // 獲取使用者輸入的驗證碼
+                                var userCode = document.getElementById('Ans').value.trim();
+                                // 獲取生成的驗證碼
+                                var generatedCode = document.getElementById('Inpt').value.trim();
+                                // 檢查驗證碼是否匹配
+                                if (userCode === generatedCode) {
+                                    // 如果匹配，允許表單提交
+                                    form.submit();
+                                } else {
+                                    // 如果不匹配，提示使用者輸入正確的驗證碼
+                                    alert('請輸入正確的驗證碼！');
+                                }
+                            });
+                        </script>
+
+                        <br>
                         <table id="table">
                             <tr>
                                 <td>
