@@ -180,7 +180,7 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form">
                 <div id="success"></div>
-                    <form method="post" action="NoticeController?action=insert">
+                    <form method="post" action="NoticeController?action=insert" name="form1">
                         <table id="table-1">
                             <tr>
                                 <td>會員編號</td>
@@ -204,6 +204,7 @@
                             </tr>
                         </table>
                         <br>
+                    <input type="hidden" name="action" value="insert">
                     <input type="submit" class="form-control" value="送出新增">
                 </form>
             </div>

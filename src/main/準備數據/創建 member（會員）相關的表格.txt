@@ -1,0 +1,39 @@
+-- 創建fallElove資料庫
+CREATE DATABASE IF NOT EXISTS fallElove;
+
+-- 創建會員表格
+CREATE TABLE Member
+(
+    memNo          INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    mName          VARCHAR(20)  NOT NULL,
+    memAcc         VARCHAR(20)  NOT NULL UNIQUE,
+    memPwd         VARCHAR(20)  NOT NULL,
+    memMob         VARCHAR(20)  NOT NULL UNIQUE,
+    mGender        TINYINT      NULL,
+    memMail        VARCHAR(40)  NOT NULL,
+    memAdd         VARCHAR(100) NOT NULL UNIQUE,
+    memBd          DATE         NULL,
+    memCard        VARCHAR(19)  NULL,
+    provider       TINYINT      NULL,
+    clientID       VARCHAR(20)  NULL,
+    displayName    VARCHAR(20)  NULL,
+    accessToken    VARCHAR(20)  NULL,
+    refreshToken   VARCHAR(20)  NULL,
+    tknExpireTime  DATETIME     NULL,
+    creationTime   DATETIME     NULL,
+    memberJoinTime DATETIME     NULL,
+    memStat        TINYINT      NOT NULL DEFAULT 0
+);
+
+-- 創建會員通知表格
+CREATE TABLE Notice
+(
+    notNo      INT           NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    memNo      INT           NOT NULL ,
+    notContent VARCHAR(1000) NOT NULL,
+    notTime    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    notStat    TINYINT       NOT NULL,
+    FOREIGN KEY (memNo)      REFERENCES Member(memNo)
+);
+
+
