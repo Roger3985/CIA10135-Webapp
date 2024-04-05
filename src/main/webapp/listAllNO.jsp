@@ -75,7 +75,7 @@
 
     <c:forEach var="noticeVO" items="${list}">
         <tr>
-            <td>${noticeVO.notNo}</td>
+            <td>${noticeVO.motNo}</td>
             <td>${noticeVO.memNo}</td>
             <td>${noticeVO.notContent}</td>
             <td>${noticeVO.notTime}</td>
@@ -84,25 +84,25 @@
             <td>
                 <form method="post" action="NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="新增">
-                    <input type="hidden" name="notNo"  value="${noticeVO.notNo}">
+                    <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="getOne_For_Insert"></form>
             </td>
             <td>
                 <form method="post" action="NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="修改">
-                    <input type="hidden" name="notNo"  value="${noticeVO.notNo}">
+                    <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action"	value="getOne_For_Update"></form>
             </td>
             <td>
                 <form method="post" action="NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="刪除">
-                    <input type="hidden" name="notNo"  value="${noticeVO.notNo}">
+                    <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="delete"></form>
             </td>
             <td>
                 <form method="post" action="NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="查詢">
-                    <input type="hidden" name="notNo"  value="${noticeVO.notNo}">
+                    <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="getOne_For_Display"></form>
             </td>
         </tr>

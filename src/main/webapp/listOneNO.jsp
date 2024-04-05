@@ -64,7 +64,7 @@
         <th>Åª¨úª¬ºA</th>
     </tr>
     <tr>
-        <td>${noticeVO.notNo}</td>
+        <td>${noticeVO.motNo}</td>
         <td>${noticeNo.memNo}</td>
         <td>${noticeNo.notContent}</td>
         <td>${noticeNo.notTime}</td>

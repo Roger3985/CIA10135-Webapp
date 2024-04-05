@@ -36,8 +36,8 @@
     <table>
         <tr>
             <td>會員通知編號:</td>
-            <td><input type="TEXT" name="notNo" value="${param.notNo}" size="45" required="required"/></td>
-            <td>${param.notNo}</td>
+            <td><input type="TEXT" name="motNo" value="${param.motNo}" size="45" required="required"/></td>
+            <td>${param.motNo}</td>
         </tr>
         <tr>
             <td>會員編號:</td>
@@ -86,7 +86,7 @@
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="notNo" value="${param.notNo}">
+    <input type="hidden" name="motNo" value="${param.motNo}">
     <input type="submit" value="送出修改">
 </form>
 </body>

@@ -31,19 +31,33 @@
         </c:forEach>
     </ul>
 </c:if>
+<li>
+    <form method="post" action="NoticeController?delete" name="form1">
+        <table>
+            <tr>
+                <td>會員通知編號:</td>
+                <td><input type="TEXT" name="motNo" value="${param.motNo}" size="45" required="required"/></td>
+                <td>${param.motNo}</td>
+            </tr>
+        </table>
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="motNo" value="${param.motNo}">
+        <input type="submit" value="送出刪除">
+    </form>
+</li>
 
-<form method="post" action="NoticeController?delete" name="form1">
-    <table>
-        <tr>
-            <td>會員通知編號:</td>
-            <td><input type="TEXT" name="notNo" value="${param.notNo}" size="45" required="required"/></td>
-            <td>${param.notNo}</td>
-        </tr>
-    </table>
-    <br>
-    <input type="hidden" name="action" value="delete">
-    <input type="hidden" name="notNo" value="${param.notNo}">
-    <input type="submit" value="送出刪除">
-</form>
+<jsp:useBean id="noticeService" scope="page" class="service.NoticeService" />
+<li>
+    <FORM METHOD="post" ACTION="NoticeController" >
+        <b>選擇會員通知編號:</b>
+        <select size="1" name="motNo">
+            <c:forEach var="noticeVO" items="${noticeService.all}" >
+            <option value="${noticeVO.motNo}">${noticeVO.motNo}
+            </c:forEach>
+        </select>
+        <input type="hidden" name="action" value="delete">
+        <input type="submit" value="送出刪除">
+    </FORM>
+</li>
 </body>
 </html>

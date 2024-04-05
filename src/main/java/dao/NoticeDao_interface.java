@@ -10,11 +10,11 @@ public interface NoticeDao_interface {
 
     public void insert(NoticeVO noticeVO);
     public void update(NoticeVO noticeVO);
-    public void delete(Integer notNo);
-    public NoticeVO findByPrimaryKey(Integer notNo);
+    public void delete(Integer motNo);
+    public NoticeVO findByPrimaryKey(Integer motNo);
     public List<NoticeVO> getAll();
 
     //查詢某部門的員工(一對多)(回傳 Set)
-    public Set<MemberVO> getEmpsByDeptno(Integer notNo);
+    public Set<MemberVO> getEmpsByDeptno(Integer motNo);
 
 }

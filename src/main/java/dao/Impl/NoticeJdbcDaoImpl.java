@@ -18,12 +18,12 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
 
     private static final String INSERT_NO = "INSERT INTO notice (memNo, notContent, notTime, notStat) VALUES (?, ?, ?, ?)";
 
-    private static final String GET_ALL_NO = "SELECT notNo, memNo, notContent, notTime, notStat FROM notice";
-    private static final String GET_ONE_NO = "SELECT notNo, memNo, notContent, notTime, notStat FROM notice WHERE notNo = ?";;
+    private static final String GET_ALL_NO = "SELECT motNo, memNo, notContent, notTime, notStat FROM notice";
+    private static final String GET_ONE_NO = "SELECT motNo, memNo, notContent, notTime, notStat FROM notice WHERE motNo = ?";;
 
-    private static final String DELETE = "DELETE FROM notice where notNo = ?";
+    private static final String DELETE = "DELETE FROM notice where motNo = ?";
 
-    private static final String UPDATE = "UPDATE notice SET memNo = ?, notContent = ?, notTime = ?, notStat = ? WHERE notNo = ?";
+    private static final String UPDATE = "UPDATE notice SET memNo = ?, notContent = ?, notTime = ?, notStat = ? WHERE motNo = ?";
 
 
     @Override
@@ -89,7 +89,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
             pstmt.setString(2, noticeVO.getNotContent());
             pstmt.setTimestamp(3, noticeVO.getNotTime());
             pstmt.setByte(4, noticeVO.getNotStat());
-            pstmt.setInt(5, noticeVO.getNotNo());
+            pstmt.setInt(5, noticeVO.getMotNo());
 
             pstmt.executeUpdate();
 
@@ -121,7 +121,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
     }
 
     @Override
-    public void delete(Integer notNo) {
+    public void delete(Integer motNo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -132,7 +132,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
             con = DriverManager.getConnection(url, userid, passwd);
             pstmt = con.prepareStatement(DELETE);
 
-            pstmt.setInt(1, notNo);
+            pstmt.setInt(1, motNo);
 
             pstmt.executeUpdate();
 
@@ -165,7 +165,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
     }
 
     @Override
-    public NoticeVO findByPrimaryKey(Integer notNo) {
+    public NoticeVO findByPrimaryKey(Integer motNo) {
 
         NoticeVO noticeVO = null;
         Connection con = null;
@@ -178,7 +178,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
             con = DriverManager.getConnection(url, userid, passwd);
             pstmt = con.prepareStatement(GET_ONE_NO);
 
-            pstmt.setInt(1, notNo);
+            pstmt.setInt(1, motNo);
 
             rs = pstmt.executeQuery();
 
@@ -186,7 +186,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
 
                 // noticeVO 也稱為 Domain objects
                 noticeVO = new NoticeVO();
-                noticeVO.setNotNo(rs.getInt("notNo"));
+                noticeVO.setMotNo(rs.getInt("motNo"));
                 noticeVO.setMemNo(rs.getInt("memNo"));
                 noticeVO.setNotContent(rs.getString("notContent"));
                 noticeVO.setNotTime(rs.getTimestamp("notTime"));
@@ -248,7 +248,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
             while (rs.next()) {
                 // NoticeVO 也可以稱為 Domain objects
                 noticeVO = new NoticeVO();
-                noticeVO.setNotNo(rs.getInt("notNo"));
+                noticeVO.setMotNo(rs.getInt("motNo"));
                 noticeVO.setMemNo(rs.getInt("memNo"));
                 noticeVO.setNotContent(rs.getString("notContent"));
                 noticeVO.setNotTime(rs.getTimestamp("notTime"));
@@ -291,7 +291,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
     }
 
     @Override
-    public Set<MemberVO> getEmpsByDeptno(Integer notNo) {
+    public Set<MemberVO> getEmpsByDeptno(Integer motNo) {
         return null;
     }
 }

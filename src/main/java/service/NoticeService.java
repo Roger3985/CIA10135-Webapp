@@ -28,26 +28,26 @@ public class NoticeService {
         return noticeVO;
     }
 
-    public NoticeVO updateNO(Integer notNo, Integer memNo, String notContent, Timestamp notTime, Byte notStat) {
+    public NoticeVO updateNO(Integer motNo, Integer memNo, String notContent, Timestamp notTime, Byte notStat) {
 
         NoticeVO noticeVO = new NoticeVO();
 
-        noticeVO.setNotNo(notNo);
+        noticeVO.setMotNo(motNo);
         noticeVO.setMemNo(memNo);
         noticeVO.setNotContent(notContent);
         noticeVO.setNotTime(notTime);
         noticeVO.setNotStat(notStat);
         dao.update(noticeVO);
 
-        return dao.findByPrimaryKey(notNo);
+        return dao.findByPrimaryKey(motNo);
     }
 
-    public void deleteNO(Integer notNo) {
-        dao.delete(notNo);
+    public void deleteNO(Integer motNo) {
+        dao.delete(motNo);
     }
 
-    public NoticeVO getOneNO(Integer notNo) {
-        return dao.findByPrimaryKey(notNo);
+    public NoticeVO getOneNO(Integer motNo) {
+        return dao.findByPrimaryKey(motNo);
     }
 
     public List<NoticeVO> getAll() {

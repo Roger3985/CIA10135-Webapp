@@ -4,18 +4,18 @@ import java.sql.Timestamp;
 
 public class NoticeVO implements java.io.Serializable {
 
-    private Integer notNo;
+    private Integer motNo;
     private Integer memNo;
     private String notContent;
     private Timestamp notTime;
     private Byte notStat;
 
-    public Integer getNotNo() {
-        return notNo;
+    public Integer getMotNo() {
+        return motNo;
     }
 
-    public void setNotNo(Integer notNo) {
-        this.notNo = notNo;
+    public void setMotNo(Integer motNo) {
+        this.motNo = motNo;
     }
 
     public Integer getMemNo() {

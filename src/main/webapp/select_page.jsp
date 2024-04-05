@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>IBM Emp: Home</title>
+    <title>IBM Notice: Home</title>
 
     <style>
         table#table-1 {
@@ -30,10 +30,10 @@
 <body bgcolor='white'>
 
 <table id="table-1">
-    <tr><td><h3>IBM Emp: Home</h3><h4>( MVC )</h4></td></tr>
+    <tr><td><h3>IBM Notice: Home</h3><h4>( MVC )</h4></td></tr>
 </table>
 
-<p>This is the Home page for IBM Emp: Home</p>
+<p>This is the Home page for IBM Notice: Home</p>
 
 <h3>資料查詢:</h3>
 
@@ -48,26 +48,26 @@
 <%-- </c:if> --%>
 
 <ul>
-    <li><a href='listAllNO.jsp'>List</a> all Emps.  <br><br></li>
+    <li><a href='listAllNO.jsp'>List</a> all Notices.  <br><br></li>
 
 
     <li>
-        <FORM METHOD="post" ACTION="NoticeController?action=" >
-            <b>輸入員工編號 (如7001):</b>
-            <input type="text" name="notNo" value="${param.notNo}"><font color=red>${errorMsgs.notNo}</font>
+        <FORM METHOD="post" ACTION="NoticeController" >
+            <b>輸入會員通知編號 (如1):</b>
+            <input type="text" name="motNo" value="${param.motNo}"><font color=red>${errorMsgs.motNo}</font>
             <input type="hidden" name="action" value="getOne_For_Display">
             <input type="submit" value="送出">
         </FORM>
     </li>
 
-    <jsp:useBean id="empSvc" scope="page" class="service.NoticeService" />
+    <jsp:useBean id="noticeService" scope="page" class="service.NoticeService" />
 
     <li>
-        <FORM METHOD="post" ACTION="emp.do" >
-            <b>選擇員工編號:</b>
-            <select size="1" name="empno">
-                <c:forEach var="empVO" items="${empSvc.all}" >
-                <option value="${empVO.empno}">${empVO.empno}
+        <FORM METHOD="post" ACTION="NoticeController" >
+            <b>選擇會員通知編號:</b>
+            <select size="1" name="motNo">
+                <c:forEach var="noticeVO" items="${noticeService.all}" >
+                <option value="${noticeVO.motNo}">${noticeVO.motNo}
                     </c:forEach>
             </select>
             <input type="hidden" name="action" value="getOne_For_Display">
@@ -76,24 +76,34 @@
     </li>
 
     <li>
-        <FORM METHOD="post" ACTION="emp.do" >
-            <b>選擇員工姓名:</b>
-            <select size="1" name="empno">
-                <c:forEach var="empVO" items="${empSvc.all}" >
-                <option value="${empVO.empno}">${empVO.ename}
+        <FORM METHOD="post" ACTION="NoticeController" >
+            <b>選擇通知編號:</b>
+            <select size="1" name="memNo">
+                <c:forEach var="noticeVO" items="${noticeService.all}" >
+                <option value="${noticeVO.memNo}">${noticeVO.memNo}
                     </c:forEach>
             </select>
             <input type="hidden" name="action" value="getOne_For_Display">
             <input type="submit" value="送出">
         </FORM>
     </li>
+
 </ul>
 
 
-<h3>員工管理</h3>
+<h3>通知訊息管理</h3>
 
 <ul>
-    <li><a href='addNO.jsp'>Add</a> a new Emp.</li>
+    <li><a href='addNO.jsp'>新增訊息</a></li>
+</ul>
+<ul>
+    <li><a href='update_notice_input.jsp'>修改通知訊息</a></li>
+</ul>
+<ul>
+    <li><a href='deleteNO.jsp'>刪除通知訊息</a></li>
+</ul>
+<ul>
+    <li><a href='listAllNO.jsp'>查詢全部通知訊息</a></li>
 </ul>
 
 </body>

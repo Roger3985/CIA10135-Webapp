@@ -28,7 +28,7 @@ CREATE TABLE Member
 -- 創建會員通知表格
 CREATE TABLE Notice
 (
-    notNo      INT           NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    motNo      INT           NOT NULL PRIMARY KEY AUTO_INCREMENT,
     memNo      INT           NOT NULL ,
     notContent VARCHAR(1000) NOT NULL,
     notTime    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -36,14 +36,14 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數****************************************/
-            Integer notNo = Integer.valueOf(req.getParameter("notNo"));
+            Integer motNo = Integer.valueOf(req.getParameter("motNo"));
 
             /***************************2.開始查詢資料****************************************/
             NoticeService noticeService = new NoticeService();
-            NoticeVO noticeVO = noticeService.getOneNO(notNo);
+            NoticeVO noticeVO = noticeService.getOneNO(motNo);
 
             /***************************3.查詢完成,準備轉交(Send the Success view)************/
-            String param = "?notNO="  +noticeVO.getNotNo()+
+            String param = "?motNo="  +noticeVO.getMotNo()+
                     "&memNo="  +noticeVO.getMemNo()+
                     "&notContent="    +noticeVO.getNotContent()+
                     "&notTime="+noticeVO.getNotTime()+
@@ -116,11 +116,11 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數***************************************/
-            Integer notNo = Integer.valueOf(req.getParameter("notNo"));
+            Integer motNo = Integer.valueOf(req.getParameter("motNo"));
 
             /***************************2.開始刪除資料***************************************/
             NoticeService noticeService = new NoticeService();
-            noticeService.deleteNO(notNo);
+            noticeService.deleteNO(motNo);
 
             /***************************3.刪除完成,準備轉交(Send the Success view)***********/
             String url = "listAllNO.jsp";
@@ -134,14 +134,14 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數****************************************/
-            Integer notNo = Integer.valueOf(req.getParameter("notNo"));
+            Integer motNo = Integer.valueOf(req.getParameter("motNo"));
 
             /***************************2.開始查詢資料****************************************/
             NoticeService noticeService = new NoticeService();
-            NoticeVO noticeVO = noticeService.getOneNO(notNo);
+            NoticeVO noticeVO = noticeService.getOneNO(motNo);
 
             /***************************3.查詢完成,準備轉交(Send the Success view)************/
-            String param = "?notNO="  +noticeVO.getNotNo()+
+            String param = "?notNO="  +noticeVO.getMotNo()+
                     "&memNo="  +noticeVO.getMemNo()+
                     "&notContent="    +noticeVO.getNotContent()+
                     "&notTime="+noticeVO.getNotTime()+
@@ -158,7 +158,7 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-            Integer notNo = Integer.valueOf(req.getParameter("notNo").trim());
+            Integer motNo = Integer.valueOf(req.getParameter("motNo").trim());
 
             Integer memNo = null;
             try {
@@ -202,7 +202,7 @@ public class NoticeController extends HttpServlet {
 
             /***************************2.開始修改資料*****************************************/
             NoticeService noticeService = new NoticeService();
-            NoticeVO noticeVO = noticeService.updateNO(notNo, memNo, notContent, notTime, notStat);
+            NoticeVO noticeVO = noticeService.updateNO(motNo, memNo, notContent, notTime, notStat);
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("noticeVO", noticeVO); // 資料庫update成功後，正確的noticeVO物件，存入req
@@ -218,9 +218,9 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-            Integer notNo = null;
+            Integer motNo = null;
             try {
-                notNo = Integer.valueOf(req.getParameter("notNo").trim());
+                motNo = Integer.valueOf(req.getParameter("motNo").trim());
             } catch (NumberFormatException e) {
                 errorMsgs.put("memNo", "會員編號請填數字");
             } catch (NullPointerException nullPointerException) {
@@ -237,7 +237,7 @@ public class NoticeController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             NoticeService noticeService = new NoticeService();
-            NoticeVO noticeVO = noticeService.getOneNO(notNo);
+            NoticeVO noticeVO = noticeService.getOneNO(motNo);
             if (noticeVO == null) {
                 errorMsgs.put("notNo", "查無資料");
             }
