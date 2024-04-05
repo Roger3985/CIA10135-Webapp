@@ -47,7 +47,7 @@
 <%--    </form>--%>
 <%--</li>--%>
 
-    <jsp:useBean id="noticeService" scope="page" class="service.NoticeService" />
+    <jsp:useBean id="noticeService" scope="page" class="com.roger.notice.service.NoticeService" />
 
     <form method="post" action="NoticeController?action=delete" name="deleteForm" onsubmit="return confirm('確定要刪除這條通知嗎？');">
         <b>選擇會員通知編號:</b>

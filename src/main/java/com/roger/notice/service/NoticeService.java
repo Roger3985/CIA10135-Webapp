@@ -1,8 +1,8 @@
-package service;
+package com.roger.notice.service;
 
-import VO.NoticeVO;
-import dao.Impl.NoticeJdbcDaoImpl;
-import dao.NoticeDao_interface;
+import com.roger.notice.VO.NoticeVO;
+import com.roger.notice.dao.Impl.NoticeJdbcDaoImpl;
+import com.roger.notice.dao.NoticeDao_interface;
 
 import java.sql.Timestamp;
 import java.util.List;

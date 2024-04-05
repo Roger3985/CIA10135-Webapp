@@ -1,8 +1,8 @@
-package dao.Impl;
+package com.roger.notice.dao.Impl;
 
-import VO.MemberVO;
-import VO.NoticeVO;
-import dao.NoticeDao_interface;
+import com.roger.notice.VO.MemberVO;
+import com.roger.notice.VO.NoticeVO;
+import com.roger.notice.dao.NoticeDao_interface;
 
 import java.util.List;
 import java.util.Set;

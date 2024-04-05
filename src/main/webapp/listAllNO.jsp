@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.*"%>
-<%@ page import="service.NoticeService" %>
-<%@ page import="VO.NoticeVO" %>
+<%@ page import="com.roger.notice.service.NoticeService" %>
+<%@ page import="com.roger.notice.VO.NoticeVO" %>
 
 <%
     NoticeService noticeService = new NoticeService();
@@ -94,7 +94,7 @@
                     <input type="hidden" name="action"	value="getOne_For_Update"></form>
             </td>
             <td>
-                <form method="post" action="NoticeController" style="margin-bottom: 0px;">
+                <form method="post" action="NoticeController" style="margin-bottom: 0px;" onsubmit="return confirm('確定要刪除這條通知嗎？');">
                     <input type="submit" value="刪除">
                     <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="delete"></form>

@@ -60,7 +60,7 @@
         </FORM>
     </li>
 
-    <jsp:useBean id="noticeService" scope="page" class="service.NoticeService" />
+    <jsp:useBean id="noticeService" scope="page" class="com.roger.notice.service.NoticeService" />
 
     <li>
         <FORM METHOD="post" ACTION="NoticeController" >

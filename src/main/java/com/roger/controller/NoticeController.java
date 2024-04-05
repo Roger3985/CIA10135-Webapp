@@ -1,7 +1,7 @@
-package controller;
+package com.roger.controller;
 
-import VO.NoticeVO;
-import service.NoticeService;
+import com.roger.notice.VO.NoticeVO;
+import com.roger.notice.service.NoticeService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
