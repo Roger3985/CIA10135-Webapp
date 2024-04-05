@@ -210,8 +210,27 @@
                             </tr>
                             <tr>
                                 <td>發送時間</td>
-                                <td><input type="text" name="notTime" class="form-control" placeholder="發送時間(輸入跟2024-04-03 22:41:16一樣的格式)" value="" size="45" required="required" data-validation-required-message="請輸入發送時間，哪天哪時"/></td>
+                                <td><input type="text" class="form-control" id="notTime" name="notTime" placeholder="請輸入日期時間，例如：2024-04-03 22:41:16" required="required"></td>
+                                <td><button type="button" class="form-control" onclick="generateDateTime()">快速生成時間</button></td>
                                 <td><font color="red">${errorMsgs.notTime}</font></td>
+                                <script>
+                                    function generateDateTime() {
+                                        // 获取当前日期时间
+                                        var currentDateTime = new Date();
+
+                                        // 格式化日期时间
+                                        var year = currentDateTime.getFullYear();
+                                        var month = ('0' + (currentDateTime.getMonth() + 1)).slice(-2);
+                                        var day = ('0' + currentDateTime.getDate()).slice(-2);
+                                        var hours = ('0' + currentDateTime.getHours()).slice(-2);
+                                        var minutes = ('0' + currentDateTime.getMinutes()).slice(-2);
+                                        var seconds = ('0' + currentDateTime.getSeconds()).slice(-2);
+
+                                        // 将格式化后的日期时间显示在输入框中
+                                        var dateTimeInput = document.getElementById('notTime');
+                                        dateTimeInput.value = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+                                    }
+                                </script>
                             </tr>
                             <tr>
                                 <td>讀取狀態</td>

@@ -52,6 +52,24 @@
         <tr>
             <td>發送時間:</td>
             <td><input name="notTime" id="f_date1" value="${param.notTime}" type="text" size="45" required="required"/></td>
+            <td><button type="button" onclick="generateDateTime()">快速生成時間</button></td>
+            <script>
+                function generateDateTime() {
+                    // 获取当前日期时间
+                    var currentDateTime = new Date();
+                    // 格式化日期时间
+                    var year = currentDateTime.getFullYear();
+                    var month = ('0' + (currentDateTime.getMonth() + 1)).slice(-2);
+                    var day = ('0' + currentDateTime.getDate()).slice(-2);
+                    var hours = ('0' + currentDateTime.getHours()).slice(-2);
+                    var minutes = ('0' + currentDateTime.getMinutes()).slice(-2);
+                    var seconds = ('0' + currentDateTime.getSeconds()).slice(-2);
+
+                    // 将格式化后的日期时间显示在输入框中
+                    var dateTimeInput = document.getElementById('f_date1');
+                    dateTimeInput.value = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+                }
+            </script>
             <td>${errorMsgs.notTime}</td>
         </tr>
         <tr>
