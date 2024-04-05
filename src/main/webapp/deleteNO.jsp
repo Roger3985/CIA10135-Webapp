@@ -31,33 +31,34 @@
         </c:forEach>
     </ul>
 </c:if>
-<li>
-    <form method="post" action="NoticeController?delete" name="form1">
-        <table>
-            <tr>
-                <td>會員通知編號:</td>
-                <td><input type="TEXT" name="motNo" value="${param.motNo}" size="45" required="required"/></td>
-                <td>${param.motNo}</td>
-            </tr>
-        </table>
-        <input type="hidden" name="action" value="delete">
-        <input type="hidden" name="motNo" value="${param.motNo}">
-        <input type="submit" value="送出刪除">
-    </form>
-</li>
+<%--原始範例--%>
+<%--<li>--%>
+<%--    <form method="post" action="NoticeController?delete" name="form1">--%>
+<%--        <table>--%>
+<%--            <tr>--%>
+<%--                <td>會員通知編號:</td>--%>
+<%--                <td><input type="TEXT" name="motNo" value="${param.motNo}" size="45" required="required"/></td>--%>
+<%--                <td>${param.motNo}</td>--%>
+<%--            </tr>--%>
+<%--        </table>--%>
+<%--        <input type="hidden" name="action" value="delete">--%>
+<%--        <input type="hidden" name="motNo" value="${param.motNo}">--%>
+<%--        <input type="submit" value="送出刪除">--%>
+<%--    </form>--%>
+<%--</li>--%>
 
-<jsp:useBean id="noticeService" scope="page" class="service.NoticeService" />
-<li>
-    <FORM METHOD="post" ACTION="NoticeController" >
+    <jsp:useBean id="noticeService" scope="page" class="service.NoticeService" />
+
+    <form method="post" action="NoticeController?action=delete" name="deleteForm" onsubmit="return confirm('確定要刪除這條通知嗎？');">
         <b>選擇會員通知編號:</b>
-        <select size="1" name="motNo">
-            <c:forEach var="noticeVO" items="${noticeService.all}" >
-            <option value="${noticeVO.motNo}">${noticeVO.motNo}
+        <select size="1" name="motNo" style="width: 50px">
+            <c:forEach var="noticeVO" items="${noticeService.all}">
+                <option value="${noticeVO.motNo}">${noticeVO.motNo}</option>
             </c:forEach>
         </select>
         <input type="hidden" name="action" value="delete">
         <input type="submit" value="送出刪除">
-    </FORM>
-</li>
+    </form>
+
 </body>
 </html>

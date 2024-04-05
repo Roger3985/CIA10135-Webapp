@@ -3,7 +3,8 @@
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
-    //EmpVO empVO = (EmpVO) request.getAttribute("empVO"); //EmpServlet.java(Concroller), 存入req的empVO物件
+    // NoticeVO noticeVO = (NoticeVO) request.getAttribute("noticeVO");
+    // EmpServlet.java(Concroller), 存入req的empVO物件
 %>
 
 <html>
@@ -49,7 +50,7 @@
 <h4>此頁暫練習採用 Script 的寫法取值:</h4>
 <table id="table-1">
     <tr><td>
-        <h3>員工資料 - listOneEmp.jsp</h3>
+        <h3>員工資料 - listOneNO.jsp</h3>
         <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
     </td></tr>
 </table>
@@ -59,16 +60,16 @@
         <th>會員通知編號</th>
         <th>會員編號</th>
         <th>通知內容</th>
-        <th>雇用日期</th>
         <th>發送時間</th>
         <th>讀取狀態</th>
     </tr>
+
     <tr>
         <td>${noticeVO.motNo}</td>
-        <td>${noticeNo.memNo}</td>
-        <td>${noticeNo.notContent}</td>
-        <td>${noticeNo.notTime}</td>
-        <td>${noticeNo.notStat}</td>
+        <td>${noticeVO.memNo}</td>
+        <td>${noticeVO.notContent}</td>
+        <td>${noticeVO.notTime}</td>
+        <td>${noticeVO.notStat}</td>
     </tr>
 </table>
 

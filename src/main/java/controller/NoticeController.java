@@ -222,9 +222,9 @@ public class NoticeController extends HttpServlet {
             try {
                 motNo = Integer.valueOf(req.getParameter("motNo").trim());
             } catch (NumberFormatException e) {
-                errorMsgs.put("memNo", "會員編號請填數字");
+                errorMsgs.put("motNo", "會員通知編號請填數字");
             } catch (NullPointerException nullPointerException) {
-                errorMsgs.put("memNo", "會員編號請不要留白");
+                errorMsgs.put("motNo", "會員通知編號請不要留白");
             }
 
             // Send the use back to the form, if there were errors
@@ -239,7 +239,7 @@ public class NoticeController extends HttpServlet {
             NoticeService noticeService = new NoticeService();
             NoticeVO noticeVO = noticeService.getOneNO(motNo);
             if (noticeVO == null) {
-                errorMsgs.put("notNo", "查無資料");
+                errorMsgs.put("motNo", "查無資料");
             }
 
             // Send the use back to the form, if there were errors

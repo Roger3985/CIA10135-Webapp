@@ -19,7 +19,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
     private static final String INSERT_NO = "INSERT INTO notice (memNo, notContent, notTime, notStat) VALUES (?, ?, ?, ?)";
 
     private static final String GET_ALL_NO = "SELECT motNo, memNo, notContent, notTime, notStat FROM notice";
-    private static final String GET_ONE_NO = "SELECT motNo, memNo, notContent, notTime, notStat FROM notice WHERE motNo = ?";;
+    private static final String GET_ONE_NO = "SELECT motNo, memNo, notContent, notTime, notStat FROM notice where motNo = ?";
 
     private static final String DELETE = "DELETE FROM notice where motNo = ?";
 
@@ -287,7 +287,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
                 }
             }
         }
-            return list;
+        return list;
     }
 
     @Override

@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <title>所有通知訊息的資料 - listAllEmp.jsp</title>
+    <title>所有通知訊息的資料 - listAllNO.jsp</title>
 
     <style>
         table#table-1 {
