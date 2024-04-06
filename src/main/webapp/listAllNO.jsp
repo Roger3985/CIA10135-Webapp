@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.roger.notice.service.NoticeService" %>
-<%@ page import="com.roger.notice.VO.NoticeVO" %>
+<%@ page import="com.roger.notice.vo.NoticeVO" %>
 
 <%
     NoticeService noticeService = new NoticeService();

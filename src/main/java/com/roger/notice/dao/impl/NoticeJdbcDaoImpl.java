@@ -1,8 +1,8 @@
-package com.roger.notice.dao.Impl;
+package com.roger.notice.dao.impl;
 
-import com.roger.notice.VO.MemberVO;
-import com.roger.notice.VO.NoticeVO;
 import com.roger.notice.dao.NoticeDao_interface;
+import com.roger.notice.vo.MemberVO;
+import com.roger.notice.vo.NoticeVO;
 
 import java.sql.*;
 import java.util.ArrayList;

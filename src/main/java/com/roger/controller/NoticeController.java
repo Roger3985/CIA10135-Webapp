@@ -1,6 +1,6 @@
 package com.roger.controller;
 
-import com.roger.notice.VO.NoticeVO;
+import com.roger.notice.vo.NoticeVO;
 import com.roger.notice.service.NoticeService;
 
 import javax.servlet.RequestDispatcher;

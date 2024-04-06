@@ -1,4 +1,4 @@
-package com.roger.notice.VO;
+package com.roger.notice.vo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
