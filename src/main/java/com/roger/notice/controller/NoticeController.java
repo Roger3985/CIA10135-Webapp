@@ -1,7 +1,7 @@
-package com.roger.controller;
+package com.roger.notice.controller;
 
-import com.roger.notice.vo.NoticeVO;
 import com.roger.notice.service.NoticeService;
+import com.roger.notice.vo.NoticeVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/NoticeController")
+@WebServlet("/notice/NoticeController")
 public class NoticeController extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res)
@@ -49,8 +49,8 @@ public class NoticeController extends HttpServlet {
                     "&notTime="+noticeVO.getNotTime()+
                     "&notStat="    +noticeVO.getNotStat();
 
-            String url = "addNO.jsp";
-            RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_notice_input.jsp
+            String url = "/notice/addNO.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_member_input.jsp
             successView.forward(req, res);
         }
 
@@ -95,7 +95,7 @@ public class NoticeController extends HttpServlet {
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
                 RequestDispatcher failureView = req
-                        .getRequestDispatcher("addNO.jsp");
+                        .getRequestDispatcher("/notice/addNO.jsp");
                 failureView.forward(req, res);
                 return;
             }
@@ -105,7 +105,7 @@ public class NoticeController extends HttpServlet {
             noticeService.addNO(memNo, notContent, notTime, notStat);
 
             /***************************3.新增完成,準備轉交(Send the Success view)***********/
-            String url = "listAllNO.jsp";
+            String url = "/notice/listAllNO.jsp";
             RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllNO.jsp
             successView.forward(req, res);
         }
@@ -123,7 +123,7 @@ public class NoticeController extends HttpServlet {
             noticeService.deleteNO(motNo);
 
             /***************************3.刪除完成,準備轉交(Send the Success view)***********/
-            String url = "listAllNO.jsp";
+            String url = "/notice/listAllNO.jsp";
             RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功，轉交回送出刪除的來源網站
             successView.forward(req, res);
         }
@@ -147,8 +147,8 @@ public class NoticeController extends HttpServlet {
                     "&notTime="+noticeVO.getNotTime()+
                     "&notStat="    +noticeVO.getNotStat();
 
-            String url = "update_notice_input.jsp";
-            RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_notice_input.jsp
+            String url = "update_member_input.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_member_input.jsp
             successView.forward(req, res);
         }
 
@@ -195,7 +195,7 @@ public class NoticeController extends HttpServlet {
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
                 RequestDispatcher failureView = req
-                        .getRequestDispatcher("addNO.jsp");
+                        .getRequestDispatcher("/notice/addNO.jsp");
                 failureView.forward(req, res);
                 return;
             }
@@ -206,7 +206,7 @@ public class NoticeController extends HttpServlet {
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("noticeVO", noticeVO); // 資料庫update成功後，正確的noticeVO物件，存入req
-            String url = "listOneNO.jsp";
+            String url = "/notice/listOneNO.jsp";
             RequestDispatcher successView = req.getRequestDispatcher(url);
             successView.forward(req, res);
 
@@ -230,7 +230,7 @@ public class NoticeController extends HttpServlet {
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
                 RequestDispatcher failureView = req
-                        .getRequestDispatcher("/select_page.jsp");
+                        .getRequestDispatcher("/notice/select_page.jsp");
                 failureView.forward(req, res);
                 return;//程式中斷
             }
@@ -245,14 +245,59 @@ public class NoticeController extends HttpServlet {
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
                 RequestDispatcher failureView = req
-                        .getRequestDispatcher("/select_page.jsp");
+                        .getRequestDispatcher("/notice/select_page.jsp");
                 failureView.forward(req, res);
                 return;//程式中斷
             }
 
             /***************************3.查詢完成,準備轉交(Send the Success view)*************/
             req.setAttribute("noticeVO", noticeVO); // 資料庫取出的noticeVO物件,存入req
-            String url = "/listOneNO.jsp";
+            String url = "/notice/listOneNO.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneEmp.jsp
+            successView.forward(req, res);
+        }
+
+        if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
+
+            Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+            Integer motNo = null;
+            try {
+                motNo = Integer.valueOf(req.getParameter("motNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("motNo", "會員通知編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("motNo", "會員通知編號請不要留白");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/notice/select_page.jsp");
+                failureView.forward(req, res);
+                return;//程式中斷
+            }
+
+            /***************************2.開始查詢資料*****************************************/
+            NoticeService noticeService = new NoticeService();
+            NoticeVO noticeVO = noticeService.getOneNO(motNo);
+            if (noticeVO == null) {
+                errorMsgs.put("motNo", "查無資料");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/notice/select_page.jsp");
+                failureView.forward(req, res);
+                return;//程式中斷
+            }
+
+            /***************************3.查詢完成,準備轉交(Send the Success view)*************/
+            req.setAttribute("noticeVO", noticeVO); // 資料庫取出的noticeVO物件,存入req
+            String url = "/notice/listOneNO.jsp";
             RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneEmp.jsp
             successView.forward(req, res);
         }
@@ -272,14 +317,14 @@ public class NoticeController extends HttpServlet {
 
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
-                RequestDispatcher failureView = req.getRequestDispatcher("/select_page.jsp");
+                RequestDispatcher failureView = req.getRequestDispatcher("/notice/select_page.jsp");
                 failureView.forward(req, res);
                 return; // 程序中斷
             }
 
             /***************************3.查詢完成,準備轉交(Send the Success view)*************/
             req.setAttribute("noticeList", noticeList); // 將查詢到的通知消息列表存入請求屬性中
-            String url = "/listAllNO.jsp";
+            String url = "/notice/listAllNO.jsp";
             RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉發到 listAllNO.jsp 頁面
             successView.forward(req, res);
         }

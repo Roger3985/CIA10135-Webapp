@@ -1,21 +1,22 @@
+<%@ page import="com.roger.member.vo.MemberVO" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-    // NoticeVO noticeVO = (NoticeVO) request.getAttribute(noticeVO);
+    // MemberVO memberVO = request.getAttribute(memberVO);
 %>
 
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <title>訊息資料修改 - update_notice_input.jsp</title>
+    <title>會員資料刪除 - deleteMem.jsp</title>
 </head>
 <body bgcolor="white">
 
 <table id="table-1">
     <tr>
         <td>
-            <h3>訊息資料修改 - update_notice_input.jsp</h3>
+            <h3>會員資料刪除 - deleteMem.jsp</h3>
             <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
         </td>
     </tr>
@@ -47,13 +48,13 @@
 <%--    </form>--%>
 <%--</li>--%>
 
-    <jsp:useBean id="noticeService" scope="page" class="com.roger.notice.service.NoticeService" />
+    <jsp:useBean id="memberService" scope="page" class="com.roger.member.service.MemberService" />
 
-    <form method="post" action="NoticeController?action=delete" name="deleteForm" onsubmit="return confirm('確定要刪除這條通知嗎？');">
+    <form method="post" action="/member/MemberServlet" name="deleteForm" onsubmit="return confirm('確定要刪除這條通知嗎？');">
         <b>選擇會員通知編號:</b>
-        <select size="1" name="motNo" style="width: 50px">
-            <c:forEach var="noticeVO" items="${noticeService.all}">
-                <option value="${noticeVO.motNo}">${noticeVO.motNo}</option>
+        <select size="1" name="memNo" style="width: 50px">
+            <c:forEach var="memberVO" items="${memberService.all}">
+                <option value="${memberVO.memNo}">${memberVO.memNo}</option>
             </c:forEach>
         </select>
         <input type="hidden" name="action" value="delete">

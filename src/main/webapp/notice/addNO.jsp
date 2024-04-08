@@ -25,7 +25,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <style>
         /* 設置送出表單按鈕的外部容器 */
         .submit-btn-container {
@@ -196,7 +196,7 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form">
                 <div id="success"></div>
-                    <form method="post" action="NoticeController?action=insert" name="form1">
+                    <form method="post" action="/notice/NoticeController" name="form1">
                         <table id="table-1">
                             <tr>
                                 <td>會員編號</td>
@@ -251,7 +251,7 @@
                             <br>
                             <button id="Check" class="submit-btn-container">檢查驗證碼是否正確</button>
                             <button id="Gen" class="submit-btn-container">產生新的驗證碼</button>
-                            <script src="js/VerificationCode.js"></script>
+                            <script src="./js/VerificationCode.js"></script>
                         </div>
                         <br>
                     <input type="hidden" name="action" value="insert">

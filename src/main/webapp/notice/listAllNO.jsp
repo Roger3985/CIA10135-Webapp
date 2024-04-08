@@ -82,25 +82,25 @@
             <td>${noticeVO.notStat}</td>
 
             <td>
-                <form method="post" action="NoticeController" style="margin-bottom: 0px;">
+                <form method="post" action="/notice/NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="新增">
                     <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="getOne_For_Insert"></form>
             </td>
             <td>
-                <form method="post" action="NoticeController" style="margin-bottom: 0px;">
+                <form method="post" action="/notice/NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="修改">
                     <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action"	value="getOne_For_Update"></form>
             </td>
             <td>
-                <form method="post" action="NoticeController" style="margin-bottom: 0px;" onsubmit="return confirm('確定要刪除這條通知嗎？');">
+                <form method="post" action="/notice/NoticeController" style="margin-bottom: 0px;" onsubmit="return confirm('確定要刪除這條通知嗎？');">
                     <input type="submit" value="刪除">
                     <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="delete"></form>
             </td>
             <td>
-                <form method="post" action="NoticeController" style="margin-bottom: 0px;">
+                <form method="post" action="/notice/NoticeController" style="margin-bottom: 0px;">
                     <input type="submit" value="查詢">
                     <input type="hidden" name="motNo"  value="${noticeVO.motNo}">
                     <input type="hidden" name="action" value="getOne_For_Display"></form>
