@@ -146,7 +146,7 @@
 <%--		<td><select size="1" name="deptno">--%>
 <%--			<c:forEach var="deptVO" items="${deptSvc.all}">--%>
 <%--				<option value="${deptVO.deptno}" ${(param.deptno==deptVO.deptno)? 'selected':'' } >${deptVO.dname}--%>
-<%--			</c:forEach>--%>
+C<%--			</c:forEach>--%>
 <%--		</select></td>--%>
 <%--	</tr>--%>
 

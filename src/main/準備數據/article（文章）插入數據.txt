@@ -1,0 +1,60 @@
+-- 插入專欄文章的假資料數據
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (1, '如何籌備一場難忘的婚禮：從規劃到執行', '在籌備婚禮時，規劃是至關重要的一步。這包括選擇婚禮日期和場地，管理預算和財務，以及與各個供應商合作和溝通。從訂婚到婚禮當天的流程，每一步都需要仔細計劃和準備，以確保婚禮順利進行並成為難忘的回憶。', '2024-04-02 10:00:00', 1001, 0);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (2, '婚禮慶典的歷史與演變', '婚禮慶典有著悠久的歷史和豐富的文化傳統。從古代到現代，不同文化和地區的婚禮慶典都有著獨特的儀式和慣例。隨著社會的變遷和文化的交流，婚禮慶典也不斷演變，反映了不同時代和地域的價值觀和生活方式。', '2023-11-02 09:00:00', 1002, 1);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (2, '婚禮場地選擇指南：室內還是室外？', '選擇婚禮場地是籌備婚禮的重要決定之一。室內場地通常提供穩定的環境和舒適的氛圍，而室外場地則能帶來自然的美景和開放的感覺。在做出選擇時，要考慮到季節、天氣、預算和個人喜好，以確保婚禮的順利進行和與眾不同的體驗。', '2024-03-02 22:00:00', 1003, 0);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (3, '婚禮主題構想：從經典到獨特的靈感', '婚禮主題可以為婚禮慶典帶來獨特的氛圍和風格。從經典的浪漫到獨特的主題，如海灘婚禮或鄉村婚禮，每個主題都有其獨特的魅力和體驗。選擇一個適合的主題，可以讓婚禮更具個性化和意義深長。', '2023-12-02 13:00:00', 1004, 1);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (1, '精緻設計的婚紗：流行趨勢與風格選擇', '婚紗是婚禮中最重要的元素之一，它代表著新娘的個性和風格。從經典的公主款式到時尚的露肩設計，每個婚紗款式都有其獨特的特點和魅力。選擇一款適合自己身形和個人風格的婚紗，可以讓新娘在婚禮當天散發自信和美麗。', '2024-04-03 16:00:00', 1005, 0);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (2, '男士婚禮穿搭指南：如何挑選適合的婚紗西裝？', '男士的婚禮穿搭同樣重要，它展現了新郎的品味和風格。從經典的西裝款式到時尚的花色和剪裁，每個男士婚紗西裝都有其獨特的魅力和風格。選擇一款合適的婚紗西裝，可以讓新郎在婚禮當天與新娘相得益彰並展現出最好的形象。', '2023-03-02 09:00:00', 1006, 1);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (3, '如何找到完美的婚紗店：選擇過程中的注意事項', '選擇一家適合的婚紗店是準備婚禮時的重要步驟之一。婚紗店不僅提供各種款式和設計的婚紗，還能提供專業的意見和定制服務。在選擇婚紗店時，要考慮到品質、服務、價格和口碑等因素，以確保找到完美的婚紗。', '2024-05-11 11:00:00', 1007, 0);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (3, '婚禮攝影師的角色：捕捉幸福時刻的專業技巧', '婚禮攝影師扮演著捕捉幸福時刻和永恆回憶的重要角色。他們不僅需要具備專業的攝影技巧，還需要有豐富的婚禮攝影經驗和良好的溝通能力。選擇一位合適的婚禮攝影師，可以讓新人在婚禮當天留下美好的回憶和獨特的照片作品。', '2023-12-31 21:00:00', 1008, 1);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (2, '婚禮花卉與裝飾：打造浪漫氛圍的關鍵', '婚禮花卉和裝飾是營造浪漫氛圍和美好回憶的重要元素之一。從鮮花花束到場地裝飾，每個細節都需要精心設計和佈置。選擇適合的花卉和裝飾品，可以讓婚禮場地更加美麗和令人難忘。', '2024-01-02 10:00:00', 1009, 0);
+INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (3, '婚禮籌備中的常見挑戰與解決方案', '婚禮籌備過程中常常會遇到各種挑戰和困難。例如預算超支、供應商問題、人際關係等。面對這些挑戰，新人需要保持冷靜和耐心，並尋找解決問題的有效方法。通過合理的計劃和良好的溝通，可以克服婚禮籌備中的各種困難，讓婚禮順利進行並成為美好回憶。', '2023-02-02 13:00:00', 1010, 1);
+
+-- 插入點讚的假資料數據
+INSERT INTO ClickLike(memNo, artNo) VALUES (1, 1);
+INSERT INTO ClickLike(memNo, artNo) VALUES (2, 2);
+INSERT INTO ClickLike(memNo, artNo) VALUES (3, 3);
+INSERT INTO ClickLike(memNo, artNo) VALUES (4, 4);
+INSERT INTO ClickLike(memNo, artNo) VALUES (5, 5);
+INSERT INTO ClickLike(memNo, artNo) VALUES (6, 6);
+INSERT INTO ClickLike(memNo, artNo) VALUES (7, 7);
+INSERT INTO ClickLike(memNo, artNo) VALUES (8, 8);
+INSERT INTO ClickLike(memNo, artNo) VALUES (9, 9);
+INSERT INTO ClickLike(memNo, artNo) VALUES (10, 10);
+
+-- 插入文章收藏的假資料數據
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (1, 1);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (2, 2);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (3, 3);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (4, 4);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (5, 5);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (6, 6);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (7, 7);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (8, 8);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (9, 9);
+INSERT INTO ArticleCollection(memNo, artNo) VALUES (10, 10);
+
+-- 插入回覆檢舉的假資料數據
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1001, 1001, 1, 1, '2024-04-02 12:30:00','不當言論或語言', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1002, 1002, 2, 1, '2024-04-03 12:30:00','不當言論或語言', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1003, 1003, 3, 1, '2024-03-02 12:30:00','不當言論或語言', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1004, 1004, 4, 2, '2024-02-02 12:30:00','侵犯版權或知識產權', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1005, 1005, 5, 2, '2024-01-02 12:30:00','侵犯版權或知識產權', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1006, 1006, 6, 2, '2024-01-02 12:30:00','侵犯版權或知識產權', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1007, 1007, 7, 3, '2023-12-01 12:30:00','違反社群守則或使用條款', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1008, 1008, 8, 3, '2024-02-02 12:30:00','違反社群守則或使用條款', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1009, 1009, 9, 3, '2024-03-02 12:30:00','違反社群守則或使用條款', 1);
+INSERT INTO Report(reportNo, artReplyNo, memNo, admNo, reportTime,reportReason, reportType) VALUES (1010, 1010, 10, 3, '2024-04-02 12:30:00','違反社群守則或使用條款', 1);
+
+-- 插入專欄文章回覆的假資料數據
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1001, 1, 1, '感謝分享！這些建議對我們即將籌備婚禮的夫妻非常有幫助。我們將會仔細考慮每一步，確保婚禮順利舉辦。', '2024-04-02 10:30:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1002, 1, 2, '太棒了！籌備婚禮確實需要一個良好的計劃和準備。我們正在著手籌備，您提供的建議會讓我們更有信心地迎接這個特別的日子。謝謝！', '2024-04-02 11:30:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1003, 1, 3, '非常感謝您的建議！我們剛剛開始籌備婚禮，這些提示讓我們感到更有把握。我們期待著能夠與供應商合作，並把我們的夢想婚禮變成現實。祝您有一個美好的婚禮！', '2024-04-02 12:30:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1004, 2, 4, '這篇文章真是精彩！我對婚禮慶典的歷史和演變一直很感興趣，能夠了解到不同文化間的差異和共通之處真是很有意思。謝謝您分享這份知識！', '2023-11-05 12:00:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1005, 2, 5, '婚禮慶典的演變真是一個很有趣的話題。看到不同時期和地區的婚禮傳統如何隨著時間而改變，真是讓人深思。期待更多關於婚禮文化的內容！', '2023-12-12 12:00:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1006, 2, 6, '這篇文章讓我對婚禮慶典有了全新的認識。從古代到現代，婚禮的慣例和儀式經歷了如此多的變化，讓人感受到文化的多樣性和豐富性。謝謝您分享這份深入的觀察！', '2024-01-01 10:00:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1007, 3, 7, '這篇文章提供了很好的婚禮場地選擇指南！我一直在猶豫是選擇室內還是室外場地，但現在我對兩者的優缺點有了更清楚的了解。謝謝您分享這些寶貴的建議！', '2024-03-04 12:00:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1008, 3, 8, '我很喜歡這篇文章！婚禮場地的選擇確實是一個重要的決定，您提到的考慮因素都很全面。我們將根據這些建議來做出最適合我們的選擇。期待能夠在特殊的場地裡舉辦我們的婚禮！', '2024-04-02 21:00:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1009, 3, 9, '室內還是室外？真是個難題！但這篇文章提供了很好的參考，讓我更容易做出決定。我們對於婚禮場地的選擇有了更清晰的想法，感謝您的指南！', '2024-05-02 19:00:00', 1);
+INSERT INTO ColumnReply(columnReplyNo, artNo, memNo, comContent, comTime, comStat) VALUES (1010, 3, 10, '這篇文章提到的所有考慮因素都非常重要。我們正在籌備婚禮，這些建議將幫助我們做出明智的決定，確保我們的婚禮舉辦得順利又難忘。謝謝您的分享！', '2024-03-03 09:00:00', 1);
+

@@ -282,7 +282,7 @@
                         <table id="table">
                             <tr>
                                 <td>
-                                    <h4><a href="select_page.jsp">回首頁</a></h4>
+                                    <h4><a href="/notice/select_page.jsp">回首頁</a></h4>
                                 </td>
                             </tr>
                         </table>

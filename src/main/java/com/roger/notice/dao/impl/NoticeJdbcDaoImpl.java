@@ -1,13 +1,11 @@
 package com.roger.notice.dao.impl;
 
 import com.roger.notice.dao.NoticeDao_interface;
-import com.roger.notice.vo.MemberVO;
 import com.roger.notice.vo.NoticeVO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class NoticeJdbcDaoImpl implements NoticeDao_interface {
 
@@ -290,8 +288,4 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
         return list;
     }
 
-    @Override
-    public Set<MemberVO> getEmpsByDeptno(Integer motNo) {
-        return null;
-    }
 }

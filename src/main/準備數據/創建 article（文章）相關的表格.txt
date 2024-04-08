@@ -1,0 +1,79 @@
+-- 創建fallElove資料庫
+CREATE DATABASE IF NOT EXISTS fallElove;
+
+-- 因為 ColumnArticle 跟 Report 兩張表格相關連的外來鍵都有關聯到 Administrator 表格，所以需要創建 Administrator 表格以上兩張表格才能測試
+CREATE TABLE Administrator
+(
+    admNo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    admPwd VARCHAR(20) NOT NULL,
+    admName VARCHAR(50) Not Null,
+    admStat TINYINT NOT NULL,
+    admEmail VARCHAR(40) NOT NULL,
+    positionNo INT NOT NULL
+);
+
+-- 創建專欄文章表格
+CREATE TABLE ColumnArticle
+(
+    artNo       INT         NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    admNo       INT         NOT NULL,
+    artTitle    VARCHAR(45) NOT NULL,
+    artContent  LONGTEXT    NOT NULL,
+    artTime     DATETIME    NOT NULL,
+    artCatNo    INT         NOT NULL,
+    artStat     TINYINT     NOT NULL,
+    FOREIGN KEY (admNo)     REFERENCES Administrator(admNo)
+);
+
+-- 創建點讚表格
+CREATE TABLE ClickLike
+(
+    memNo INT NOT NULL,
+    artNo INT NOT NULL,
+    PRIMARY KEY (memNo, artNo),
+    FOREIGN KEY (memNo) REFERENCES Member(memNo),
+    FOREIGN KEY (artNo) REFERENCES ColumnArticle(artNo)
+);
+
+-- 創建文章收藏表格
+CREATE TABLE ArticleCollection
+(
+    memNo INT NOT NULL,
+    artNo INT NOT NULL,
+    PRIMARY KEY (memNo, artNo),
+    FOREIGN KEY (memNo) REFERENCES Member(memNo),
+    FOREIGN KEY (artNo) REFERENCES ColumnArticle(artNo)
+);
+
+-- 創建回覆檢舉表格
+CREATE TABLE Report
+(
+    reportNo        INT          NOT NULL PRIMARY KEY,
+    artReplyNo      INT          NOT NULL,
+    memNo           INT          NOT NULL,
+    admNo           INT          NULL,
+    reportTime      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    reportReason    VARCHAR(300) NOT NULL,
+    reportType      TINYINT      NOT NULL,
+    FOREIGN KEY (artReplyNo) REFERENCES ColumnReply(columnReplyNo),
+    FOREIGN KEY (memNo)      REFERENCES Member(memNo),
+    FOREIGN KEY (admNo)      REFERENCES Administrator(admNo)
+);
+
+-- 創建專欄文章回覆表格
+CREATE TABLE ColumnReply
+(
+    columnReplyNo INT           NOT NULL PRIMARY KEY,
+    artNo         INT           NOT NULL,
+    memNo         INT           NOT NULL,
+    comContent    VARCHAR(255)  NOT NULL,
+    comTime       DATETIME      NOT NULL,
+    comStat       TINYINT       NOT NULL,
+    FOREIGN KEY (artNo) REFERENCES ColumnArticle(artNo),
+    FOREIGN KEY (memNo) REFERENCES Member(memNo)
+);
+
+
+
+
+
