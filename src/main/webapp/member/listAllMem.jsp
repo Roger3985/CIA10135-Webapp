@@ -82,8 +82,8 @@
 <%--        <th>記錄第三方登入創建時間</th>--%>
 <%--        <th>會員註冊完成時間</th>--%>
 <%--        <th>帳號驗證狀態</th>--%>
-        <th>新增</th>
-        <th>修改</th>
+<%--        <th>新增</th>--%>
+<%--        <th>修改</th>--%>
         <th>刪除</th>
         <th>查詢</th>
     </tr>
@@ -110,18 +110,18 @@
 <%--            <td>${memberVO.memberJoinTime}</td>--%>
 <%--            <td>${memberVO.memStat}</td>--%>
 
-            <td>
-                <form method="post" action="/member/MemberServlet" style="margin-bottom: 0px;">
-                    <input type="submit" value="新增">
-                    <input type="hidden" name="memNo"  value="${memberVO.memNo}">
-                    <input type="hidden" name="action" value="getOne_For_Insert"></form>
-            </td>
-            <td>
-                <form method="post" action="/member/MemberServlet" style="margin-bottom: 0px;">
-                    <input type="submit" value="修改">
-                    <input type="hidden" name="memNo"  value="${memberVO.memNo}">
-                    <input type="hidden" name="action"	value="getOne_For_Update"></form>
-            </td>
+<%--            <td>--%>
+<%--                <form method="post" action="/member/MemberServlet" style="margin-bottom: 0px;">--%>
+<%--                    <input type="submit" value="新增">--%>
+<%--                    <input type="hidden" name="memNo"  value="${memberVO.memNo}">--%>
+<%--                    <input type="hidden" name="action" value="insert"></form>--%>
+<%--            </td>--%>
+<%--            <td>--%>
+<%--                <form method="post" action="/member/MemberServlet" style="margin-bottom: 0px;">--%>
+<%--                    <input type="submit" value="修改">--%>
+<%--                    <input type="hidden" name="memNo"  value="${memberVO.memNo}">--%>
+<%--                    <input type="hidden" name="action"	value="update"></form>--%>
+<%--            </td>--%>
             <td>
                 <form method="post" action="/member/MemberServlet" style="margin-bottom: 0px;" onsubmit="return confirm('確定要刪除這條通知嗎？');">
                     <input type="submit" value="刪除">
