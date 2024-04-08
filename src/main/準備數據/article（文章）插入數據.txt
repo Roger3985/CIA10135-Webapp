@@ -1,3 +1,16 @@
+-- 後台管理員Administrator假資料
+INSERT INTO Administrator (admNo, admPwd, admName, admStat, admEmail, positionNo) VALUES
+(1, 'password1', '蔡陰魂', 1, 'admin1@gmail.com', 1),
+(2, 'password2', '韓果魚', 1, 'admin2@gmail.com', 2),
+(3, 'password3', '賴皮寮', 1, 'admin3@gmail.com', 3),
+(4, 'password4', '趙紹康', 1, 'admin4@gmail.com', 4),
+(5, 'password5', '陳石中', 1, 'admin5@gmail.com', 5),
+(6, 'password6', '郭拔跋', 1, 'admin6@gmail.com', 6),
+(7, 'password7', '柯阿伯', 1, 'admin7@gmail.com', 7),
+(8, 'password8', '黃國倉', 1, 'admin8@gmail.com', 8),
+(9, 'password9', '周船熊', 1, 'admin9@gmail.com', 9),
+(10, 'password10', '王小明', 1, 'admin10@gmail.com', 10);
+
 -- 插入專欄文章的假資料數據
 INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (1, '如何籌備一場難忘的婚禮：從規劃到執行', '在籌備婚禮時，規劃是至關重要的一步。這包括選擇婚禮日期和場地，管理預算和財務，以及與各個供應商合作和溝通。從訂婚到婚禮當天的流程，每一步都需要仔細計劃和準備，以確保婚禮順利進行並成為難忘的回憶。', '2024-04-02 10:00:00', 1001, 0);
 INSERT INTO ColumnArticle(admNo, artTitle, artContent, artTime, artCatNo, artStat) VALUES (2, '婚禮慶典的歷史與演變', '婚禮慶典有著悠久的歷史和豐富的文化傳統。從古代到現代，不同文化和地區的婚禮慶典都有著獨特的儀式和慣例。隨著社會的變遷和文化的交流，婚禮慶典也不斷演變，反映了不同時代和地域的價值觀和生活方式。', '2023-11-02 09:00:00', 1002, 1);
