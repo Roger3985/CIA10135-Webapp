@@ -91,6 +91,10 @@ public class MemberService {
         return dao.findByName(mName);
     }
 
+    public MemberVO getOneMemAccount(String memAcc) {
+        return dao.findByAccount(memAcc);
+    }
+
     public List<MemberVO> getAll() {
         return dao.getAll();
     }

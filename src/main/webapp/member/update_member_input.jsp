@@ -61,7 +61,14 @@
         </tr>
         <tr>
             <td>會員帳號:</td>
-            <td><input type="TEXT" name="memAcc"   value="${param.memAcc}"   size="45"/></td> <td>${errorMsgs.memAcc}</td>
+            <td>
+                <select size="1" name="memAcc">
+                    <c:forEach var="memberVO" items="${memberService.all}" >
+                    <option value="${memberVO.memAcc}">${memberVO.memAcc}
+                        </c:forEach>
+                </select>
+            </td>
+            <td>${errorMsgs.memAcc}</td>
         </tr>
         <tr>
             <td>會員密碼:</td>

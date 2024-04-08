@@ -88,6 +88,19 @@
         </FORM>
     </li>
 
+    <li>
+        <FORM METHOD="post" ACTION="/member/MemberServlet" >
+            <b>選擇會員帳號:</b>
+            <select size="1" name="memAcc">
+                <c:forEach var="memberVO" items="${memberService.all}" >
+                <option value="${memberVO.memAcc}">${memberVO.memAcc}
+                    </c:forEach>
+            </select>
+            <input type="hidden" name="action" value="getOne_For_Account">
+            <input type="submit" value="送出">
+        </FORM>
+    </li>
+
 </ul>
 
 

@@ -16,7 +16,7 @@
     <tr>
         <td>
             <h3>訊息資料修改 - update_notice_input.jsp</h3>
-            <h4><a href="select_page.jsp"><img src="../images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
+            <h4><a href="/notice/select_page.jsp"><img src="./images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
         </td>
     </tr>
 </table>
@@ -49,7 +49,7 @@
 
     <jsp:useBean id="noticeService" scope="page" class="com.roger.notice.service.NoticeService" />
 
-    <form method="post" action="NoticeController?action=delete" name="deleteForm" onsubmit="return confirm('確定要刪除這條通知嗎？');">
+    <form method="post" action="/notice/NoticeController" name="deleteForm" onsubmit="return confirm('確定要刪除這條通知嗎？');">
         <b>選擇會員通知編號:</b>
         <select size="1" name="motNo" style="width: 50px">
             <c:forEach var="noticeVO" items="${noticeService.all}">

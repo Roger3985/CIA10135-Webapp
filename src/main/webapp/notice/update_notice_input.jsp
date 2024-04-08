@@ -16,7 +16,7 @@
     <tr>
         <td>
             <h3>訊息資料修改 - update_notice_input.jsp</h3>
-            <h4><a href="select_page.jsp"><img src="../images/back.jpg" width="100" height="32" border="0">回首頁</a></h4>
+            <h4><a href="/notice/select_page.jsp"><img src="./images/back.jpg" width="100" height="32" border="0">回首頁</a></h4>
         </td>
     </tr>
 </table>
@@ -32,7 +32,7 @@
         </ul>
     </c:if>
 
-<form method="post" action="NoticeController?update" name="form1">
+<form method="post" action="/notice/NoticeController" name="form1">
     <table>
         <tr>
             <td>會員通知編號:</td>

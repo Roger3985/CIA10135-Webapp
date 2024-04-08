@@ -394,6 +394,50 @@ public class MemberServlet extends HttpServlet {
             successView.forward(req, res);
         }
 
+        if ("getOne_For_Account".equals(action)) { // 來自select_page.jsp的請求
+
+            Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+            String memAcc = req.getParameter("memAcc");
+            String memAccReg = "^[a-zA-Z0-9]{4,10}$";
+            if (memAcc == null || memAcc.trim().length() == 0) {
+                errorMsgs.put("memAcc", "會員帳號請勿空白");
+            } else if (!memAcc.trim().matches(memAccReg)) {
+                errorMsgs.put("memAcc", "會員帳號: 只能是英文字母、數字, 且長度必需在4到10之間");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/member/select_page.jsp");
+                failureView.forward(req, res);
+                return;//程式中斷
+            }
+
+            /***************************2.開始查詢資料*****************************************/
+            MemberService memberService = new MemberService();
+            MemberVO memberVO = memberService.getOneMemAccount(memAcc);
+            if (memberVO == null) {
+                errorMsgs.put("memNo", "查無資料");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/member/select_page.jsp");
+                failureView.forward(req, res);
+                return;//程式中斷
+            }
+
+            /***************************3.查詢完成,準備轉交(Send the Success view)*************/
+            req.setAttribute("memberVO", memberVO); // 資料庫取出的noticeVO物件,存入req
+            String url = "/member/listOneMem.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneEmp.jsp
+            successView.forward(req, res);
+        }
+
         if ("getAll".equals(action)) { // 修改为查询全部的请求
 
             Map<String, String> errorMsgs = new LinkedHashMap<String, String>();

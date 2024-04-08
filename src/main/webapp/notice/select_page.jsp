@@ -48,11 +48,11 @@
 <%-- </c:if> --%>
 
 <ul>
-    <li><a href='listAllNO.jsp'>List</a> all Notices.  <br><br></li>
+    <li><a href='/notice/listAllNO.jsp'>List</a> all Notices.  <br><br></li>
 
 
     <li>
-        <FORM METHOD="post" ACTION="NoticeController" >
+        <FORM METHOD="post" ACTION="/notice/NoticeController" >
             <b>輸入會員通知編號 (如1):</b>
             <input type="text" name="motNo" value="${param.motNo}"><font color=red>${errorMsgs.motNo}</font>
             <input type="hidden" name="action" value="getOne_For_Display">
@@ -63,7 +63,7 @@
     <jsp:useBean id="noticeService" scope="page" class="com.roger.notice.service.NoticeService" />
 
     <li>
-        <FORM METHOD="post" ACTION="NoticeController" >
+        <FORM METHOD="post" ACTION="/notice/NoticeController" >
             <b>選擇會員通知編號:</b>
             <select size="1" name="motNo">
                 <c:forEach var="noticeVO" items="${noticeService.all}" >
@@ -76,7 +76,7 @@
     </li>
 
     <li>
-        <FORM METHOD="post" ACTION="NoticeController" >
+        <FORM METHOD="post" ACTION="/notice/NoticeController" >
             <b>選擇通知編號:</b>
             <select size="1" name="memNo">
                 <c:forEach var="noticeVO" items="${noticeService.all}" >
@@ -94,16 +94,16 @@
 <h3>通知訊息管理</h3>
 
 <ul>
-    <li><a href='addNO.jsp'>新增訊息</a></li>
+    <li><a href='/notice/addNO.jsp'>新增訊息</a></li>
 </ul>
 <ul>
-    <li><a href='update_notice_input.jsp'>修改通知訊息</a></li>
+    <li><a href='/notice/update_notice_input.jsp'>修改通知訊息</a></li>
 </ul>
 <ul>
-    <li><a href='deleteNO.jsp'>刪除通知訊息</a></li>
+    <li><a href='/notice/deleteNO.jsp'>刪除通知訊息</a></li>
 </ul>
 <ul>
-    <li><a href='listAllNO.jsp'>查詢全部通知訊息</a></li>
+    <li><a href='/notice/listAllNO.jsp'>查詢全部通知訊息</a></li>
 </ul>
 
 </body>

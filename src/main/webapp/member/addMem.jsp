@@ -65,31 +65,17 @@
 	</ul>
 </c:if>
 
-<jsp:useBean id="memberService" scope="page" class="com.roger.member.service.MemberService" />
-
 <FORM METHOD="post" ACTION="/member/MemberServlet" name="form1">
 <table>
-	<td>會員編號:</td>
-	<td>
-		<select size="1" name="memNo" style="width: 50px">
-			<c:forEach var="memberVO" items="${memberService.all}">
-				<option value="${memberVO.memNo}">${memberVO.memNo}</option>
-			</c:forEach>
-		</select>
-	</td>
-	<td>${errorMsgs.memNo}</td>
-	</tr>
 	<tr>
 		<td>會員姓名:</td>
-		<td>
-			<select size="1" name="mName">
-				<c:forEach var="memberVO" items="${memberService.all}" >
-				<option value="${memberVO.mName}">${memberVO.mName}
-					</c:forEach>
-			</select>
-		</td>
-		<td>${errorMsgs.mName}</td>
+		<td><input type="TEXT" name="mName" value="${param.mName}" size="45"/></td> <td>${errorMsgs.mName}</td>
 	</tr>
+	<tr>
+		<td>會員帳號:</td>
+		<td><input type="TEXT" name="memAcc"   value="${param.memAcc}"   size="45"/></td> <td>${errorMsgs.memAcc}</td>
+	</tr>
+	<tr>
 		<td>會員密碼:</td>
 		<td><input name="memPwd" id="f_date1" type="text" ></td> <td>${errorMsgs.memPwd}</td>
 	</tr>

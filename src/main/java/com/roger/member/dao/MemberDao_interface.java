@@ -21,6 +21,9 @@ public interface MemberDao_interface {
     // 利用姓名查詢會員資料
     public MemberVO findByName(String mName);
 
+    // 利用會員帳號查詢會員資料
+    public MemberVO findByAccount(String memAcc);
+
     // 查詢全部會員的註冊資料
     public List<MemberVO> getAll();
 

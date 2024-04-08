@@ -20,6 +20,7 @@ public class MemberJdbcDaoImpl implements MemberDao_interface {
     private static final String GET_ALL_MEB = "SELECT memNo, mName, memAcc, memPwd, memMob, mGender, memMail, memAdd, memBd, memCard, provider, clientID, displayName, accessToken, refreshToken, tknExpireTime, creationTime, memberJoinTime, memStat FROM member";
     private static final String GET_ONE_MEB = "SELECT memNo, mName, memAcc, memPwd, memMob, mGender, memMail, memAdd, memBd, memCard, provider, clientID, displayName, accessToken, refreshToken, tknExpireTime, creationTime, memberJoinTime, memStat FROM member where memNo = ?";
     private static final String GET_ONE_MEB_ON_NAME = "SELECT memNo, mName, memAcc, memPwd, memMob, mGender, memMail, memAdd, memBd, memCard, provider, clientID, displayName, accessToken, refreshToken, tknExpireTime, creationTime, memberJoinTime, memStat FROM member where mName = ?";
+    private static final String GET_ONE_MEB_ON_ACCOUNT = "SELECT memNo, mName, memAcc, memPwd, memMob, mGender, memMail, memAdd, memBd, memCard, provider, clientID, displayName, accessToken, refreshToken, tknExpireTime, creationTime, memberJoinTime, memStat FROM member where memAcc = ?";
 
     private static final String DELETE_MEB = "DELETE FROM member where memNo = ?";
 
@@ -284,6 +285,85 @@ public class MemberJdbcDaoImpl implements MemberDao_interface {
             pstmt = con.prepareStatement(GET_ONE_MEB_ON_NAME);
 
             pstmt.setString(1, mName);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+
+                // MemberVO 也稱為 Domain objects
+                memberVO = new MemberVO();
+                memberVO.setMemNo(rs.getInt("memNo"));
+                memberVO.setmName(rs.getString("mName"));
+                memberVO.setMemAcc(rs.getString("memAcc"));
+                memberVO.setMemPwd(rs.getString("memPwd"));
+                memberVO.setMemMob(rs.getString("memMob"));
+                memberVO.setmGender(rs.getByte("mGender"));
+                memberVO.setMemMail(rs.getString("memMail"));
+                memberVO.setMemAdd(rs.getString("memAdd"));
+                memberVO.setMemBd(rs.getDate("memBd"));
+                memberVO.setMemCard(rs.getString("memCard"));
+                memberVO.setProvider(rs.getByte("provider"));
+                memberVO.setClientID(rs.getString("clientID"));
+                memberVO.setDisplayName(rs.getString("displayName"));
+                memberVO.setAccessToken(rs.getString("accessToken"));
+                memberVO.setRefreshToken(rs.getString("refreshToken"));
+                memberVO.setTknExpireTime(rs.getTimestamp("tknExpireTime"));
+                memberVO.setCreationTime(rs.getTimestamp("creationTime"));
+                memberVO.setMemberJoinTime(rs.getTimestamp("memberJoinTime"));
+                memberVO.setMemStat(rs.getByte("memStat"));
+
+            }
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return memberVO;
+    }
+
+    @Override
+    public MemberVO findByAccount(String memAcc) {
+
+        MemberVO memberVO = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(GET_ONE_MEB_ON_ACCOUNT);
+
+            pstmt.setString(1, memAcc);
 
             rs = pstmt.executeQuery();
 
