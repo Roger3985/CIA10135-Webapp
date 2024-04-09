@@ -218,13 +218,13 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-            Integer motNo = Integer.valueOf(req.getParameter("motNo").trim().length());
+            Integer motNo = null;
             try {
-                if (motNo == null || motNo == 0) {
-                    errorMsgs.put("motNo", "會員通知編號請不要留白");
-                }
+                motNo = Integer.valueOf(req.getParameter("motNo").trim());
             } catch (NumberFormatException e) {
-                errorMsgs.put("motNo", "會員通知編號請填數字");
+                errorMsgs.put("reportNo", "會員通知編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("reportNo", "會員通知編號請不要留白");
             }
 
             // Send the use back to the form, if there were errors
@@ -257,7 +257,7 @@ public class NoticeController extends HttpServlet {
             successView.forward(req, res);
         }
 
-        if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
+        if ("getOne_For_Display".equals(action)) { // 來自listAllNO.jsp的請求
 
             Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
             req.setAttribute("errorMsgs", errorMsgs);

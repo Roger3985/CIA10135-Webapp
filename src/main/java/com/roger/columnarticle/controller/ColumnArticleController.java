@@ -228,14 +228,14 @@ public class ColumnArticleController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-            Integer artNo = Integer.valueOf(req.getParameter("artNo").trim().length());;
+            Integer artNo = null;
             try {
-                if (artNo == null || artNo == 0) {
-                    errorMsgs.put("artNo", "文章編號請不要留白");
-                }
+                artNo = Integer.valueOf(req.getParameter("artNo").trim());
             } catch (NumberFormatException e) {
                 errorMsgs.put("artNo", "文章編號請填數字");
-            } 
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("artNo", "文章編號請不要留白");
+            }
 
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
