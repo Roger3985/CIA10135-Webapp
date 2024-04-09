@@ -104,6 +104,91 @@ public class ReportController extends HttpServlet {
             successView.forward(req, res);
         }
 
+        if ("update".equals(action)) { // 來自update_notice_input.jsp的請求
+
+            Map<String,String> errorMsgs = new LinkedHashMap<String,String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+            Integer reportNo = null;
+            try {
+                reportNo = Integer.valueOf(req.getParameter("reportNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("reportNo", "檢舉文章編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("reportNo", "檢舉文章編號請不要留白");
+            }
+
+            Integer artReplyNo = null;
+            try {
+                artReplyNo = Integer.valueOf(req.getParameter("artReplyNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("artReplyNo", "文章回覆編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("artReplyNo", "文章回覆編號請不要留白");
+            }
+
+            Integer memNo = null;
+            try {
+                memNo = Integer.valueOf(req.getParameter("memNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("memNo", "會員編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("memNo", "會員編號請不要留白");
+            }
+
+            Integer admNo = null;
+            try {
+                admNo = Integer.valueOf(req.getParameter("admNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("admNo", "管理員編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("admNo", "管理員編號請不要留白");
+            }
+
+            Instant currentTime = Instant.now();
+            Timestamp reportTime = Timestamp.from(currentTime);
+            try {
+                reportTime = Timestamp.valueOf(req.getParameter("reportTime").trim());
+            } catch (IllegalArgumentException e) {
+                errorMsgs.put("reportTime", "檢舉時間請輸入日期以及時間");
+            }
+
+            String reportReason = req.getParameter("reportReason");
+            String reportReasonReg = "^[\u4e00-\u9fa5，。、；：！？（）【】「」『』《》……,.：；！？（）]{1,300}$";
+            if (reportReason == null || reportReason.trim().length() == 0) {
+                errorMsgs.put("reportReason", "通知內容: 請勿空白");
+            } else if (!reportReason.trim().matches(reportReasonReg)) {
+                errorMsgs.put("reportReason", "通知內容: 請勿填寫中文以外的內容，且在300字內");
+            }
+
+            Byte reportType = 0;
+            try {
+                reportType = Byte.valueOf(req.getParameter("reportType").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("reportType", "讀取狀態請填數字");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/report/addReport.jsp");
+                failureView.forward(req, res);
+                return;
+            }
+
+            /***************************2.開始修改資料*****************************************/
+            ReportService reportService = new ReportService();
+            ReportVo reportVo = reportService.updateReport(reportNo, artReplyNo, memNo, admNo, reportTime, reportReason, reportType);
+
+            /***************************3.修改完成,準備轉交(Send the Success view)*************/
+            req.setAttribute("reportVo", reportVo); // 資料庫update成功後，正確的noticeVO物件，存入req
+            String url = "/report/listOneReport.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url);
+            successView.forward(req, res);
+
+        }
+
         if ("delete".equals(action)) { // 來自listAllReport.jsp
 
             Map<String, String> errorMsgs = new LinkedHashMap<String, String>();

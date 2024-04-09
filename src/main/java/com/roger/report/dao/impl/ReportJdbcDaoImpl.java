@@ -21,6 +21,8 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
 
     private static final String DELETE = "DELETE FROM report where reportNo = ?";
 
+    private static final String UPDATE = "UPDATE report SET reportNo = ?, artReplyNo = ?, memNo = ?, admNo = ?, reportTime = ?, reportReason = ?, reportType = ? WHERE reportNo = ?";
+
     @Override
     public void insert(ReportVo reportVo) {
 
@@ -73,7 +75,50 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
     @Override
     public void update(ReportVo reportVo) {
 
+        Connection con = null;
+        PreparedStatement pstmt = null;
 
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(UPDATE);
+
+            pstmt.setInt(1, reportVo.getArtReplyNo());
+            pstmt.setInt(2, reportVo.getMemNo());
+            pstmt.setInt(3, reportVo.getAdmNo());
+            pstmt.setTimestamp(4, reportVo.getReportTime());
+            pstmt.setString(5, reportVo.getReportReason());
+            pstmt.setByte(6, reportVo.getReportType());
+            pstmt.setInt(7, reportVo.getReportNo());
+
+            pstmt.executeUpdate();
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
     }
 
     @Override
