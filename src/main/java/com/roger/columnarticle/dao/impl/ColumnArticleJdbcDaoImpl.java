@@ -21,7 +21,7 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
 
     private static final String DELETE = "DELETE FROM columnarticle where artNo = ?";
 
-    private static final String UPDATE = "UPDATE notice SET artNo = ?, admNo = ?, artTitle = ?, artContent = ?, artTime = ?, artCatNo = ?, artStat = ? WHERE artNo = ?";
+    private static final String UPDATE = "UPDATE columnarticle SET artNo = ?, admNo = ?, artTitle = ?, artContent = ?, artTime = ?, artCatNo = ?, artStat = ? WHERE artNo = ?";
 
 
     @Override
@@ -74,6 +74,7 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
 
     @Override
     public void update(ColumnArticleVo columnArticleVo) {
+
         Connection con = null;
         PreparedStatement pstmt = null;
 

@@ -14,12 +14,14 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
     String userid = "root";
     String passwd = "11689dWS";
 
-    private static final String INSERT_CL = "INSERT INTO clicklike (memNo, artNo) VALUES (?, ?)";
+    private static final String INSERT_CL = "INSERT INTO clicklike (memNo, artNo) VALUES (?, ?);";
 
     private static final String GET_ALL_CL = "SELECT memNo, artNo FROM clicklike;";
     private static final String GET_ONE_CL = "SELECT memNo, artNo FROM clicklike where memNo = ?;";
 
-    private static final String DELETE = "DELETE FROM clicklike where memNo = ?";
+    private static final String DELETE = "DELETE FROM clicklike where memNo = ?;";
+
+    private static final String UPDATE = "UPDATE clicklike SET memNo = ?, artNo = ? WHERE memNo = ? AND artNo = ?;";
 
     @Override
     public void insert(ClickLikeVo clickLikeVo) {
@@ -68,6 +70,47 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
     @Override
     public void update(ClickLikeVo clickLikeVo) {
 
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(UPDATE);
+
+            pstmt.setInt(1, clickLikeVo.getMemNo());
+            pstmt.setInt(2, clickLikeVo.getArtNo());
+            pstmt.setInt(3, clickLikeVo.getMemNo());
+            pstmt.setInt(4, clickLikeVo.getArtNo());
+
+            pstmt.executeUpdate();
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
     }
 
     @Override

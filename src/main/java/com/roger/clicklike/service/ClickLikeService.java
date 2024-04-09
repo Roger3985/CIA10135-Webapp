@@ -25,6 +25,18 @@ public class ClickLikeService {
         return clickLikeVo;
     }
 
+    public ClickLikeVo updateCL(Integer memNo, Integer artNo) {
+
+        ClickLikeVo clickLikeVo = new ClickLikeVo();
+
+        clickLikeVo.setMemNo(memNo);
+        clickLikeVo.setMemNo(artNo);
+
+        dao.update(clickLikeVo);
+
+        return dao.findByPrimaryKey(memNo);
+    }
+
     public void deleteCL(Integer memNo) {
         dao.delete(memNo);
     }
