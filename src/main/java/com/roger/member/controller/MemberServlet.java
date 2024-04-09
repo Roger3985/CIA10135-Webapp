@@ -310,13 +310,13 @@ public class MemberServlet extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-            Integer memNo = null;
+            Integer memNo = Integer.valueOf(req.getParameter("memNo").trim().length());
             try {
-                memNo = Integer.valueOf(req.getParameter("memNo").trim());
+                if (memNo == null || memNo == 0) {
+                    errorMsgs.put("memNo", "會員編號請不要留白");
+                }
             } catch (NumberFormatException e) {
                 errorMsgs.put("memNo", "會員編號請填數字");
-            } catch (NullPointerException nullPointerException) {
-                errorMsgs.put("memNo", "會員編號請不要留白");
             }
 
             // Send the use back to the form, if there were errors

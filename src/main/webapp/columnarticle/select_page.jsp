@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>IBM Notice: Home</title>
+    <title>IBM ColumnArticle: Home</title>
 
     <style>
         table#table-1 {
@@ -30,7 +30,7 @@
 <body bgcolor='white'>
 
 <table id="table-1">
-    <tr><td><h3>IBM Notice: Home</h3><h4>( MVC )</h4></td></tr>
+    <tr><td><h3>IBM ColumnArticle: Home</h3><h4>( MVC )</h4></td></tr>
 </table>
 
 <p>This is the Home page for IBM ColumnArticle: Home</p>
@@ -48,7 +48,7 @@
 </c:if>
 
 <ul>
-    <li><a href='/columnarticle/select_page.jsp'>List</a> all Notices.  <br><br></li>
+    <li><a href='/columnarticle/listAllCA.jsp'>List</a> all ColumnArticle.  <br><br></li>
 
 
     <li>
@@ -78,9 +78,9 @@
     <li>
         <FORM METHOD="post" ACTION="/columnarticle/ColumnArticleController" >
             <b>選擇通知編號:</b>
-            <select size="1" name="memNo">
-                <c:forEach var="noticeVO" items="${noticeService.all}" >
-                <option value="${noticeVO.memNo}">${noticeVO.memNo}
+            <select size="1" name="artNo">
+                <c:forEach var="columnArticleVo" items="${columnArticleVoService.all}" >
+                <option value="${columnArticleVo.artNo}">${columnArticleVo.artNo}
                     </c:forEach>
             </select>
             <input type="hidden" name="action" value="getOne_For_Display">

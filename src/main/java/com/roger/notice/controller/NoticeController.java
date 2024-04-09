@@ -218,13 +218,13 @@ public class NoticeController extends HttpServlet {
             req.setAttribute("errorMsgs", errorMsgs);
 
             /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-            Integer motNo = null;
+            Integer motNo = Integer.valueOf(req.getParameter("motNo").trim().length());
             try {
-                motNo = Integer.valueOf(req.getParameter("motNo").trim());
+                if (motNo == null || motNo == 0) {
+                    errorMsgs.put("motNo", "會員通知編號請不要留白");
+                }
             } catch (NumberFormatException e) {
                 errorMsgs.put("motNo", "會員通知編號請填數字");
-            } catch (NullPointerException nullPointerException) {
-                errorMsgs.put("motNo", "會員通知編號請不要留白");
             }
 
             // Send the use back to the form, if there were errors
