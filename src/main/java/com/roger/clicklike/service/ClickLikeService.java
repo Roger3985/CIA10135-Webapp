@@ -14,6 +14,10 @@ public class ClickLikeService {
         dao = new ClickLikeJdbcDaoImpl();
     }
 
+    public void deleteCL(Integer memNo) {
+        dao.delete(memNo);
+    }
+
     public ClickLikeVo getOneCL(Integer memNo) {
         return dao.findByPrimaryKey(memNo);
     }
