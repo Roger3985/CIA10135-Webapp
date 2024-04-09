@@ -2,7 +2,7 @@ package com.roger.report.vo;
 
 import java.sql.Timestamp;
 
-public class ReportVo {
+public class ReportVo implements java.io.Serializable {
 
     private Integer reportNo;
     private Integer artReplyNo;

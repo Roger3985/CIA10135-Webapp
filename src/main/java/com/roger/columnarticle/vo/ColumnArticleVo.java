@@ -2,7 +2,7 @@ package com.roger.columnarticle.vo;
 
 import java.sql.Timestamp;
 
-public class ColumnArticleVo {
+public class ColumnArticleVo implements java.io.Serializable {
 
     private Integer artNo;
     private Integer admNo;

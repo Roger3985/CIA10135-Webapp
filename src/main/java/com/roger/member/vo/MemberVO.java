@@ -3,7 +3,7 @@ package com.roger.member.vo;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class MemberVO {
+public class MemberVO implements java.io.Serializable {
 
     private Integer memNo;
     private String mName;
