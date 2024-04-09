@@ -30,6 +30,48 @@ public class ClickLikeController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
 
+        if ("insert".equals(action)) { // 來自addCA.jsp的請求
+
+            Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
+            Integer memNo = null;
+            try {
+                memNo = Integer.valueOf(req.getParameter("memNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("memNo", "會員編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("memNo", "會員編號請不要留白");
+            }
+
+            Integer artNo = null;
+            try {
+                artNo = Integer.valueOf(req.getParameter("artNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("artNo", "文章編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("artNo", "文章編號請不要留白");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/clicklike/addCL.jsp");
+                failureView.forward(req, res);
+                return;
+            }
+
+            /***************************2.開始新增資料***************************************/
+            ClickLikeService clickLikeService = new ClickLikeService();
+            clickLikeService.addCL(memNo, artNo);
+
+            /***************************3.新增完成,準備轉交(Send the Success view)***********/
+            String url = "/clicklike/listAllCL.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllCL.jsp
+            successView.forward(req, res);
+        }
+
         if ("delete".equals(action)) { // 來自listAllCL.jsp and deleteCL.jsp
 
             Map<String, String> errorMsgs = new LinkedHashMap<String, String>();

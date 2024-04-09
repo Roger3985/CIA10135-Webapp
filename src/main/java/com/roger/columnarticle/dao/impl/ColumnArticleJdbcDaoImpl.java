@@ -26,6 +26,7 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
 
     @Override
     public void insert(ColumnArticleVo columnArticleVo) {
+
         Connection con = null;
         PreparedStatement pstmt = null;
 

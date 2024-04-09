@@ -14,6 +14,17 @@ public class ClickLikeService {
         dao = new ClickLikeJdbcDaoImpl();
     }
 
+    public ClickLikeVo addCL(Integer memNo, Integer artNo) {
+
+        ClickLikeVo clickLikeVo = new ClickLikeVo();
+
+        clickLikeVo.setMemNo(memNo);
+        clickLikeVo.setMemNo(artNo);
+
+        dao.insert(clickLikeVo);
+        return clickLikeVo;
+    }
+
     public void deleteCL(Integer memNo) {
         dao.delete(memNo);
     }
