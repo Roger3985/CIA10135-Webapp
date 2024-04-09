@@ -29,6 +29,20 @@ public class ColumnReplyService {
         return columnReplyVo;
     }
 
+    public ColumnReplyVo updateCR(Integer columnReplyNo, Integer artNo, Integer memNo, String comContent, Timestamp comTime, Byte comStat) {
+
+        ColumnReplyVo columnReplyVo = new ColumnReplyVo();
+
+        columnReplyVo.setColumnReplyNo(columnReplyNo);
+        columnReplyVo.setArtNo(artNo);
+        columnReplyVo.setMemNo(memNo);
+        columnReplyVo.setComContent(comContent);
+        columnReplyVo.setComTime(comTime);
+        columnReplyVo.setComStat(comStat);
+
+        return dao.findByPrimaryKey(columnReplyNo);
+    }
+
     public void deleteCR(Integer columnReplyNo) {
         dao.delete(columnReplyNo);
     }
