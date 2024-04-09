@@ -26,6 +26,7 @@ public class NoticeJdbcDaoImpl implements NoticeDao_interface {
 
     @Override
     public void insert(NoticeVO noticeVO) {
+
         Connection con = null;
         PreparedStatement pstmt = null;
 

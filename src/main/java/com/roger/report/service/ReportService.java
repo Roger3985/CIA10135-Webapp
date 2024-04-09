@@ -4,6 +4,7 @@ import com.roger.report.dao.ReportDao_interface;
 import com.roger.report.dao.impl.ReportJdbcDaoImpl;
 import com.roger.report.vo.ReportVo;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class ReportService {
@@ -13,6 +14,21 @@ public class ReportService {
     public ReportService() {
         dao = new ReportJdbcDaoImpl();
 
+    }
+
+    public ReportVo addReport(Integer artReplyNo, Integer memNo, Integer admNo, Timestamp reportTime, String reportReason, Byte reportType) {
+
+        ReportVo reportVo = new ReportVo();
+
+        reportVo.setArtReplyNo(artReplyNo);
+        reportVo.setMemNo(memNo);
+        reportVo.setAdmNo(admNo);
+        reportVo.setReportTime(reportTime);
+        reportVo.setReportReason(reportReason);
+        reportVo.setReportType(reportType);
+
+        dao.insert(reportVo);
+        return reportVo;
     }
 
     public void deleteReport(Integer reportNo) {

@@ -14,13 +14,59 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
     String userid = "root";
     String passwd = "11689dWS";
 
-    private static final String GET_ALL_REPROT = "SELECT reportNo, artReplyNo, memNo, admNo, reportTime, reportReason, reportType FROM report";
-    private static final String GET_ONE_REPROT = "SELECT reportNo, artReplyNo, memNo, admNo, reportTime, reportReason, reportType FROM report where reportNo = ?";
+    private static final String INSERT_REPORT = "INSERT INTO report (artReplyNo, memNo, admNo, reportTime, reportTime, reportType) VALUES (?, ?, ?, ?, ?, ?)";
+
+    private static final String GET_ALL_REPORT = "SELECT reportNo, artReplyNo, memNo, admNo, reportTime, reportTime, reportReason, reportType FROM report";
+    private static final String GET_ONE_REPORT = "SELECT reportNo, artReplyNo, memNo, admNo, reportTime, reportReason, reportType FROM report where reportNo = ?";
 
     private static final String DELETE = "DELETE FROM report where reportNo = ?";
 
     @Override
     public void insert(ReportVo reportVo) {
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(INSERT_REPORT);
+
+            pstmt.setInt(1, reportVo.getArtReplyNo());
+            pstmt.setInt(2, reportVo.getMemNo());
+            pstmt.setInt(3, reportVo.getAdmNo());
+            pstmt.setTimestamp(4, reportVo.getReportTime());
+            pstmt.setString(5, reportVo.getReportReason());
+            pstmt.setByte(6, reportVo.getReportType());
+
+            pstmt.executeUpdate();
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
 
     }
 
@@ -84,7 +130,7 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
 
             Class.forName(driver);
             con = DriverManager.getConnection(url, userid, passwd);
-            pstmt = con.prepareStatement(GET_ONE_REPROT);
+            pstmt = con.prepareStatement(GET_ONE_REPORT);
 
             pstmt.setInt(1, reportNo);
 
@@ -152,7 +198,7 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, userid, passwd);
-            pstmt = con.prepareStatement(GET_ALL_REPROT);
+            pstmt = con.prepareStatement(GET_ALL_REPORT);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
