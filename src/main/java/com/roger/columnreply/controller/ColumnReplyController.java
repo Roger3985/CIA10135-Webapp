@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,89 @@ public class ColumnReplyController extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
+
+        if ("insert".equals(action)) { // 來自addCR.jsp的請求
+
+            Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
+            Integer artNo = null;
+            try {
+                artNo = Integer.valueOf(req.getParameter("artNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("artNo", "文章編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("artNo", "文章編號請不要留白");
+            }
+
+            Integer memNo = null;
+            try {
+                memNo = Integer.valueOf(req.getParameter("memNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("memNo", "會員編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("memNo", "會員編號請不要留白");
+            }
+
+            String comContent = req.getParameter("comContent");
+            String comContentReg = "^[\u4e00-\u9fa5，。、；：！？（）【】「」『』《》……,.：；！？（）]{1,255}$";
+            if (comContent == null || comContent.trim().length() == 0) {
+                errorMsgs.put("notContent", "通知內容: 請勿空白");
+            } else if (!comContent.trim().matches(comContentReg)) {
+                errorMsgs.put("notContent", "通知內容: 請勿填寫中文以外的內容，且在255字內");
+            }
+
+            Instant currentTime = Instant.now();
+            Timestamp comTime = Timestamp.from(currentTime);
+            try {
+                comTime = Timestamp.valueOf(req.getParameter("comTime").trim());
+            } catch (IllegalArgumentException e) {
+                errorMsgs.put("comTime", "留言時間請輸入日期以及時間");
+            }
+
+            Byte comStat = 0;
+            try {
+                comStat = Byte.valueOf(req.getParameter("comStat").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("comStat", "留言狀態請填數字");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/columnreply/addCR.jsp");
+                failureView.forward(req, res);
+                return;
+            }
+
+            /***************************2.開始新增資料***************************************/
+            ColumnReplyService columnReplyService = new ColumnReplyService();
+            columnReplyService.addCR(artNo, memNo, comContent, comTime, comStat);
+
+            /***************************3.新增完成,準備轉交(Send the Success view)***********/
+            String url = "/columnreply/listAllCR.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllCR.jsp
+            successView.forward(req, res);
+        }
+
+        if ("delete".equals(action)) { // 來自listAllCR.jsp
+
+            Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***************************1.接收請求參數***************************************/
+            Integer columnReplyNo = Integer.valueOf(req.getParameter("columnReplyNo"));
+
+            /***************************2.開始刪除資料***************************************/
+            ColumnReplyService columnReplyService = new ColumnReplyService();
+            columnReplyService.deleteCR(columnReplyNo);
+
+            /***************************3.刪除完成,準備轉交(Send the Success view)***********/
+            String url = "/columnreply/listAllCR.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功，轉交回送出刪除的來源網站
+            successView.forward(req, res);
+        }
 
         if ("getOne_For_Display".equals(action)) { // 來自listAllNO.jsp的請求
 
