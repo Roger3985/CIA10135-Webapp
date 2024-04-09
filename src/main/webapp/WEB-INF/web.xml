@@ -4,9 +4,9 @@
 <!--<welcome-file-list>-->
 <!--  <welcome-file>select_page.jsp</welcome-file>-->
 <!--</welcome-file-list>-->
-  <welcome-file-list>
-    <welcome-file>/member/select_page.jsp</welcome-file>
-  </welcome-file-list>
+<!--  <welcome-file-list>-->
+<!--    <welcome-file>/member/select_page.jsp</welcome-file>-->
+<!--  </welcome-file-list>-->
 <resource-ref>
   <description>DB Connection</description>
   <res-ref-name>jdbc/fallelove</res-ref-name>

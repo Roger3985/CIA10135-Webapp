@@ -1,15 +1,16 @@
 <%@ page import="com.roger.member.vo.MemberVO" %>
+<%@ page import="com.roger.columnarticle.vo.ColumnArticleVo" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-  MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
+  ColumnArticleVo columnArticleVo = (ColumnArticleVo) request.getAttribute("columnArticleVo");
 %>
 
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>會員資料新增 - addMem.jsp</title>
+<title>專欄文章新增 - addCA.jsp</title>
 
 <style>
   table#table-1 {
@@ -48,12 +49,12 @@
 
 <table id="table-1">
 	<tr><td>
-		 <h3>會員資料新增 - addMem.jsp</h3></td><td>
-		 <h4><a href=select_page.jsp><img src="./images/tomcat.png" width="100" height="100" border="0">回首頁</a></h4>
+		 <h3>專欄文章新增 - addCA.jsp</h3></td><td>
+		 <h4><a href="/columnarticle/select_page.jsp"><img src="./images/tomcat.png" width="100" height="100" border="0">回首頁</a></h4>
 	</td></tr>
 </table>
 
-<h3>資料新增:</h3>
+<h3>專欄文章資料新增:</h3>
 
 <%-- 錯誤表列 --%>
 <c:if test="${not empty errorMsgs}">
@@ -65,79 +66,31 @@
 	</ul>
 </c:if>
 
-<FORM METHOD="post" ACTION="/member/MemberServlet" name="form1">
+<FORM METHOD="post" ACTION="/columnarticle/ColumnArticleController" name="form1">
 <table>
 	<tr>
-		<td>會員姓名:</td>
-		<td><input type="TEXT" name="mName" value="${param.mName}" size="45"/></td> <td>${errorMsgs.mName}</td>
+		<td>管理員編號:</td>
+		<td><input type="TEXT" name="admNo" value="${param.admNo}" size="45"/></td> <td>${errorMsgs.admNo}</td>
 	</tr>
 	<tr>
-		<td>會員帳號:</td>
-		<td><input type="TEXT" name="memAcc"   value="${param.memAcc}"   size="45"/></td> <td>${errorMsgs.memAcc}</td>
+		<td>文章標題:</td>
+		<td><input type="TEXT" name="artTitle"   value="${param.artTitle}"   size="45"/></td> <td>${errorMsgs.artTitle}</td>
 	</tr>
 	<tr>
-		<td>會員密碼:</td>
-		<td><input name="memPwd" id="f_date1" type="text" ></td> <td>${errorMsgs.memPwd}</td>
+		<td>文章內容:</td>
+		<td><input name="artContent" id="f_date1" type="text" ></td> <td>${errorMsgs.artContent}</td>
 	</tr>
 	<tr>
-		<td>手機號碼:</td>
-		<td><input name="memMob" type="TEXT" value="${param.memMob}"   size="45"/></td> <td>${errorMsgs.memMob}</td>
+		<td>文章發表時間:</td>
+		<td><input name="artTime" type="TEXT" value="${param.artTime}"   size="45"/></td> <td>${errorMsgs.artTime}</td>
 	</tr>
 	<tr>
-		<td>性別:</td>
-		<td><input type="TEXT" name="mGender" value="${param.mGender}"   size="45"/></td> <td>${errorMsgs.mGender}</td>
+		<td>文章分類編號:</td>
+		<td><input type="TEXT" name="artCatNo" value="${param.artCatNo}"   size="45"/></td> <td>${errorMsgs.artCatNo}</td>
 	</tr>
 	<tr>
-		<td>email:</td>
-		<td><input type="TEXT" name="memMail" value="${param.memMail}"   size="45"/></td> <td>${errorMsgs.memMail}</td>
-	</tr>
-	<tr>
-		<td>地址:</td>
-		<td><input type="TEXT" name="memAdd" value="${param.memAdd}"   size="45"/></td> <td>${errorMsgs.memAdd}</td>
-	</tr>
-	<tr>
-		<td>會員生日:</td>
-		<td><input type="TEXT" name="memBd" value="${param.memBd}"   size="45"/></td> <td>${errorMsgs.memBd}</td>
-	</tr>
-	<tr>
-		<td>信用卡:</td>
-		<td><input type="TEXT" name="memCard" value="${param.memCard}"   size="45"/></td> <td>${errorMsgs.memCard}</td>
-	</tr>
-	<tr>
-		<td>第三方平台:</td>
-		<td><input type="TEXT" name="provider" value="${param.provider}"   size="45"/></td> <td>${errorMsgs.provider}</td>
-	</tr>
-	<tr>
-		<td>第三方用戶資料:</td>
-		<td><input type="TEXT" name="clientID" value="${param.clientID}"   size="45"/></td> <td>${errorMsgs.clientID}</td>
-	</tr>
-	<tr>
-		<td>第三方平台顯示名稱:</td>
-		<td><input type="TEXT" name="displayName" value="${param.displayName}"   size="45"/></td> <td>${errorMsgs.displayName}</td>
-	</tr>
-	<tr>
-		<td>第三方API訪問令牌:</td>
-		<td><input type="TEXT" name="accessToken" value="${param.accessToken}"   size="45"/></td> <td>${errorMsgs.accessToken}</td>
-	</tr>
-	<tr>
-		<td>刷新訪問令牌的令牌:</td>
-		<td><input type="TEXT" name="refreshToken" value="${param.refreshToken}"   size="45"/></td> <td>${errorMsgs.refreshToken}</td>
-	</tr>
-	<tr>
-		<td>訪問令牌的過期時間:</td>
-		<td><input type="TEXT" name="tknExpireTime" value="${param.tknExpireTime}"   size="45"/></td> <td>${errorMsgs.tknExpireTime}</td>
-	</tr>
-	<tr>
-		<td>記錄第三方登入創建時間:</td>
-		<td><input type="TEXT" name="creationTime" value="${param.creationTime}"   size="45"/></td> <td>${errorMsgs.creationTime}</td>
-	</tr>
-	<tr>
-		<td>會員註冊完成時間:</td>
-		<td><input type="TEXT" class="f_date1" name="memberJoinTime" value="${param.memberJoinTime}"   size="45"/></td> <td>${errorMsgs.memberJoinTime}</td>
-	</tr>
-	<tr>
-		<td>帳號驗證狀態:</td>
-		<td><input type="TEXT" name="memStat" value="${param.memStat}"   size="45"/></td> <td>${errorMsgs.memStat}</td>
+		<td>文章狀態:</td>
+		<td><input type="TEXT" name="artStat" value="${param.artStat}"   size="45"/></td> <td>${errorMsgs.artStat}</td>
 	</tr>
 
 <%--	<jsp:useBean id="deptSvc" scope="page" class="com.dept.model.DeptService" />--%>
