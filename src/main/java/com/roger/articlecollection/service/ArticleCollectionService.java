@@ -25,6 +25,18 @@ public class ArticleCollectionService {
         return articleCollectionVo;
     }
 
+    public ArticleCollectionVo updateAC(Integer memNo, Integer artNo) {
+
+        ArticleCollectionVo articleCollectionVo = new ArticleCollectionVo();
+
+        articleCollectionVo.setMemNo(memNo);
+        articleCollectionVo.setArtNo(artNo);
+
+        dao.update(articleCollectionVo);
+
+        return dao.findByPrimaryKey(memNo);
+    }
+
     public void deleteAC(Integer memNo) {
         dao.delete(memNo);
     }

@@ -21,6 +21,8 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
 
     private static final String DELETE = "DELETE FROM articlecollection where memNo = ?;";
 
+    private static final String UPDATE = "UPDATE articlecollection SET artNo = ? WHERE memNo = ?;";
+
     @Override
     public void insert(ArticleCollectionVo articleCollectionVo) {
 
@@ -68,6 +70,45 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     @Override
     public void update(ArticleCollectionVo articleCollectionVo) {
 
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(UPDATE);
+
+            pstmt.setInt(1, articleCollectionVo.getArtNo());
+            pstmt.setInt(2, articleCollectionVo.getMemNo());
+
+            pstmt.executeUpdate();
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
     }
 
     @Override

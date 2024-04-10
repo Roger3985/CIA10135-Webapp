@@ -1,4 +1,3 @@
-<%@ page import="com.roger.clicklike.vo.ClickLikeVo" %>
 <%@ page import="com.roger.articlecollection.vo.ArticleCollectionVo" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

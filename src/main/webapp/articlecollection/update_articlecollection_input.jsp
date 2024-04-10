@@ -10,15 +10,15 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <title>點讚修改 - update_clicklike_input.jsp</title>
+    <title>文章收藏修改 - update_articlecollection_input.jsp</title>
 </head>
 <body bgcolor="white">
 
 <table id="table-1">
     <tr>
         <td>
-            <h3>點讚修改 - update_clicklike_input.jsp</h3>
-            <h4><a href="/clicklike/select_page.jsp"><img src="./images/back.jpg" width="100" height="32" border="0">回首頁</a></h4>
+            <h3>文章收藏修改 - update_articlecollection_input.jsp</h3>
+            <h4><a href="/articlecollection/select_page.jsp"><img src="./images/back.jpg" width="100" height="32" border="0">回首頁</a></h4>
         </td>
     </tr>
 </table>
@@ -34,16 +34,16 @@
         </ul>
     </c:if>
 
-<jsp:useBean id="clickLikeService" scope="page" class="com.roger.clicklike.service.ClickLikeService" />
+<jsp:useBean id="articleCollectionService" scope="page" class="com.roger.articlecollection.service.ArticleCollectionService" />
 
-<form method="post" action="/clicklike/ClickLikeController" name="form1">
+<form method="post" action="/articlecollection/ArticleCollectionController" name="form1">
     <table>
         <tr>
             <td>會員編號:</td>
             <td>
                 <select size="1" name="memNo">
-                    <c:forEach var="clickLikeVo" items="${clickLikeService.all}" >
-                    <option value="${clickLikeVo.memNo}">${clickLikeVo.memNo}
+                    <c:forEach var="articleCollectionVo" items="${articleCollectionService.all}" >
+                    <option value="${articleCollectionVo.memNo}">${articleCollectionVo.memNo}
                     </c:forEach>
                 </select>
             </td>
@@ -53,8 +53,8 @@
             <td>文章編號:</td>
             <td>
                 <select size="1" name="artNo">
-                    <c:forEach var="clickLikeVo" items="${clickLikeService.all}" >
-                    <option value="${clickLikeVo.artNo}">${clickLikeVo.artNo}
+                    <c:forEach var="articleCollectionVo" items="${articleCollectionService.all}" >
+                    <option value="${articleCollectionVo.artNo}">${articleCollectionVo.artNo}
                     </c:forEach>
                 </select>
             </td>

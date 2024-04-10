@@ -21,7 +21,7 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
 
     private static final String DELETE = "DELETE FROM clicklike where memNo = ?;";
 
-    private static final String UPDATE = "UPDATE clicklike SET memNo = ?, artNo = ? WHERE memNo = ? AND artNo = ?;";
+    private static final String UPDATE = "UPDATE clicklike SET artNo = ? WHERE memNo = ?;";
 
     @Override
     public void insert(ClickLikeVo clickLikeVo) {
@@ -79,10 +79,8 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
             con = DriverManager.getConnection(url, userid, passwd);
             pstmt = con.prepareStatement(UPDATE);
 
-            pstmt.setInt(1, clickLikeVo.getMemNo());
-            pstmt.setInt(2, clickLikeVo.getArtNo());
-            pstmt.setInt(3, clickLikeVo.getMemNo());
-            pstmt.setInt(4, clickLikeVo.getArtNo());
+            pstmt.setInt(1, clickLikeVo.getArtNo());
+            pstmt.setInt(2, clickLikeVo.getMemNo());
 
             pstmt.executeUpdate();
 

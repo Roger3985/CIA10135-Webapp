@@ -30,7 +30,7 @@ public class ClickLikeService {
         ClickLikeVo clickLikeVo = new ClickLikeVo();
 
         clickLikeVo.setMemNo(memNo);
-        clickLikeVo.setMemNo(artNo);
+        clickLikeVo.setArtNo(artNo);
 
         dao.update(clickLikeVo);
 
