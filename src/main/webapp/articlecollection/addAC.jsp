@@ -1,15 +1,16 @@
 <%@ page import="com.roger.clicklike.vo.ClickLikeVo" %>
+<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVo" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-  ClickLikeVo clickLikeVo = (ClickLikeVo) request.getAttribute("clickLikeVo");
+  ArticleCollectionVo articleCollectionVo = (ArticleCollectionVo) request.getAttribute("ArticleCollectionVo");
 %>
 
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>點讚新增 - addCL.jsp</title>
+<title>文章收藏新增 - addAC.jsp</title>
 
 <style>
   table#table-1 {
@@ -48,8 +49,8 @@
 
 <table id="table-1">
 	<tr><td>
-		 <h3>點讚新增 - addCL.jsp</h3></td><td>
-		 <h4><a href=/clicklike/select_page.jsp><img src="./images/tomcat.png" width="100" height="100" border="0">回首頁</a></h4>
+		 <h3>文章收藏新增 - addAC.jsp</h3></td><td>
+		 <h4><a href=/articlecollection/select_page.jsp><img src="./images/tomcat.png" width="100" height="100" border="0">回首頁</a></h4>
 	</td></tr>
 </table>
 
@@ -65,7 +66,7 @@
 	</ul>
 </c:if>
 
-<FORM METHOD="post" ACTION="/clicklike/ClickLikeController" name="form1">
+<FORM METHOD="post" ACTION="/articlecollection/ArticleCollectionController" name="form1">
 <table>
 	<tr>
 		<td>會員編號:</td>

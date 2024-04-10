@@ -14,6 +14,8 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     String userid = "root";
     String passwd = "11689dWS";
 
+    private static final String INSERT_AC = "INSERT INTO articlecollection (memNo, artNo) VALUES (?, ?);";
+
     private static final String GET_ALL_AC = "SELECT memNo, artNo FROM articlecollection";
     private static final String GET_ONE_AC = "SELECT memNo, artNo FROM articlecollection where memNo = ?;";
 
@@ -22,6 +24,45 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     @Override
     public void insert(ArticleCollectionVo articleCollectionVo) {
 
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(INSERT_AC);
+
+            pstmt.setInt(1, articleCollectionVo.getMemNo());
+            pstmt.setInt(2, articleCollectionVo.getMemNo());
+
+            pstmt.executeUpdate();
+
+            // Handle any driver errors
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
     }
 
     @Override

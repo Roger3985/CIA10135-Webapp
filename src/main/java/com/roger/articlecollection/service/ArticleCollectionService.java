@@ -14,6 +14,17 @@ public class ArticleCollectionService {
         dao = new ArticleCollectionJdbcDaoImpl();
     }
 
+    public ArticleCollectionVo addAC(Integer memNo, Integer artNo) {
+
+        ArticleCollectionVo articleCollectionVo = new ArticleCollectionVo();
+
+        articleCollectionVo.setMemNo(memNo);
+        articleCollectionVo.setMemNo(artNo);
+
+        dao.insert(articleCollectionVo);
+        return articleCollectionVo;
+    }
+
     public void deleteAC(Integer memNo) {
         dao.delete(memNo);
     }
