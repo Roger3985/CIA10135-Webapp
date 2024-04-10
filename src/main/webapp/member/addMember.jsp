@@ -220,12 +220,23 @@
             <br>
             <button id="Check" class="submit-btn-container">檢查驗證碼是否正確</button>
             <button id="Gen" class="submit-btn-container">產生新的驗證碼</button>
+
+            <!-- Google 圖片連結 -->
+            <a href="https://www.google.com/">
+                <img src="../shareimages/Facebook.svg.png" alt="Google" width="100" height="50">
+            </a>
+            <!-- Facebook 圖片連結 -->
+            <a href="https://www.facebook.com/">
+                <img src="../shareimages/google.png" alt="Facebook" width="50" height="50">
+            </a>
+
             <script src="../notice/js/VerificationCode.js"></script>
         </div>
         <br>
 
         <input type="hidden" class="btn btn-submit" name="action" value="insert">
         <button type="button" class="btn btn-submit" id="submitBtn">送出新增</button>
+
 
     </form>
 </div>
@@ -240,10 +251,14 @@
         document.querySelector('.error-list').style.display = 'block';
         // 檢查驗證碼是否正確
         var isCodeCorrect = checkVerificationCode();
-        // 如果驗證碼正確，返回 true，允許提交表單
+        // 如果驗證碼正確，顯示確認對話框
         if (isCodeCorrect) {
-            confirm('資料都確認好了嗎？要送出新增囉~');
-            document.forms["form1"].submit();
+            // 顯示確認對話框，確認是否要提交表單
+            var confirmSubmit = confirm('資料都確認好了嗎？要送出新增囉~');
+            // 如果用戶確認要提交表單，則提交
+            if (confirmSubmit) {
+                document.forms["form1"].submit();
+            }
         }
     });
 
@@ -260,25 +275,34 @@
 
     // 綁定檢查驗證碼按鈕的點擊事件
     document.getElementById("Check").addEventListener('click', function(event) {
-        // 阻止預設行為
+        // 阻止默認行為
         event.preventDefault();
         // 檢查驗證碼是否正確
-        checkVerificationCode();
+        var isCodeValid = checkVerificationCode();
+        // 如果驗證碼不為空且正確，返回 true
+        if (isCodeValid) {
+            // 執行其他操作，比如檢查驗證碼是否正確後的邏輯
+        }
     });
 
     // 檢查驗證碼是否正確的函數
     function checkVerificationCode() {
         var userCode = document.getElementById('Ans').value.trim();
         var generatedCode = document.getElementById('Inpt').value.trim();
-        if (userCode === generatedCode) {
+        if (userCode === "") {
+            // 如果驗證碼欄位為空，提示請輸入驗證碼
+            alert('請輸入正確的驗證碼！');
+            return false; // 返回 false 表示驗證未通過
+        } else if (userCode !== generatedCode) {
+            // 如果驗證碼錯誤，提示請輸入正確的驗證碼
+            alert('請輸入驗證碼！');
+            return false; // 返回 false 表示驗證未通過
+        } else {
             // 如果驗證碼正確，返回 true
             return true;
-        } else {
-            // 如果驗證碼錯誤，提示錯誤信息
-            alert('請輸入正確的驗證碼！');
-            return false;
         }
     }
+
 
 </script>
 
