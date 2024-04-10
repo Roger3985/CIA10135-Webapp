@@ -222,11 +222,11 @@
             <button id="Gen" class="submit-btn-container">產生新的驗證碼</button>
 
             <!-- Google 圖片連結 -->
-            <a href="https://www.google.com/">
+            <a href="https://www.facebook.com/">
                 <img src="../shareimages/Facebook.svg.png" alt="Google" width="100" height="50">
             </a>
             <!-- Facebook 圖片連結 -->
-            <a href="https://www.facebook.com/">
+            <a href="https://www.google.com/">
                 <img src="../shareimages/google.png" alt="Facebook" width="50" height="50">
             </a>
 
@@ -278,7 +278,7 @@
         // 阻止默認行為
         event.preventDefault();
         // 檢查驗證碼是否正確
-        var isCodeValid = checkVerificationCode();
+        var isCodeValid = checkVerificationCodeCheck();
         // 如果驗證碼不為空且正確，返回 true
         if (isCodeValid) {
             // 執行其他操作，比如檢查驗證碼是否正確後的邏輯
@@ -291,14 +291,27 @@
         var generatedCode = document.getElementById('Inpt').value.trim();
         if (userCode === "") {
             // 如果驗證碼欄位為空，提示請輸入驗證碼
-            alert('請輸入正確的驗證碼！');
+            alert('請輸入驗證碼！');
             return false; // 返回 false 表示驗證未通過
         } else if (userCode !== generatedCode) {
             // 如果驗證碼錯誤，提示請輸入正確的驗證碼
-            alert('請輸入驗證碼！');
+            alert('請輸入正確的驗證碼！');
             return false; // 返回 false 表示驗證未通過
         } else {
             // 如果驗證碼正確，返回 true
+            return true;
+        }
+    }
+
+    // 檢查驗證碼是否正確的函數
+    function checkVerificationCodeCheck() {
+        var userCode = document.getElementById('Ans').value.trim;
+        var generatedCode = document.getElementById('Inpt').value.trim();
+
+        if (userCode !== generatedCode) { // 如果驗證碼錯誤，提示請輸入正確的驗證碼
+            alert('請輸入正確的驗證碼！');
+            return false;
+        } else { // 如果驗證碼正確，返回 true
             return true;
         }
     }
