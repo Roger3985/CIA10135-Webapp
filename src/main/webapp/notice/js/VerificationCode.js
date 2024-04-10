@@ -36,7 +36,7 @@ Check.onclick = function() {
         Inpt.value = "";
         generate();
     } else if (Ans.value === Inpt.value) {
-        InfoPar.textContent = "Right VerificationCode¡ACongratulations";
+        InfoPar.textContent = "Right VerificationCode Congratulations";
         InfoPar.style.color = "green";
     }
 };

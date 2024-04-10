@@ -46,7 +46,7 @@ public class MemberServlet extends HttpServlet {
             String mNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
 
             if (mName == null || mName.trim().length() == 0) {
-                errorMsgs.put("mName", "會員姓名: 請勿空白");
+                errorMsgs.put("mName", "會員姓名 請勿空白");
             } else if (!mName.trim().matches(mNameReg)) { // 以下練習正則(規)表示式(regular-expression)
                 errorMsgs.put("mName", "會員姓名: 只能是中、英文字母、數字和_ , 且長度必需在2到10之間");
             }
@@ -56,7 +56,7 @@ public class MemberServlet extends HttpServlet {
             // 檢查是否已經存在相同的會員帳號
             boolean isExistingMemberAccount = memberService.isExistingMemberAccount(memAcc);
             if (memAcc == null || memAcc.trim().length() == 0) {
-                errorMsgs.put("memAcc", "會員帳號請勿空白");
+                errorMsgs.put("memAcc", "會員帳號 請勿空白");
             } else if (!memAcc.trim().matches(memAccReg)) {
                 errorMsgs.put("memAcc", "會員帳號: 只能是英文字母、數字, 且長度必需在4到10之間");
             } else if (isExistingMemberAccount) {
@@ -66,7 +66,7 @@ public class MemberServlet extends HttpServlet {
             String memPwd = req.getParameter("memPwd");
             String memPwdReg = "^[a-zA-Z0-9]{4,10}$";
             if (memPwd == null || memPwd.trim().length() == 0) {
-                errorMsgs.put("memPwd", "會員密碼請勿空白");
+                errorMsgs.put("memPwd", "會員密碼 請勿空白");
             } else if (!memPwd.trim().matches(memPwdReg)) {
                 errorMsgs.put("memPwd", "會員密碼: 只能是英文字母、數字, 且長度必需在4到10之間");
             }
@@ -76,7 +76,7 @@ public class MemberServlet extends HttpServlet {
             // 檢查是否已經存在相同的手機號碼
             boolean isExistingMemberMobile = memberService.isExistingMemberMobile(memMob);
             if (memMob == null || memMob.trim().length() == 0) {
-                errorMsgs.put("memMob", "會員電話請勿空白");
+                errorMsgs.put("memMob", "會員電話 請勿空白");
             } else if (!memMob.trim().matches(memMobReg)) {
                 errorMsgs.put("memMob", "會員電話: 格式必須是開頭為0，第二個數字1-9，後面接6-8位數字");
             } else if (isExistingMemberMobile) {
@@ -97,7 +97,7 @@ public class MemberServlet extends HttpServlet {
             // 檢查是否已經存在相同的信箱
             boolean isExistingMemberMail = memberService.isExistingMemberMail(memMail);
             if (memMail == null || memMail.trim().length() == 0) {
-                errorMsgs.put("memMail", "會員信箱請勿空白");
+                errorMsgs.put("memMail", "會員信箱 請勿空白");
             } else if (!memMail.trim().matches(memMailReg)) {
                 errorMsgs.put("memMail", "會員信箱: 請輸入正確格式，您的用戶名@您的電子郵件服務名稱，例如: xxx@gmail.com");
             } else if (isExistingMemberMail) {

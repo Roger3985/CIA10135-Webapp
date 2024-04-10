@@ -85,6 +85,55 @@
         .error-list {
             display: none;
         }
+
+        /* 漂亮的驗證碼格子樣式 */
+        #Inpt {
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* 漂亮的驗證碼檢查提示訊息 */
+        #Info {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* 驗證碼檢查錯誤時的提示訊息 */
+        .error-msg {
+            font-size: 14px;
+            color: #ab5755;
+            margin-top: 5px;
+        }
+
+        /* 驗證碼檢查正確時的提示訊息 */
+        .success-msg {
+            font-size: 14px;
+            color: green;
+            margin-top: 5px;
+        }
+
+        /* 更新按鈕樣式 */
+        .submit-btn-container {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn-container:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -95,7 +144,7 @@
 
     <h1>新增會員資料</h1>
 
-    <form action="/member/MemberServlet" method="POST" onsubmit="return confirmAndShowErrors()">
+    <form name="form1" action="/member/MemberServlet" method="POST">
 
         <%-- 錯誤列表 --%>
         <c:if test="${not empty errorMsgs}">
@@ -163,19 +212,74 @@
             <span class="error-msg">${errorMsgs.memCard}</span>
         </div>
 
+        <br>
+        <div class="CodeCheck">
+            <p id="Info">驗證碼</p>
+            <input type="text" id="Inpt" disabled>
+            <input type="text" id="Ans">
+            <br>
+            <button id="Check" class="submit-btn-container">檢查驗證碼是否正確</button>
+            <button id="Gen" class="submit-btn-container">產生新的驗證碼</button>
+            <script src="../notice/js/VerificationCode.js"></script>
+        </div>
+        <br>
+
         <input type="hidden" class="btn btn-submit" name="action" value="insert">
-        <button type="submit" class="btn btn-submit">送出新增</button>
+        <button type="button" class="btn btn-submit" id="submitBtn">送出新增</button>
 
     </form>
 </div>
 
 <script>
-    function confirmAndShowErrors() {
+
+    // 綁定送出按鈕的點擊事件
+    document.getElementById("submitBtn").addEventListener('click', function(event) {
+        // 阻止預設行為
+        event.preventDefault();
         // 顯示錯誤列表
         document.querySelector('.error-list').style.display = 'block';
-        // 返回 true 或 false 控制是否提交表单
-        return confirm('資料都確認好了嗎？要送出新增囉~');
+        // 檢查驗證碼是否正確
+        var isCodeCorrect = checkVerificationCode();
+        // 如果驗證碼正確，返回 true，允許提交表單
+        if (isCodeCorrect) {
+            confirm('資料都確認好了嗎？要送出新增囉~');
+            document.forms["form1"].submit();
+        }
+    });
+
+    // 綁定產生新驗證碼按鈕的點擊事件
+    document.getElementById("Gen").addEventListener('click', function(event) {
+        // 阻止預設行為
+        event.preventDefault();
+        // 清空輸入框
+        document.getElementById("Ans").value = "";
+        document.getElementById("Inpt").value = "";
+        // 產生新的驗證碼
+        generate();
+    });
+
+    // 綁定檢查驗證碼按鈕的點擊事件
+    document.getElementById("Check").addEventListener('click', function(event) {
+        // 阻止預設行為
+        event.preventDefault();
+        // 檢查驗證碼是否正確
+        checkVerificationCode();
+    });
+
+    // 檢查驗證碼是否正確的函數
+    function checkVerificationCode() {
+        var userCode = document.getElementById('Ans').value.trim();
+        var generatedCode = document.getElementById('Inpt').value.trim();
+        if (userCode === generatedCode) {
+            // 如果驗證碼正確，返回 true
+            return true;
+        } else {
+            // 如果驗證碼錯誤，提示錯誤信息
+            alert('請輸入正確的驗證碼！');
+            return false;
+        }
     }
+
 </script>
 
 </body>
