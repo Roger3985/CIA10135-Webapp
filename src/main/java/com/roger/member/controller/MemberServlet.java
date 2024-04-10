@@ -39,6 +39,8 @@ public class MemberServlet extends HttpServlet {
             Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
             req.setAttribute("errorMsgs", errorMsgs);
 
+            MemberService memberService = new MemberService();
+
             /***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
             String mName = req.getParameter("mName");
             String mNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
@@ -51,10 +53,14 @@ public class MemberServlet extends HttpServlet {
 
             String memAcc = req.getParameter("memAcc");
             String memAccReg = "^[a-zA-Z0-9]{4,10}$";
+            // 檢查是否已經存在相同的會員帳號
+            boolean isExistingMemberAccount = memberService.isExistingMemberAccount(memAcc);
             if (memAcc == null || memAcc.trim().length() == 0) {
                 errorMsgs.put("memAcc", "會員帳號請勿空白");
             } else if (!memAcc.trim().matches(memAccReg)) {
                 errorMsgs.put("memAcc", "會員帳號: 只能是英文字母、數字, 且長度必需在4到10之間");
+            } else if (isExistingMemberAccount) {
+                errorMsgs.put("memAcc", "會員帳號已經存在，重新輸入");
             }
 
             String memPwd = req.getParameter("memPwd");
@@ -67,10 +73,14 @@ public class MemberServlet extends HttpServlet {
 
             String memMob = req.getParameter("memMob");
             String memMobReg = "^0\\d{1,2}\\d{6,8}$";
+            // 檢查是否已經存在相同的手機號碼
+            boolean isExistingMemberMobile = memberService.isExistingMemberMobile(memMob);
             if (memMob == null || memMob.trim().length() == 0) {
                 errorMsgs.put("memMob", "會員電話請勿空白");
             } else if (!memMob.trim().matches(memMobReg)) {
                 errorMsgs.put("memMob", "會員電話: 格式必須是開頭為0，第二個數字1-9，後面接6-8位數字");
+            } else if (isExistingMemberMobile) {
+                errorMsgs.put("memMob", "會員電話重複，請重新輸入");
             }
 
             Byte mGender = Byte.valueOf(req.getParameter("mGender")); // 假設從請求中獲取性別參數
@@ -84,10 +94,14 @@ public class MemberServlet extends HttpServlet {
 
             String memMail = req.getParameter("memMail");
             String memMailReg = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+            // 檢查是否已經存在相同的信箱
+            boolean isExistingMemberMail = memberService.isExistingMemberMail(memMail);
             if (memMail == null || memMail.trim().length() == 0) {
                 errorMsgs.put("memMail", "會員信箱請勿空白");
             } else if (!memMail.trim().matches(memMailReg)) {
                 errorMsgs.put("memMail", "會員信箱: 請輸入正確格式，您的用戶名@您的電子郵件服務名稱，例如: xxx@gmail.com");
+            } else if (isExistingMemberMail) {
+                errorMsgs.put("memMail", "會員信箱重複，請重新輸入");
             }
 
             String memAdd = req.getParameter("memAdd");

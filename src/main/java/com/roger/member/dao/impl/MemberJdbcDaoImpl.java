@@ -26,6 +26,10 @@ public class MemberJdbcDaoImpl implements MemberDao_interface {
 
     private static final String UPDATE = "UPDATE member set mName = ?, memAcc = ?, memPwd = ?, memMob = ?, mGender = ?, memMail = ?, memAdd = ?, memBd = ?, memCard = ?, provider = ?, clientID = ?, displayName = ?, accessToken = ?, refreshToken = ?, tknExpireTime = ?, creationTime = ?, memberJoinTime = ?, memStat = ? where memNo = ?";
 
+    private static final String CHECK_EXIST_ACCOUNT = "SELECT COUNT(*) AS count FROM member WHERE memAcc = ?;";
+    private static final String CHECK_EXIST_MOBILE = "SELECT COUNT(*) AS count FROM member WHERE memMob = ?;";
+    private static final String CHECK_EXIST_MAIL = "SELECT COUNT(*) AS count FROM member WHERE memMail = ?;";
+
     @Override
     public void insert(MemberVO memberVO) {
 
@@ -502,5 +506,185 @@ public class MemberJdbcDaoImpl implements MemberDao_interface {
             }
         }
         return list;
+    }
+
+    @Override
+    public boolean isExistingMemberAccount(String memAcc) {
+
+        boolean isExistingMemberAccount = false;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(CHECK_EXIST_ACCOUNT);
+
+            pstmt.setString(1, memAcc);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt("count");
+
+                // false -> true
+                isExistingMemberAccount = count > 0;
+            }
+
+        }catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return isExistingMemberAccount;
+    }
+
+    @Override
+    public boolean isExistingMemberMobile(String memMob) {
+
+        boolean isExistingMemberMobile = false;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(CHECK_EXIST_MOBILE);
+
+            pstmt.setString(1, memMob);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt("count");
+
+                // false -> true
+                isExistingMemberMobile = count > 0;
+            }
+
+        }catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return isExistingMemberMobile;
+    }
+
+    @Override
+    public boolean isExistingMemberMail(String memMail) {
+
+        boolean isExistingMemberMail = false;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, userid, passwd);
+            pstmt = con.prepareStatement(CHECK_EXIST_MAIL);
+
+            pstmt.setString(1, memMail);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt("count");
+
+                // false -> true
+                isExistingMemberMail = count > 0;
+            }
+
+        }catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't load database driver. "
+                    + e.getMessage());
+            // Handle any SQL errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return isExistingMemberMail;
     }
 }

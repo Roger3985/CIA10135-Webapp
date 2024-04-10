@@ -98,4 +98,16 @@ public class MemberService {
     public List<MemberVO> getAll() {
         return dao.getAll();
     }
+
+    public boolean isExistingMemberAccount(String memAcc) {
+        return dao.isExistingMemberAccount(memAcc);
+    }
+
+    public boolean isExistingMemberMobile(String memMob) {
+        return dao.isExistingMemberMobile(memMob);
+    }
+
+    public boolean isExistingMemberMail(String memMail) {
+        return dao.isExistingMemberMail(memMail);
+    }
 }
