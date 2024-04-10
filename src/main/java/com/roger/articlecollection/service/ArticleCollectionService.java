@@ -14,6 +14,10 @@ public class ArticleCollectionService {
         dao = new ArticleCollectionJdbcDaoImpl();
     }
 
+    public void deleteAC(Integer memNo) {
+        dao.delete(memNo);
+    }
+
     public ArticleCollectionVo getOneAC(Integer memNo) {
         return dao.findByPrimaryKey(memNo);
     }

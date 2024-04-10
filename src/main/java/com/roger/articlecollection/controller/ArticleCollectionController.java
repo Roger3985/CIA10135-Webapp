@@ -2,6 +2,8 @@ package com.roger.articlecollection.controller;
 
 import com.roger.articlecollection.service.ArticleCollectionService;
 import com.roger.articlecollection.vo.ArticleCollectionVo;
+import com.roger.clicklike.service.ClickLikeService;
+import com.roger.clicklike.vo.ClickLikeVo;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +29,68 @@ public class ArticleCollectionController extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
+
+        if ("delete".equals(action)) { // 來自listAllAC.jsp and deleteAC.jsp
+
+            Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***************************1.接收請求參數***************************************/
+            Integer memNo = Integer.valueOf(req.getParameter("memNo"));
+
+            /***************************2.開始刪除資料***************************************/
+            ArticleCollectionService articleCollectionService = new ArticleCollectionService();
+            articleCollectionService.deleteAC(memNo);
+
+            /***************************3.刪除完成,準備轉交(Send the Success view)***********/
+            String url = "/articlecollection/listAllAC.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功，轉交回送出刪除的來源網站
+            successView.forward(req, res);
+        }
+
+        if ("update".equals(action)) { // 來自update_notice_input.jsp的請求
+
+            Map<String,String> errorMsgs = new LinkedHashMap<String,String>();
+            req.setAttribute("errorMsgs", errorMsgs);
+
+            /***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+            Integer memNo = null;
+            try {
+                memNo = Integer.valueOf(req.getParameter("memNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("memNo", "會員編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("memNo", "會員編號請不要留白");
+            }
+
+            Integer artNo = null;
+            try {
+                artNo = Integer.valueOf(req.getParameter("artNo").trim());
+            } catch (NumberFormatException e) {
+                errorMsgs.put("artNo", "文章編號請填數字");
+            } catch (NullPointerException nullPointerException) {
+                errorMsgs.put("artNo", "文章編號請不要留白");
+            }
+
+            // Send the use back to the form, if there were errors
+            if (!errorMsgs.isEmpty()) {
+                RequestDispatcher failureView = req
+                        .getRequestDispatcher("/clicklike/addCL.jsp");
+                failureView.forward(req, res);
+                return;
+            }
+
+            /***************************2.開始修改資料*****************************************/
+            ClickLikeService clickLikeService = new ClickLikeService();
+            ClickLikeVo clickLikeVo = clickLikeService.updateCL(memNo, artNo);
+
+            /***************************3.修改完成,準備轉交(Send the Success view)*************/
+            req.setAttribute("clickLikeVo", clickLikeVo); // 資料庫update成功後，正確的clickLikeVo物件，存入req
+            String url = "/clicklike/listOneCL.jsp";
+            RequestDispatcher successView = req.getRequestDispatcher(url);
+            successView.forward(req, res);
+
+        }
 
         if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
