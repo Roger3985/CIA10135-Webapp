@@ -143,7 +143,7 @@ public class MemberServlet extends HttpServlet {
 
             // Send the use back to the form, if there were errors
             if (!errorMsgs.isEmpty()) {
-                RequestDispatcher failureView = req.getRequestDispatcher("");
+                RequestDispatcher failureView = req.getRequestDispatcher("/member/addMember.jsp");
                 failureView.forward(req, res);
                 return;
             }
