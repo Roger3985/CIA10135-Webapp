@@ -36,4 +36,6 @@ CREATE TABLE Notice
     FOREIGN KEY (memNo)      REFERENCES Member(memNo)
 );
 
-
+-- 新增會員的大頭貼(練習)
+ALTER TABLE member
+    ADD COLUMN PIC LONGBLOB NOT NULL;

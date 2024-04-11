@@ -309,7 +309,7 @@
         var generatedCode = document.getElementById('Inpt').value.trim();
 
         if (userCode !== generatedCode) { // 如果驗證碼錯誤，提示請輸入正確的驗證碼
-            // alert('請輸入正確的驗證碼！');
+            alert('請輸入正確的驗證碼！');
             return false;
         } else { // 如果驗證碼正確，返回 true
             return true;
