@@ -27,16 +27,19 @@ Gen.onclick = function() {
 Check.onclick = function() {
     "use strict";
     if (Ans.value === "") {
-        InfoPar.textContent = "Remember your VerificationCode";
+        // InfoPar.textContent = "Remember your VerificationCode";
+        InfoPar.textContent = "請輸入驗證碼";
         InfoPar.style.color = "#ab5755";
     } else if (Ans.value !== Inpt.value) {
-        InfoPar.innerHTML = "Wrong VerificationCode";
+        // InfoPar.innerHTML = "Wrong VerificationCode";
+        InfoPar.innerHTML = "驗證碼錯誤";
         InfoPar.style.color = "#ab5755";
         Ans.value = "";
         Inpt.value = "";
         generate();
     } else if (Ans.value === Inpt.value) {
-        InfoPar.textContent = "Right VerificationCode Congratulations";
+        // InfoPar.textContent = "Right VerificationCode Congratulations";
+        InfoPar.textContent = "驗證碼正確";
         InfoPar.style.color = "green";
     }
 };

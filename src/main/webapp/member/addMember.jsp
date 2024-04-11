@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -215,7 +216,7 @@
         <br>
         <div class="CodeCheck">
             <p id="Info">驗證碼</p>
-            <input type="text" id="Inpt" disabled>
+            <input type="text" id="Inpt" disabled oncopy="return false">
             <input type="text" id="Ans">
             <br>
             <button id="Check" class="submit-btn-container">檢查驗證碼是否正確</button>
@@ -301,6 +302,7 @@
             // 如果驗證碼正確，返回 true
             return true;
         }
+
     }
 
     // 檢查驗證碼是否正確的函數
