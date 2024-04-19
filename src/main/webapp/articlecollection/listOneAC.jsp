@@ -1,10 +1,11 @@
-<%@ page import="com.roger.clicklike.vo.ClickLikeVo" %>
-<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVo" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
+<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVO" %>
+<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
-    ArticleCollectionVo articleCollectionVo = (ArticleCollectionVo) request.getAttribute("articleCollectionVo");
+    ArticleCollectionVO articleCollectionVo = (ArticleCollectionVO) request.getAttribute("articleCollectionVo");
     // EmpServlet.java(Concroller), 存入req的empVO物件
 %>
 

@@ -2,7 +2,7 @@ package com.roger.articlecollection.service;
 
 import com.roger.articlecollection.dao.ArticleCollectionDao_interface;
 import com.roger.articlecollection.dao.impl.ArticleCollectionJdbcDaoImpl;
-import com.roger.articlecollection.vo.ArticleCollectionVo;
+import com.roger.articlecollection.vo.ArticleCollectionVO;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class ArticleCollectionService {
         dao = new ArticleCollectionJdbcDaoImpl();
     }
 
-    public ArticleCollectionVo addAC(Integer memNo, Integer artNo) {
+    public ArticleCollectionVO addAC(Integer memNo, Integer artNo) {
 
-        ArticleCollectionVo articleCollectionVo = new ArticleCollectionVo();
+        ArticleCollectionVO articleCollectionVo = new ArticleCollectionVO();
 
         articleCollectionVo.setMemNo(memNo);
         articleCollectionVo.setMemNo(artNo);
@@ -25,9 +25,9 @@ public class ArticleCollectionService {
         return articleCollectionVo;
     }
 
-    public ArticleCollectionVo updateAC(Integer memNo, Integer artNo) {
+    public ArticleCollectionVO updateAC(Integer memNo, Integer artNo) {
 
-        ArticleCollectionVo articleCollectionVo = new ArticleCollectionVo();
+        ArticleCollectionVO articleCollectionVo = new ArticleCollectionVO();
 
         articleCollectionVo.setMemNo(memNo);
         articleCollectionVo.setArtNo(artNo);
@@ -41,11 +41,11 @@ public class ArticleCollectionService {
         dao.delete(memNo);
     }
 
-    public ArticleCollectionVo getOneAC(Integer memNo) {
+    public ArticleCollectionVO getOneAC(Integer memNo) {
         return dao.findByPrimaryKey(memNo);
     }
 
-    public List<ArticleCollectionVo> getAll() {
+    public List<ArticleCollectionVO> getAll() {
         return dao.getAll();
     }
 }

@@ -1,7 +1,7 @@
 package com.roger.articlecollection.controller;
 
 import com.roger.articlecollection.service.ArticleCollectionService;
-import com.roger.articlecollection.vo.ArticleCollectionVo;
+import com.roger.articlecollection.vo.ArticleCollectionVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -122,7 +122,7 @@ public class ArticleCollectionController extends HttpServlet {
 
             /***************************2.開始修改資料*****************************************/
             ArticleCollectionService articleCollectionService = new ArticleCollectionService();
-            ArticleCollectionVo articleCollectionVo = articleCollectionService.updateAC(memNo, artNo);
+            ArticleCollectionVO articleCollectionVo = articleCollectionService.updateAC(memNo, artNo);
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("articleCollectionVo", articleCollectionVo); // 資料庫update成功後，正確的articleCollectionVo物件，存入req
@@ -157,7 +157,7 @@ public class ArticleCollectionController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ArticleCollectionService articleCollectionService = new ArticleCollectionService();
-            ArticleCollectionVo articleCollectionVo = articleCollectionService.getOneAC(memNo);
+            ArticleCollectionVO articleCollectionVo = articleCollectionService.getOneAC(memNo);
             if (articleCollectionVo == null) {
                 errorMsgs.put("memNo", "查無資料");
             }
@@ -184,7 +184,7 @@ public class ArticleCollectionController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ArticleCollectionService articleCollectionService = new ArticleCollectionService();
-            List<ArticleCollectionVo> articleCollectionList = articleCollectionService.getAll(); // 調用服務類的方法查詢全部資料
+            List<ArticleCollectionVO> articleCollectionList = articleCollectionService.getAll(); // 調用服務類的方法查詢全部資料
 
             if (articleCollectionList.isEmpty()) {
                 errorMsgs.put("result", "查無資料"); // 如果結果為空，設置錯誤消息

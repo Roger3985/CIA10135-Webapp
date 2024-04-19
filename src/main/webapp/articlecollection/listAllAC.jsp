@@ -3,11 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.roger.articlecollection.service.ArticleCollectionService" %>
-<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVo" %>
+<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVO" %>
+<%@ page import="com.roger.articlecollection.vo.ArticleCollectionVO" %>
 
 <%
     ArticleCollectionService articleCollectionService = new ArticleCollectionService();
-    List<ArticleCollectionVo> list = articleCollectionService.getAll();
+    List<ArticleCollectionVO> list = articleCollectionService.getAll();
     pageContext.setAttribute("list", list);
 %>
 <html>

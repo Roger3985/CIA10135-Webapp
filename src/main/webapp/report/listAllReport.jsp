@@ -3,11 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.roger.report.service.ReportService" %>
-<%@ page import="com.roger.report.vo.ReportVo" %>
+<%@ page import="com.roger.report.vo.ReportVO" %>
+<%@ page import="com.roger.report.vo.ReportVO" %>
 
 <%
     ReportService reportService = new ReportService();
-    List<ReportVo> list = reportService.getAll();
+    List<ReportVO> list = reportService.getAll();
     pageContext.setAttribute("list", list);
 %>
 <html>

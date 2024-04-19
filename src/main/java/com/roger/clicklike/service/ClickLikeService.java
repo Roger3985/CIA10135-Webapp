@@ -2,7 +2,7 @@ package com.roger.clicklike.service;
 
 import com.roger.clicklike.dao.ClickLikeDao_interface;
 import com.roger.clicklike.dao.impl.ClickLikeJdbcDaoImpl;
-import com.roger.clicklike.vo.ClickLikeVo;
+import com.roger.clicklike.vo.ClickLikeVO;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class ClickLikeService {
         dao = new ClickLikeJdbcDaoImpl();
     }
 
-    public ClickLikeVo addCL(Integer memNo, Integer artNo) {
+    public ClickLikeVO addCL(Integer memNo, Integer artNo) {
 
-        ClickLikeVo clickLikeVo = new ClickLikeVo();
+        ClickLikeVO clickLikeVo = new ClickLikeVO();
 
         clickLikeVo.setMemNo(memNo);
         clickLikeVo.setMemNo(artNo);
@@ -25,9 +25,9 @@ public class ClickLikeService {
         return clickLikeVo;
     }
 
-    public ClickLikeVo updateCL(Integer memNo, Integer artNo) {
+    public ClickLikeVO updateCL(Integer memNo, Integer artNo) {
 
-        ClickLikeVo clickLikeVo = new ClickLikeVo();
+        ClickLikeVO clickLikeVo = new ClickLikeVO();
 
         clickLikeVo.setMemNo(memNo);
         clickLikeVo.setArtNo(artNo);
@@ -41,11 +41,11 @@ public class ClickLikeService {
         dao.delete(memNo);
     }
 
-    public ClickLikeVo getOneCL(Integer memNo) {
+    public ClickLikeVO getOneCL(Integer memNo) {
         return dao.findByPrimaryKey(memNo);
     }
 
-    public List<ClickLikeVo> getAll() {
+    public List<ClickLikeVO> getAll() {
         return dao.getAll();
     }
 }

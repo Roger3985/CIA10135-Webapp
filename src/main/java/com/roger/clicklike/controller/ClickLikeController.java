@@ -1,7 +1,7 @@
 package com.roger.clicklike.controller;
 
 import com.roger.clicklike.service.ClickLikeService;
-import com.roger.clicklike.vo.ClickLikeVo;
+import com.roger.clicklike.vo.ClickLikeVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -124,7 +124,7 @@ public class ClickLikeController extends HttpServlet {
 
             /***************************2.開始修改資料*****************************************/
             ClickLikeService clickLikeService = new ClickLikeService();
-            ClickLikeVo clickLikeVo = clickLikeService.updateCL(memNo, artNo);
+            ClickLikeVO clickLikeVo = clickLikeService.updateCL(memNo, artNo);
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("clickLikeVo", clickLikeVo); // 資料庫update成功後，正確的clickLikeVo物件，存入req
@@ -159,7 +159,7 @@ public class ClickLikeController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ClickLikeService clickLikeService = new ClickLikeService();
-            ClickLikeVo clickLikeVo = clickLikeService.getOneCL(memNo);
+            ClickLikeVO clickLikeVo = clickLikeService.getOneCL(memNo);
             if (clickLikeVo == null) {
                 errorMsgs.put("memNo", "查無資料");
             }
@@ -186,7 +186,7 @@ public class ClickLikeController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ClickLikeService clickLikeService = new ClickLikeService();
-            List<ClickLikeVo> clickLikeList = clickLikeService.getAll(); // 調用服務類的方法查詢全部資料
+            List<ClickLikeVO> clickLikeList = clickLikeService.getAll(); // 調用服務類的方法查詢全部資料
 
             if (clickLikeList.isEmpty()) {
                 errorMsgs.put("result", "查無資料"); // 如果結果為空，設置錯誤消息

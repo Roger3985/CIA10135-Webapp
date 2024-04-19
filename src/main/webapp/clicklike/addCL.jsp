@@ -1,9 +1,10 @@
-<%@ page import="com.roger.clicklike.vo.ClickLikeVo" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-  ClickLikeVo clickLikeVo = (ClickLikeVo) request.getAttribute("clickLikeVo");
+  ClickLikeVO clickLikeVo = (ClickLikeVO) request.getAttribute("clickLikeVo");
 %>
 
 <html>

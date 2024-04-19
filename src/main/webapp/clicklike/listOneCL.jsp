@@ -1,9 +1,10 @@
-<%@ page import="com.roger.clicklike.vo.ClickLikeVo" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
-    ClickLikeVo clickLikeVo = (ClickLikeVo) request.getAttribute("clickLikeVo");
+    ClickLikeVO clickLikeVo = (ClickLikeVO) request.getAttribute("clickLikeVo");
     // EmpServlet.java(Concroller), 存入req的empVO物件
 %>
 

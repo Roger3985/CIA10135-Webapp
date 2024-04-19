@@ -2,7 +2,7 @@ package com.roger.columnarticle.service;
 
 import com.roger.columnarticle.dao.ColumnArticleDao_interface;
 import com.roger.columnarticle.dao.impl.ColumnArticleJdbcDaoImpl;
-import com.roger.columnarticle.vo.ColumnArticleVo;
+import com.roger.columnarticle.vo.ColumnArticleVO;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,9 +15,9 @@ public class ColumnArticleService {
         dao = new ColumnArticleJdbcDaoImpl();
     }
 
-    public ColumnArticleVo addCa(Integer admNo, String artTitle, String artContent,Timestamp artTime, Integer artCatNo,Byte artStat) {
+    public ColumnArticleVO addCa(Integer admNo, String artTitle, String artContent, Timestamp artTime, Integer artCatNo, Byte artStat) {
 
-        ColumnArticleVo columnArticleVo = new ColumnArticleVo();
+        ColumnArticleVO columnArticleVo = new ColumnArticleVO();
 
         columnArticleVo.setAdmNo(admNo);
         columnArticleVo.setArtTitle(artTitle);
@@ -30,9 +30,9 @@ public class ColumnArticleService {
         return columnArticleVo;
     }
 
-    public ColumnArticleVo updateCa(Integer artNo, Integer admNo, String artTitle, String artContent,Timestamp artTime, Integer artCatNo,Byte artStat) {
+    public ColumnArticleVO updateCa(Integer artNo, Integer admNo, String artTitle, String artContent, Timestamp artTime, Integer artCatNo, Byte artStat) {
 
-        ColumnArticleVo columnArticleVo = new ColumnArticleVo();
+        ColumnArticleVO columnArticleVo = new ColumnArticleVO();
 
         columnArticleVo.setArtNo(artNo);
         columnArticleVo.setAdmNo(admNo);
@@ -50,11 +50,11 @@ public class ColumnArticleService {
         dao.delete(artNo);
     }
 
-    public ColumnArticleVo getOneCa(Integer artNo) {
+    public ColumnArticleVO getOneCa(Integer artNo) {
         return dao.findByPrimaryKey(artNo);
     }
 
-    public List<ColumnArticleVo> getAll() {
+    public List<ColumnArticleVO> getAll() {
         return dao.getAll();
     }
 }

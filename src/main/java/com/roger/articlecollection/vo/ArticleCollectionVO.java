@@ -1,8 +1,18 @@
 package com.roger.articlecollection.vo;
 
-public class ArticleCollectionVo implements java.io.Serializable {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "articlecollection")
+public class ArticleCollectionVO implements java.io.Serializable {
+
+    @Id
+    @Column(name = "memNo")
     private Integer memNo;
+
     private Integer artNo;
 
     public Integer getMemNo() {

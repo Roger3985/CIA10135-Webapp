@@ -1,7 +1,7 @@
 package com.roger.articlecollection.dao.impl;
 
 import com.roger.articlecollection.dao.ArticleCollectionDao_interface;
-import com.roger.articlecollection.vo.ArticleCollectionVo;
+import com.roger.articlecollection.vo.ArticleCollectionVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     private static final String UPDATE = "UPDATE articlecollection SET artNo = ? WHERE memNo = ?;";
 
     @Override
-    public void insert(ArticleCollectionVo articleCollectionVo) {
+    public void insert(ArticleCollectionVO articleCollectionVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -68,7 +68,7 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     }
 
     @Override
-    public void update(ArticleCollectionVo articleCollectionVo) {
+    public void update(ArticleCollectionVO articleCollectionVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -154,9 +154,9 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     }
 
     @Override
-    public ArticleCollectionVo findByPrimaryKey(Integer memNo) {
+    public ArticleCollectionVO findByPrimaryKey(Integer memNo) {
 
-        ArticleCollectionVo articleCollectionVo = null;
+        ArticleCollectionVO articleCollectionVo = null;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -173,8 +173,8 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
 
             while (rs.next()) {
 
-                // ArticleCollectionVo 也稱為 Domain objects
-                articleCollectionVo = new ArticleCollectionVo();
+                // ArticleCollectionVO 也稱為 Domain objects
+                articleCollectionVo = new ArticleCollectionVO();
 
                 articleCollectionVo.setMemNo(rs.getInt("memNo"));
                 articleCollectionVo.setArtNo(rs.getInt("artNo"));
@@ -216,10 +216,10 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
     }
 
     @Override
-    public List<ArticleCollectionVo> getAll() {
+    public List<ArticleCollectionVO> getAll() {
 
-        List<ArticleCollectionVo> list = new ArrayList<ArticleCollectionVo>();
-        ArticleCollectionVo articleCollectionVo = null;
+        List<ArticleCollectionVO> list = new ArrayList<ArticleCollectionVO>();
+        ArticleCollectionVO articleCollectionVo = null;
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -232,8 +232,8 @@ public class ArticleCollectionJdbcDaoImpl implements ArticleCollectionDao_interf
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                // ArticleCollectionVo 也可以稱為 Domain objects
-                articleCollectionVo = new ArticleCollectionVo();
+                // ArticleCollectionVO 也可以稱為 Domain objects
+                articleCollectionVo = new ArticleCollectionVO();
                 articleCollectionVo.setMemNo(rs.getInt("memNo"));
                 articleCollectionVo.setArtNo(rs.getInt("artNo"));
 

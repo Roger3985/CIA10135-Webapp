@@ -1,10 +1,10 @@
 <%@ page import="com.roger.member.vo.MemberVO" %>
-<%@ page import="com.roger.report.vo.ReportVo" %>
+<%@ page import="com.roger.report.vo.ReportVO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-  ReportVo reportVo = (ReportVo) request.getAttribute("reportVo");
+  ReportVO reportVo = (ReportVO) request.getAttribute("reportVo");
 %>
 
 <html>

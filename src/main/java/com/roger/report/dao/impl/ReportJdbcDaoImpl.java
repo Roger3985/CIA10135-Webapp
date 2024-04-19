@@ -1,7 +1,7 @@
 package com.roger.report.dao.impl;
 
 import com.roger.report.dao.ReportDao_interface;
-import com.roger.report.vo.ReportVo;
+import com.roger.report.vo.ReportVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
     private static final String UPDATE = "UPDATE report SET reportNo = ?, artReplyNo = ?, memNo = ?, admNo = ?, reportTime = ?, reportReason = ?, reportType = ? WHERE reportNo = ?";
 
     @Override
-    public void insert(ReportVo reportVo) {
+    public void insert(ReportVO reportVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -73,7 +73,7 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
     }
 
     @Override
-    public void update(ReportVo reportVo) {
+    public void update(ReportVO reportVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -165,8 +165,8 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
     }
 
     @Override
-    public ReportVo findByPrimaryKey(Integer reportNo) {
-        ReportVo reportVo = null;
+    public ReportVO findByPrimaryKey(Integer reportNo) {
+        ReportVO reportVo = null;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -184,7 +184,7 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
             while (rs.next()) {
 
                 // reportVo 也稱為 Domain objects
-                reportVo = new ReportVo();
+                reportVo = new ReportVO();
                 reportVo.setReportNo(rs.getInt("reportNo"));
                 reportVo.setArtReplyNo(rs.getInt("artReplyNo"));
                 reportVo.setMemNo(rs.getInt("memNo"));
@@ -231,10 +231,10 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
     }
 
     @Override
-    public List<ReportVo> getAll() {
+    public List<ReportVO> getAll() {
 
-        List<ReportVo> list = new ArrayList<ReportVo>();
-        ReportVo reportVo = null;
+        List<ReportVO> list = new ArrayList<ReportVO>();
+        ReportVO reportVo = null;
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -247,8 +247,8 @@ public class ReportJdbcDaoImpl implements ReportDao_interface {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                // ReportVo 也可以稱為 Domain objects
-                reportVo = new ReportVo();
+                // ReportVO 也可以稱為 Domain objects
+                reportVo = new ReportVO();
                 reportVo.setReportNo(rs.getInt("reportNo"));
                 reportVo.setArtReplyNo(rs.getInt("artReplyNo"));
                 reportVo.setMemNo(rs.getInt("memNo"));

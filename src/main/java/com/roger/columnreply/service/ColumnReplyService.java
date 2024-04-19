@@ -2,7 +2,7 @@ package com.roger.columnreply.service;
 
 import com.roger.columnreply.dao.ColumnReplyDao_interface;
 import com.roger.columnreply.dao.impl.ColumnReplyJdbcDaoImpl;
-import com.roger.columnreply.vo.ColumnReplyVo;
+import com.roger.columnreply.vo.ColumnReplyVO;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,9 +15,9 @@ public class ColumnReplyService {
         dao = new ColumnReplyJdbcDaoImpl();
     }
 
-    public ColumnReplyVo addCR(Integer artNo, Integer memNo, String comContent, Timestamp comTime, Byte comStat) {
+    public ColumnReplyVO addCR(Integer artNo, Integer memNo, String comContent, Timestamp comTime, Byte comStat) {
 
-        ColumnReplyVo columnReplyVo = new ColumnReplyVo();
+        ColumnReplyVO columnReplyVo = new ColumnReplyVO();
 
         columnReplyVo.setArtNo(artNo);
         columnReplyVo.setMemNo(memNo);
@@ -29,9 +29,9 @@ public class ColumnReplyService {
         return columnReplyVo;
     }
 
-    public ColumnReplyVo updateCR(Integer columnReplyNo, Integer artNo, Integer memNo, String comContent, Timestamp comTime, Byte comStat) {
+    public ColumnReplyVO updateCR(Integer columnReplyNo, Integer artNo, Integer memNo, String comContent, Timestamp comTime, Byte comStat) {
 
-        ColumnReplyVo columnReplyVo = new ColumnReplyVo();
+        ColumnReplyVO columnReplyVo = new ColumnReplyVO();
 
         columnReplyVo.setColumnReplyNo(columnReplyNo);
         columnReplyVo.setArtNo(artNo);
@@ -47,11 +47,11 @@ public class ColumnReplyService {
         dao.delete(columnReplyNo);
     }
 
-    public ColumnReplyVo getOneCR(Integer columnReplyNo) {
+    public ColumnReplyVO getOneCR(Integer columnReplyNo) {
         return dao.findByPrimaryKey(columnReplyNo);
     }
 
-    public List<ColumnReplyVo> getAll() {
+    public List<ColumnReplyVO> getAll() {
         return dao.getAll();
     }
 }

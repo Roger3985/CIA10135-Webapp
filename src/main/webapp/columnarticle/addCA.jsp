@@ -1,10 +1,11 @@
 <%@ page import="com.roger.member.vo.MemberVO" %>
-<%@ page import="com.roger.columnarticle.vo.ColumnArticleVo" %>
+<%@ page import="com.roger.columnarticle.vo.ColumnArticleVO" %>
+<%@ page import="com.roger.columnarticle.vo.ColumnArticleVO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-  ColumnArticleVo columnArticleVo = (ColumnArticleVo) request.getAttribute("columnArticleVo");
+  ColumnArticleVO columnArticleVo = (ColumnArticleVO) request.getAttribute("columnArticleVo");
 %>
 
 <html>

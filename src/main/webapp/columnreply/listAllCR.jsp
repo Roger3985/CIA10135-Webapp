@@ -3,13 +3,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.roger.columnarticle.service.ColumnArticleService" %>
-<%@ page import="com.roger.columnarticle.vo.ColumnArticleVo" %>
+<%@ page import="com.roger.columnarticle.vo.ColumnArticleVO" %>
 <%@ page import="com.roger.columnreply.service.ColumnReplyService" %>
-<%@ page import="com.roger.columnreply.vo.ColumnReplyVo" %>
+<%@ page import="com.roger.columnreply.vo.ColumnReplyVO" %>
 
 <%
     ColumnReplyService columnReplyService = new ColumnReplyService();
-    List<ColumnReplyVo> list = columnReplyService.getAll();
+    List<ColumnReplyVO> list = columnReplyService.getAll();
     pageContext.setAttribute("list", list);
 %>
 <html>

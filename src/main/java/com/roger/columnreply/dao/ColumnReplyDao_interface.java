@@ -1,15 +1,15 @@
 package com.roger.columnreply.dao;
 
-import com.roger.columnreply.vo.ColumnReplyVo;
+import com.roger.columnreply.vo.ColumnReplyVO;
 
 import java.util.List;
 
 public interface ColumnReplyDao_interface {
 
-    public void insert(ColumnReplyVo columnReplyVo);
-    public void update(ColumnReplyVo columnReplyVo);
+    public void insert(ColumnReplyVO columnReplyVo);
+    public void update(ColumnReplyVO columnReplyVo);
     public void delete(Integer columnReplyNo);
-    public ColumnReplyVo findByPrimaryKey(Integer columnReplyNo);
-    public List<ColumnReplyVo> getAll();
+    public ColumnReplyVO findByPrimaryKey(Integer columnReplyNo);
+    public List<ColumnReplyVO> getAll();
 
 }

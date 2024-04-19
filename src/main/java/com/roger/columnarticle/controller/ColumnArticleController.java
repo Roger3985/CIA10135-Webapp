@@ -1,7 +1,7 @@
 package com.roger.columnarticle.controller;
 
 import com.roger.columnarticle.service.ColumnArticleService;
-import com.roger.columnarticle.vo.ColumnArticleVo;
+import com.roger.columnarticle.vo.ColumnArticleVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -212,7 +212,7 @@ public class ColumnArticleController extends HttpServlet {
 
             /***************************2.開始修改資料*****************************************/
             ColumnArticleService columnArticleService = new ColumnArticleService();
-            ColumnArticleVo columnArticleVo = columnArticleService.updateCa(artNo, admNo, artTitle, artContent, artTime, artCatNo, artStat);
+            ColumnArticleVO columnArticleVo = columnArticleService.updateCa(artNo, admNo, artTitle, artContent, artTime, artCatNo, artStat);
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("columnArticleVo", columnArticleVo); // 資料庫update成功後，正確的columnArticleVo物件，存入req
@@ -247,7 +247,7 @@ public class ColumnArticleController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ColumnArticleService columnArticleService = new ColumnArticleService();
-            ColumnArticleVo columnArticleVo = columnArticleService.getOneCa(artNo);
+            ColumnArticleVO columnArticleVo = columnArticleService.getOneCa(artNo);
             if (columnArticleVo == null) {
                 errorMsgs.put("artNo", "查無資料");
             }
@@ -274,7 +274,7 @@ public class ColumnArticleController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ColumnArticleService columnArticleService = new ColumnArticleService();
-            List<ColumnArticleVo> columnarticleList = columnArticleService.getAll(); // 調用服務類的方法查詢全部資料
+            List<ColumnArticleVO> columnarticleList = columnArticleService.getAll(); // 調用服務類的方法查詢全部資料
 
             if (columnarticleList.isEmpty()) {
                 errorMsgs.put("result", "查無資料"); // 如果結果為空，設置錯誤消息

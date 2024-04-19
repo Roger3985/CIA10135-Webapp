@@ -1,15 +1,39 @@
 package com.roger.columnarticle.vo;
 
+import com.ren.administrator.model.AdministratorVO;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-public class ColumnArticleVo implements java.io.Serializable {
+@Entity
+@Table(name = "columnarticle")
+public class ColumnArticleVO implements java.io.Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "artNo")
     private Integer artNo;
-    private Integer admNo;
+
+    @ManyToOne
+    @JoinColumn(name = "admNo", referencedColumnName = "admNo")
+    private AdministratorVO administratorVO;
+
+//    @Column(name = "admNo")
+//    private Integer admNo;
+
+    @Column(name = "artTitle")
     private String artTitle;
+
+    @Column(name = "artContent")
     private String artContent;
+
+    @Column(name = "artTime")
     private Timestamp artTime;
+
+    @Column(name = "artCatNo")
     private Integer artCatNo;
+
+    @Column(name = "artStat")
     private Byte artStat;
 
     public Integer getArtNo() {
@@ -20,12 +44,12 @@ public class ColumnArticleVo implements java.io.Serializable {
         this.artNo = artNo;
     }
 
-    public Integer getAdmNo() {
-        return admNo;
+    public AdministratorVO getAdministratorVO() {
+        return administratorVO;
     }
 
-    public void setAdmNo(Integer admNo) {
-        this.admNo = admNo;
+    public void setAdministratorVO(AdministratorVO administratorVO) {
+        this.administratorVO = administratorVO;
     }
 
     public String getArtTitle() {

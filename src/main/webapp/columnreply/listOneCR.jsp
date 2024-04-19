@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ page import="com.roger.member.vo.MemberVO"%>
-<%@ page import="com.roger.columnreply.vo.ColumnReplyVo" %>
+<%@ page import="com.roger.columnreply.vo.ColumnReplyVO" %>
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
-    ColumnReplyVo columnReplyVo = (ColumnReplyVo) request.getAttribute("columnReplyVo");
+    ColumnReplyVO columnReplyVo = (ColumnReplyVO) request.getAttribute("columnReplyVo");
     // EmpServlet.java(Concroller), 存入req的empVO物件
 %>
 

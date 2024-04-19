@@ -1,7 +1,7 @@
 package com.roger.columnreply.dao.impl;
 
 import com.roger.columnreply.dao.ColumnReplyDao_interface;
-import com.roger.columnreply.vo.ColumnReplyVo;
+import com.roger.columnreply.vo.ColumnReplyVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ColumnReplyJdbcDaoImpl implements ColumnReplyDao_interface {
 
 
     @Override
-    public void insert(ColumnReplyVo columnReplyVo) {
+    public void insert(ColumnReplyVO columnReplyVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -73,7 +73,7 @@ public class ColumnReplyJdbcDaoImpl implements ColumnReplyDao_interface {
     }
 
     @Override
-    public void update(ColumnReplyVo columnReplyVo) {
+    public void update(ColumnReplyVO columnReplyVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -166,9 +166,9 @@ public class ColumnReplyJdbcDaoImpl implements ColumnReplyDao_interface {
     }
 
     @Override
-    public ColumnReplyVo findByPrimaryKey(Integer columnReplyNo) {
+    public ColumnReplyVO findByPrimaryKey(Integer columnReplyNo) {
 
-        ColumnReplyVo columnReplyVo = null;
+        ColumnReplyVO columnReplyVo = null;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -185,8 +185,8 @@ public class ColumnReplyJdbcDaoImpl implements ColumnReplyDao_interface {
 
             while (rs.next()) {
 
-                // ColumnReplyVo 也可以稱為 Domain objects
-                columnReplyVo = new ColumnReplyVo();
+                // ColumnReplyVO 也可以稱為 Domain objects
+                columnReplyVo = new ColumnReplyVO();
                 columnReplyVo.setColumnReplyNo(rs.getInt("columnReplyNo"));
                 columnReplyVo.setArtNo(rs.getInt("artNo"));
                 columnReplyVo.setMemNo(rs.getInt("memNo"));
@@ -232,10 +232,10 @@ public class ColumnReplyJdbcDaoImpl implements ColumnReplyDao_interface {
     }
 
     @Override
-    public List<ColumnReplyVo> getAll() {
+    public List<ColumnReplyVO> getAll() {
 
-        List<ColumnReplyVo> list = new ArrayList<ColumnReplyVo>();
-        ColumnReplyVo columnReplyVo = null;
+        List<ColumnReplyVO> list = new ArrayList<ColumnReplyVO>();
+        ColumnReplyVO columnReplyVo = null;
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -248,8 +248,8 @@ public class ColumnReplyJdbcDaoImpl implements ColumnReplyDao_interface {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                // ColumnReplyVo 也可以稱為 Domain objects
-                columnReplyVo = new ColumnReplyVo();
+                // ColumnReplyVO 也可以稱為 Domain objects
+                columnReplyVo = new ColumnReplyVO();
                 columnReplyVo.setColumnReplyNo(rs.getInt("columnReplyNo"));
                 columnReplyVo.setArtNo(rs.getInt("artNo"));
                 columnReplyVo.setMemNo(rs.getInt("memNo"));

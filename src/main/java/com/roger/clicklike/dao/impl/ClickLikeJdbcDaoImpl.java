@@ -1,7 +1,7 @@
 package com.roger.clicklike.dao.impl;
 
 import com.roger.clicklike.dao.ClickLikeDao_interface;
-import com.roger.clicklike.vo.ClickLikeVo;
+import com.roger.clicklike.vo.ClickLikeVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
     private static final String UPDATE = "UPDATE clicklike SET artNo = ? WHERE memNo = ?;";
 
     @Override
-    public void insert(ClickLikeVo clickLikeVo) {
+    public void insert(ClickLikeVO clickLikeVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -68,7 +68,7 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
     }
 
     @Override
-    public void update(ClickLikeVo clickLikeVo) {
+    public void update(ClickLikeVO clickLikeVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -156,9 +156,9 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
     }
 
     @Override
-    public ClickLikeVo findByPrimaryKey(Integer memNo) {
+    public ClickLikeVO findByPrimaryKey(Integer memNo) {
 
-        ClickLikeVo clickLikeVo = null;
+        ClickLikeVO clickLikeVo = null;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -176,7 +176,7 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
             while (rs.next()) {
 
                 // clickLikeVo 也稱為 Domain objects
-                clickLikeVo = new ClickLikeVo();
+                clickLikeVo = new ClickLikeVO();
 
                 clickLikeVo.setMemNo(rs.getInt("memNo"));
                 clickLikeVo.setArtNo(rs.getInt("artNo"));
@@ -218,10 +218,10 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
     }
 
     @Override
-    public List<ClickLikeVo> getAll() {
+    public List<ClickLikeVO> getAll() {
 
-        List<ClickLikeVo> list = new ArrayList<ClickLikeVo>();
-        ClickLikeVo clickLikeVo = null;
+        List<ClickLikeVO> list = new ArrayList<ClickLikeVO>();
+        ClickLikeVO clickLikeVo = null;
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -235,8 +235,8 @@ public class ClickLikeJdbcDaoImpl implements ClickLikeDao_interface {
 
             while (rs.next()) {
 
-                // ClickLikeVo 也可以稱為 Domain objects
-                clickLikeVo = new ClickLikeVo();
+                // ClickLikeVO 也可以稱為 Domain objects
+                clickLikeVo = new ClickLikeVO();
                 clickLikeVo.setMemNo(rs.getInt("memNo"));
                 clickLikeVo.setArtNo(rs.getInt("artNo"));
 

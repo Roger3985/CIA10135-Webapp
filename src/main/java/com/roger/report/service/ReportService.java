@@ -2,7 +2,7 @@ package com.roger.report.service;
 
 import com.roger.report.dao.ReportDao_interface;
 import com.roger.report.dao.impl.ReportJdbcDaoImpl;
-import com.roger.report.vo.ReportVo;
+import com.roger.report.vo.ReportVO;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -16,9 +16,9 @@ public class ReportService {
 
     }
 
-    public ReportVo addReport(Integer artReplyNo, Integer memNo, Integer admNo, Timestamp reportTime, String reportReason, Byte reportType) {
+    public ReportVO addReport(Integer artReplyNo, Integer memNo, Integer admNo, Timestamp reportTime, String reportReason, Byte reportType) {
 
-        ReportVo reportVo = new ReportVo();
+        ReportVO reportVo = new ReportVO();
 
         reportVo.setArtReplyNo(artReplyNo);
         reportVo.setMemNo(memNo);
@@ -31,9 +31,9 @@ public class ReportService {
         return reportVo;
     }
 
-    public ReportVo updateReport(Integer reportNo, Integer artReplyNo, Integer memNo, Integer admNo, Timestamp reportTime, String reportReason, Byte reportType) {
+    public ReportVO updateReport(Integer reportNo, Integer artReplyNo, Integer memNo, Integer admNo, Timestamp reportTime, String reportReason, Byte reportType) {
 
-        ReportVo reportVo = new ReportVo();
+        ReportVO reportVo = new ReportVO();
 
         reportVo.setReportNo(reportNo);
         reportVo.setArtReplyNo(artReplyNo);
@@ -51,11 +51,11 @@ public class ReportService {
         dao.delete(reportNo);
     }
 
-    public ReportVo getOneReport(Integer reportNo) {
+    public ReportVO getOneReport(Integer reportNo) {
         return dao.findByPrimaryKey(reportNo);
     }
 
-    public List<ReportVo> getAll() {
+    public List<ReportVO> getAll() {
         return dao.getAll();
     }
 }

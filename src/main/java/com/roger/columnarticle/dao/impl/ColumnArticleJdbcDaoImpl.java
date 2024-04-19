@@ -1,7 +1,7 @@
 package com.roger.columnarticle.dao.impl;
 
 import com.roger.columnarticle.dao.ColumnArticleDao_interface;
-import com.roger.columnarticle.vo.ColumnArticleVo;
+import com.roger.columnarticle.vo.ColumnArticleVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
 
 
     @Override
-    public void insert(ColumnArticleVo columnArticleVo) {
+    public void insert(ColumnArticleVO columnArticleVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -73,7 +73,7 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
     }
 
     @Override
-    public void update(ColumnArticleVo columnArticleVo) {
+    public void update(ColumnArticleVO columnArticleVo) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -166,9 +166,9 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
     }
 
     @Override
-    public ColumnArticleVo findByPrimaryKey(Integer artNo) {
+    public ColumnArticleVO findByPrimaryKey(Integer artNo) {
 
-        ColumnArticleVo columnArticleVo = null;
+        ColumnArticleVO columnArticleVo = null;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -185,8 +185,8 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
 
             while (rs.next()) {
 
-                // ColumnArticleVo 也可以稱為 Domain objects
-                columnArticleVo = new ColumnArticleVo();
+                // ColumnArticleVO 也可以稱為 Domain objects
+                columnArticleVo = new ColumnArticleVO();
                 columnArticleVo.setArtNo(rs.getInt("artNo"));
                 columnArticleVo.setAdmNo(rs.getInt("admNo"));
                 columnArticleVo.setArtTitle(rs.getString("artTitle"));
@@ -233,10 +233,10 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
     }
 
     @Override
-    public List<ColumnArticleVo> getAll() {
+    public List<ColumnArticleVO> getAll() {
 
-        List<ColumnArticleVo> list = new ArrayList<ColumnArticleVo>();
-        ColumnArticleVo columnArticleVo = null;
+        List<ColumnArticleVO> list = new ArrayList<ColumnArticleVO>();
+        ColumnArticleVO columnArticleVo = null;
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -249,8 +249,8 @@ public class ColumnArticleJdbcDaoImpl implements ColumnArticleDao_interface {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                // ColumnArticleVo 也可以稱為 Domain objects
-                columnArticleVo = new ColumnArticleVo();
+                // ColumnArticleVO 也可以稱為 Domain objects
+                columnArticleVo = new ColumnArticleVO();
                 columnArticleVo.setArtNo(rs.getInt("artNo"));
                 columnArticleVo.setAdmNo(rs.getInt("admNo"));
                 columnArticleVo.setArtTitle(rs.getString("artTitle"));

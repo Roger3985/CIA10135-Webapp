@@ -1,7 +1,7 @@
 package com.roger.report.controller;
 
 import com.roger.report.service.ReportService;
-import com.roger.report.vo.ReportVo;
+import com.roger.report.vo.ReportVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -179,7 +179,7 @@ public class ReportController extends HttpServlet {
 
             /***************************2.開始修改資料*****************************************/
             ReportService reportService = new ReportService();
-            ReportVo reportVo = reportService.updateReport(reportNo, artReplyNo, memNo, admNo, reportTime, reportReason, reportType);
+            ReportVO reportVo = reportService.updateReport(reportNo, artReplyNo, memNo, admNo, reportTime, reportReason, reportType);
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("reportVo", reportVo); // 資料庫update成功後，正確的noticeVO物件，存入req
@@ -232,7 +232,7 @@ public class ReportController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ReportService reportService = new ReportService();
-            ReportVo reportVo = reportService.getOneReport(reportNo);
+            ReportVO reportVo = reportService.getOneReport(reportNo);
             if (reportVo == null) {
                 errorMsgs.put("reportVo", "查無資料");
             }
@@ -259,7 +259,7 @@ public class ReportController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ReportService reportService = new ReportService();
-            List<ReportVo> reportList = reportService.getAll();
+            List<ReportVO> reportList = reportService.getAll();
 
             if (reportList.isEmpty()) {
                 errorMsgs.put("result", "查無資料"); // 如果結果為空，設置錯誤消息

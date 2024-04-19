@@ -1,6 +1,6 @@
 package com.roger.clicklike.vo;
 
-public class ClickLikeVo implements java.io.Serializable {
+public class ClickLikeVO implements java.io.Serializable {
 
     private Integer memNo;
     private Integer artNo;

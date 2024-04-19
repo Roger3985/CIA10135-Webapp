@@ -3,11 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.roger.clicklike.service.ClickLikeService" %>
-<%@ page import="com.roger.clicklike.vo.ClickLikeVo" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
+<%@ page import="com.roger.clicklike.vo.ClickLikeVO" %>
 
 <%
     ClickLikeService clickLikeService = new ClickLikeService();
-    List<ClickLikeVo> list = clickLikeService.getAll();
+    List<ClickLikeVO> list = clickLikeService.getAll();
     pageContext.setAttribute("list", list);
 %>
 <html>

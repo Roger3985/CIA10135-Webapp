@@ -1,7 +1,7 @@
 package com.roger.columnreply.controller;
 
 import com.roger.columnreply.service.ColumnReplyService;
-import com.roger.columnreply.vo.ColumnReplyVo;
+import com.roger.columnreply.vo.ColumnReplyVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -179,7 +179,7 @@ public class ColumnReplyController extends HttpServlet {
 
             /***************************2.開始修改資料*****************************************/
             ColumnReplyService columnReplyService = new ColumnReplyService();
-            ColumnReplyVo columnReplyVo = columnReplyService.updateCR(columnReplyNo, artNo, memNo, comContent, comTime, comStat);
+            ColumnReplyVO columnReplyVo = columnReplyService.updateCR(columnReplyNo, artNo, memNo, comContent, comTime, comStat);
 
             /***************************3.修改完成,準備轉交(Send the Success view)*************/
             req.setAttribute("columnReplyVo", columnReplyVo); // 資料庫update成功後，正確的columnReplyVo物件，存入req
@@ -214,7 +214,7 @@ public class ColumnReplyController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ColumnReplyService columnReplyService = new ColumnReplyService();
-            ColumnReplyVo columnReplyVo = columnReplyService.getOneCR(columnReplyNo);
+            ColumnReplyVO columnReplyVo = columnReplyService.getOneCR(columnReplyNo);
             if (columnReplyVo == null) {
                 errorMsgs.put("columnReplyNo", "查無資料");
             }
@@ -240,7 +240,7 @@ public class ColumnReplyController extends HttpServlet {
 
             /***************************2.開始查詢資料*****************************************/
             ColumnReplyService columnReplyService = new ColumnReplyService();
-            List<ColumnReplyVo> columnReplyList = columnReplyService.getAll(); // 調用服務類的方法查詢全部資料
+            List<ColumnReplyVO> columnReplyList = columnReplyService.getAll(); // 調用服務類的方法查詢全部資料
 
             if (columnReplyList.isEmpty()) {
                 errorMsgs.put("result", "查無資料"); // 如果結果為空，設置錯誤消息
