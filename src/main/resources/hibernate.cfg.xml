@@ -18,6 +18,32 @@
         
         <property name="hibernate.format_sql">true</property>
 
+
+        <mapping class="com.chihyunro.coupon.model.Coupon"/>
+        <mapping class="com.chihyunro.mycoupon.model.Mycoupon"/>
+        <mapping class="com.chihyunro.news.model.News"/>
+        <mapping class="com.chihyunro.servicepicture.model.ServicePicture"/>
+        <mapping class="com.chihyunro.servicerecord.model.ServiceRecord"/>
+        <mapping class="com.chihyunro.servicerobot.model.ServiceRobot"/>
+
+        <mapping class="com.howard.rentalmytrack.model.RentalMyTrackVo"/>
+        <mapping class="com.howard.rentalorder.model.RentalOrderVo"/>
+        <mapping class="com.howard.rentalorderdetails.model.RentalOrderDetails"/>
+
+        <mapping class="com.iting.cart.model.CartVO"/>
+        <mapping class="com.iting.productmyfavorite.model.ProductMyFavoriteVO"/>
+        <mapping class="com.iting.productorder.model.ProductOrderVO"/>
+        <mapping class="com.iting.productorderdetail.model.ProductOrderDetailVO"/>
+        <mapping class="com.iting.productpicture.model.ProductPictureVO"/>
+
+        <mapping class="com.ren.admauthority.model.AdmAuthorityVO"/>
+        <mapping class="com.ren.administrator.model.AdministratorVO"/>
+        <mapping class="com.ren.authorityfunction.model.AuthorityFunctionVO"/>
+        <mapping class="com.ren.product.model.ProductVO"/>
+        <mapping class="com.ren.productcategory.model.ProductCategoryVO"/>
+        <mapping class="com.ren.title.model.TitleAdmVO"/>
+        <mapping class="com.ren.title.model.TitleVO"/>
+
         <mapping class="com.roger.articlecollection.vo.ArticleCollectionVO"/>
         <mapping class="com.roger.clicklike.vo.ClickLikeVO"/>
         <mapping class="com.roger.columnarticle.vo.ColumnArticleVO"/>
@@ -25,7 +51,14 @@
         <mapping class="com.roger.member.vo.MemberVO"/>
         <mapping class="com.roger.notice.vo.NoticeVO"/>
         <mapping class="com.roger.report.vo.ReportVO"/>
-        <mapping class="com.ren.administrator.model.AdministratorVO"/>
+
+        <mapping class="com.snpooy.studioorder.model.StudioOrder"/>
+
+        <mapping class="com.yu.rental.model.Rental"/>
+        <mapping class="com.yu.rentalcategory.model.RentalCategory"/>
+        <mapping class="com.yu.rentalmyfavorite.model.RentalMyFavorite"/>
+        <mapping class="com.yu.rentalpic.model.RentalPic"/>
+        <mapping class="com.yu.rentset.model.RentSet"/>
 
     </session-factory>
 </hibernate-configuration>

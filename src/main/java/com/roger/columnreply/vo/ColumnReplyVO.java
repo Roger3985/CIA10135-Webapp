@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "columnReply")
@@ -40,6 +41,9 @@ public class ColumnReplyVO implements java.io.Serializable {
 
     @Column(name = "comStat")
     private Byte comStat;
+
+    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    private Set<ColumnReplyVO> reports;
 
     public Integer getColumnReplyNo() {
         return columnReplyNo;
@@ -87,5 +91,13 @@ public class ColumnReplyVO implements java.io.Serializable {
 
     public void setComStat(Byte comStat) {
         this.comStat = comStat;
+    }
+
+    public Set<ColumnReplyVO> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<ColumnReplyVO> reports) {
+        this.reports = reports;
     }
 }

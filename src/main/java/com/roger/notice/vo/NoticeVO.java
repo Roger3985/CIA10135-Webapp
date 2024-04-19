@@ -19,6 +19,7 @@ public class NoticeVO implements java.io.Serializable {
     @JoinColumn(name = "memNo", referencedColumnName = "memNo")
     private MemberVO memberVO; // 定義多對一關係(現在表示:通知\(多)，會員(單))，該字段關聯到 MemberVO 實體類，使用 memNo 列作為外來鍵。 需要再生成getter and setter
 
+    // JDBC、JNDI使用(Hibernate換成ManyToOne)
 //    @Column(name = "memNo")
 //    private Integer memNo; // 定義 memNo 列，作為當前實體類與 MemberVO 實體類之間的外來鍵。
 

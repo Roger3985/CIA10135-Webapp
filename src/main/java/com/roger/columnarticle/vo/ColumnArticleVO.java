@@ -4,6 +4,7 @@ import com.ren.administrator.model.AdministratorVO;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "columnarticle")
@@ -35,6 +36,16 @@ public class ColumnArticleVO implements java.io.Serializable {
 
     @Column(name = "artStat")
     private Byte artStat;
+
+    @OneToMany(mappedBy = "clickLike", cascade = CascadeType.ALL)
+    private Set<ColumnArticleVO> clickLikes;
+
+    @OneToMany(mappedBy = "articleCollection", cascade = CascadeType.ALL)
+    private Set<ColumnArticleVO> articleCollections;
+
+    @OneToMany(mappedBy = "columnReply", cascade = CascadeType.ALL)
+    private Set<ColumnArticleVO> columnReplys;
+
 
     public Integer getArtNo() {
         return artNo;
@@ -90,5 +101,29 @@ public class ColumnArticleVO implements java.io.Serializable {
 
     public void setArtStat(Byte artStat) {
         this.artStat = artStat;
+    }
+
+    public Set<ColumnArticleVO> getClickLikes() {
+        return clickLikes;
+    }
+
+    public void setClickLikes(Set<ColumnArticleVO> clickLikes) {
+        this.clickLikes = clickLikes;
+    }
+
+    public Set<ColumnArticleVO> getArticleCollections() {
+        return articleCollections;
+    }
+
+    public void setArticleCollections(Set<ColumnArticleVO> articleCollections) {
+        this.articleCollections = articleCollections;
+    }
+
+    public Set<ColumnArticleVO> getColumnReplys() {
+        return columnReplys;
+    }
+
+    public void setColumnReplys(Set<ColumnArticleVO> columnReplys) {
+        this.columnReplys = columnReplys;
     }
 }

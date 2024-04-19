@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity // 這個注釋標記 Member 類為一個 JPA 實體（entity）。這意味著這個類將映射到數據庫中的一個表，並表示該類的每個對象（實例）對應於數據庫表中的一行。使用此注釋可以讓 JPA 框架自動管理該類的持久化、查詢、更新和刪除操作。
 @Table(name = "member")
@@ -70,6 +71,48 @@ public class MemberVO implements java.io.Serializable {
 
     @Column(name = "memStat")
     private Byte memStat;
+
+    @OneToMany(mappedBy = "notice", cascade = CascadeType.ALL)
+    private Set<MemberVO> notices;
+
+    @OneToMany(mappedBy = "mycoupon", cascade = CascadeType.ALL)
+    private Set<MemberVO> mycoupons;
+
+    @OneToMany(mappedBy = "productOrder", cascade = CascadeType.ALL)
+    private Set<MemberVO> productOrders;
+
+    @OneToMany(mappedBy = "productMyFavorite", cascade = CascadeType.ALL)
+    private Set<MemberVO> productMyFavorites;
+
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    private Set<MemberVO> carts;
+
+    @OneToMany(mappedBy = "clickLike", cascade = CascadeType.ALL)
+    private Set<MemberVO> clickLikes;
+
+    @OneToMany(mappedBy = "articleCollection", cascade = CascadeType.ALL)
+    private Set<MemberVO> articleCollections;
+
+    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    private Set<MemberVO> reports;
+
+    @OneToMany(mappedBy = "columnReply", cascade = CascadeType.ALL)
+    private Set<MemberVO> columnReplys;
+
+    @OneToMany(mappedBy = "rentalOrder", cascade = CascadeType.ALL)
+    private Set<MemberVO> rentalOrders;
+
+    @OneToMany(mappedBy = "rentalMyTrack", cascade = CascadeType.ALL)
+    private Set<MemberVO> rentalMyTracks;
+
+    @OneToMany(mappedBy = "rentalMyFavorite", cascade = CascadeType.ALL)
+    private Set<MemberVO> rentalMyFavorites;
+
+    @OneToMany(mappedBy = "studioOrder", cascade = CascadeType.ALL)
+    private Set<MemberVO> studioOrders;
+
+    @OneToMany(mappedBy = "serviceRecord", cascade = CascadeType.ALL)
+    private Set<MemberVO> serviceRecords;
 
     public Integer getMemNo() {
         return memNo;
@@ -221,5 +264,117 @@ public class MemberVO implements java.io.Serializable {
 
     public void setMemStat(Byte memStat) {
         this.memStat = memStat;
+    }
+
+    public Set<MemberVO> getNotices() {
+        return notices;
+    }
+
+    public void setNotices(Set<MemberVO> notices) {
+        this.notices = notices;
+    }
+
+    public Set<MemberVO> getMycoupons() {
+        return mycoupons;
+    }
+
+    public void setMycoupons(Set<MemberVO> mycoupons) {
+        this.mycoupons = mycoupons;
+    }
+
+    public Set<MemberVO> getProductOrders() {
+        return productOrders;
+    }
+
+    public void setProductOrders(Set<MemberVO> productOrders) {
+        this.productOrders = productOrders;
+    }
+
+    public Set<MemberVO> getProductMyFavorites() {
+        return productMyFavorites;
+    }
+
+    public void setProductMyFavorites(Set<MemberVO> productMyFavorites) {
+        this.productMyFavorites = productMyFavorites;
+    }
+
+    public Set<MemberVO> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<MemberVO> carts) {
+        this.carts = carts;
+    }
+
+    public Set<MemberVO> getClickLikes() {
+        return clickLikes;
+    }
+
+    public void setClickLikes(Set<MemberVO> clickLikes) {
+        this.clickLikes = clickLikes;
+    }
+
+    public Set<MemberVO> getArticleCollections() {
+        return articleCollections;
+    }
+
+    public void setArticleCollections(Set<MemberVO> articleCollections) {
+        this.articleCollections = articleCollections;
+    }
+
+    public Set<MemberVO> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<MemberVO> reports) {
+        this.reports = reports;
+    }
+
+    public Set<MemberVO> getColumnReplys() {
+        return columnReplys;
+    }
+
+    public void setColumnReplys(Set<MemberVO> columnReplys) {
+        this.columnReplys = columnReplys;
+    }
+
+    public Set<MemberVO> getRentalOrders() {
+        return rentalOrders;
+    }
+
+    public void setRentalOrders(Set<MemberVO> rentalOrders) {
+        this.rentalOrders = rentalOrders;
+    }
+
+    public Set<MemberVO> getRentalMyTracks() {
+        return rentalMyTracks;
+    }
+
+    public void setRentalMyTracks(Set<MemberVO> rentalMyTracks) {
+        this.rentalMyTracks = rentalMyTracks;
+    }
+
+    public Set<MemberVO> getRentalMyFavorites() {
+        return rentalMyFavorites;
+    }
+
+    public void setRentalMyFavorites(Set<MemberVO> rentalMyFavorites) {
+        this.rentalMyFavorites = rentalMyFavorites;
+    }
+
+    public Set<MemberVO> getStudioOrders() {
+        return studioOrders;
+    }
+
+    public void setStudioOrders(Set<MemberVO> studioOrders) {
+        this.studioOrders = studioOrders;
+    }
+
+    public Set<MemberVO> getServiceRecords() {
+        return serviceRecords;
+    }
+
+    public void setServiceRecords(Set<MemberVO> serviceRecords) {
+        this.serviceRecords = serviceRecords;
     }
 }
