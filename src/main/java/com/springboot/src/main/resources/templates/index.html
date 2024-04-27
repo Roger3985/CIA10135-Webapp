@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>租你好運</title>
+<!-- Favicon-->
+<!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+<!-- Bootstrap Icons-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
+<!-- Google fonts-->
+<link
+	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
+	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+	rel="stylesheet" type="text/css" />
+<!-- SimpleLightbox plugin CSS-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
+	rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link th:href="@{/css/FrontEnd/indexCSS/styles.css}" rel="stylesheet" />
+
+<link th:href="@{/css/FrontEnd/indexCSS/style2.css}" rel="stylesheet" />
+
+<style>
+/* 表格樣式 */
+	#head-tr{
+		background-color: #333 !important;
+	}
+	
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-top: 20px;
+	}
+	
+	#notice-Table table, th, td {
+		border: 1px solid #ddd;
+	    text-align: center !important;
+	    width : 30%;
+	}
+	
+	
+	th {
+	 	background-color: #fff;
+		color: #000;
+		font-weight: bold;
+		text-align: left;
+		padding: 8px;
+		
+/* 	    width: 7em; */
+	}
+	
+	
+	tr:nth-child(even) {
+ 	 	background: #ddd;
+ 	    color: #000;
+	}
+	tr{
+		background: #fff;
+		color: #000;
+	}
+	
+	td {
+		padding: 8px;
+		text-align: left;
+	}
+	
+	.h-100 {
+		height: 0% !important;
+	}
+</style>
+
+
+</head>
+<div id="filter"></div>
+<body id="page-top">
+	<!-- Navigation-->
+	<div th:replace="FrontEnd/HTMLTool/nav :: nav" ></div>
+
+
+	<!------------------------------------------------------------------------------------>
+	<!--         <div class="login_page"> -->
+	<!--             <div id="container1"> -->
+	<!--                 <img src="@{/icon/FrontEnd/index/x.png}" id="close-login-div" alt=""> -->
+	<!--                 <div class="login"> -->
+	<!--                     <h3 id="login-mem">登入會員 Login</h3> -->
+	<!--                     <form action="用戶管理"> -->
+	<!--                         <input type="text" id="username" name="username" placeholder="帳號" required> -->
+	<!--                         <div class="tab"></div> -->
+	<!--                         <input type="text" id="password" name="password" placeholder="密碼" required> -->
+	<!--                         <div class="tab"></div> -->
+	<!--                         <input type="submit" value="登入" class="submit" onclick=""> -->
+	<!--                     </form> -->
+	<!--                     <h5 onclick="show_hide()">註冊帳號</h5> -->
+	<!--                 </div> -->
+	<!--             </div> -->
+	<!--         </div> -->
+	<!------------------------------------------------------------------------------------>
+
+
+	<!-- Masthead-->
+	
+	<header class="masthead">
+		<div class="container px-4 px-lg-5 h-100">
+			<div
+				class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+				<div class="col-lg-8 align-self-end">
+					<marquee><h1 class="text-white font-weight-bold"  style="margin-top:50px !important;">最新消息:</h1></marquee>
+					<p id="noticesContainer"></p>
+				</div>
+				<div class="col-lg-8 align-self-baseline">
+<!-- 					<div id="paginationButtons"> -->
+<!-- 					    <button id="prevPage">上一頁</button> -->
+<!-- 					    <button id="nextPage">下一頁</button> -->
+<!-- 					</div> -->
+					<!-- 					                        <p class="text-white-75 mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p> -->
+					<!-- 					<a class="btn btn-primary btn-xl" href="#shop">讓我們幫您</a> -->
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<!-- About-->
+	<section class="page-section bg-primary" id="shop">
+		<div class="container px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-lg-8 text-center">
+					<h2 class="text-white mt-0" id="rent-find">好不容易找到租屋處後，裡面卻空無一物嗎!?</h2>
+
+					<!-- Portfolio-->
+					<div id="portfolio">
+						<div class="container-fluid p-0">
+							<div class="row g-0">
+								<div class="col-lg-4 col-sm-6">
+									<a class="portfolio-box"
+										href="assets/img/portfolio/fullsize/1.jpg"
+										title="Project Name"> <img class="img-fluid"
+										th:src="@{/images/FrontEnd/portfolio/thumbnails/1.jpg}"
+										alt="..." />
+										<div class="portfolio-box-caption">
+											<div class="project-category text-white-50">買好買滿</div>
+											<div class="project-name">一堆雜物</div>
+										</div>
+									</a>
+								</div>
+								<div class="col-lg-4 col-sm-6">
+									<a class="portfolio-box"
+										href="assets/img/portfolio/fullsize/2.jpg"
+										title="Project Name"> <img class="img-fluid"
+										th:src="@{/images/FrontEnd/portfolio/thumbnails/2.jpg}"
+										alt="..." />
+										<div class="portfolio-box-caption">
+											<div class="project-category text-white-50">學海無涯</div>
+											<div class="project-name">知識籌碼</div>
+										</div>
+									</a>
+								</div>
+								<div class="col-lg-4 col-sm-6">
+									<a class="portfolio-box"
+										href="assets/img/portfolio/fullsize/3.jpg"
+										title="Project Name"> <img class="img-fluid"
+										th:src="@{/images/FrontEnd/portfolio/thumbnails/3.jpg}"
+										alt="..." />
+										<div class="portfolio-box-caption">
+											<div class="project-category text-white-50">保存回憶</div>
+											<div class="project-name">青春永駐</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="text-white-75 mb-4">沒關係!!!我們也有百貨商城供您挑選</p>
+
+					<div class=".btnctrl">
+						<a class="btn btn-light btn-xl helpBtn"
+							href="http://localhost:8081/web/index.html" id="shop-btn">購物去吧</a>
+						<a class="btn btn-light btn-xl" href="#rent">租賃服務</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- rent-->
+	<section class="page-section" id="rent">
+		<div class="container px-4 px-lg-5">
+			<h2 class="text-center mt-0">租賃服務</h2>
+			<!-- 			<hr class="divider" /> -->
+			<div class="row gx-4 gx-lg-5">
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="mt-5">
+						<div class="mb-2">
+							<i class="bi-gem fs-1 text-primary"></i>
+						</div>
+						<h3 class="h4 mb-2">具有cp值得價錢</h3>
+						<p class="text-muted mb-0"></p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="mt-5">
+						<div class="mb-2">
+							<i class="bi-laptop fs-1 text-primary"></i>
+						</div>
+						<h3 class="h4 mb-2">網路上即可預約看屋</h3>
+						<p class="text-muted mb-0"></p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="mt-5">
+						<div class="mb-2">
+							<i class="bi-globe fs-1 text-primary"></i>
+						</div>
+						<h3 class="h4 mb-2">24小時不間段的服務</h3>
+						<p class="text-muted mb-0"></p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="mt-5">
+						<div class="mb-2">
+							<i class="bi-heart fs-1 text-primary"></i>
+						</div>
+						<h3 class="h4 mb-2">友善的房源提供者</h3>
+						<p class="text-muted mb-0"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="btnctrl">
+			<a class="btn btn-light btn-xl shop-btn helpBtn"
+				href="/rent/listAllRent">租屋去吧</a> <a
+				class="btn btn-light btn-xl shop-btn" href="/mem/addMem">加入會員</a>
+		</div>
+
+	</section>
+
+	<!-- Call to action-->
+	<!-- 	<section class="page-section bg-dark text-white" id="addUs"> -->
+	<!-- 		<div class="container px-4 px-lg-5 text-center"> -->
+	<!-- 			<h2 class="mb-4">不管您是想租屋，還是想被租，我們都可以提供!!</h2> -->
+	<!-- 			<br> -->
+	<!-- 			<h2 class="mb-4">所以現在就加入我們吧!!</h2> -->
+	<!-- 			<a class="btn btn-light btn-xl helpBtn" href="/mem/addMem">加入會員</a> -->
+	<!-- 			<a class="btn btn-light btn-xl" href="/rentApp/">成為房東</a> -->
+	<!-- 		</div> -->
+	<!-- 	</section> -->
+	<!-- Contact-->
+
+	<!-- Footer-->
+	<footer class="bg-light py-5">
+		<div class="container px-4 px-lg-5">
+			<div class="small text-center text-muted">Copyright &copy; 2024
+				- CHA104G2-GOOD_LUCK</div>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- SimpleLightbox plugin JS-->
+	<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script> -->
+
+	<!-- 	<script th:src="@{/js/FrontEnd/indexJS/LinkCancelEvent}"></script> -->
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	IndexNotice();
+		const memlogin_a = document.querySelector("#memlogin-a");
+		const login_page = document.querySelector(".login_page");
+		const filter = document.querySelector("#filter");
+		
+		let displayTF = false;
+		login_page.style.display = "none";
+		memlogin_a.addEventListener("click", () => {
+		    if (displayTF){
+		        login_page.style.display = "none";
+		        filter.style.display = "none";
+		        memlogin_a.innerText = "會員登入";
+		        memlogin_a.style.color = "white";
+		    }else{
+		        login_page.style.display = "block"; 
+		        filter.style.display = "block"; 
+		        memlogin_a.innerText = "離開會員登入";
+		        memlogin_a.style.color = "red";
+		    }
+		    displayTF = !displayTF;
+		});
+		
+		let currentPage = 1; // 當前頁碼
+		const itemsPerPage = 5; // 每頁顯示的消息數
+
+		
+		function IndexNotice(){
+			$.ajax({
+			    url: "/notice/getAllNotices",
+			    type: "GET",
+			    dataType: "json",
+			    success: function(data) {
+			        let noticeData = data;
+			        let DOMNotice = '<table id="notice-Table">';
+			        
+			        // 表頭
+			        DOMNotice += `
+			            <tr id="head-tr">
+			                <th>最新消息編號</th>
+			                <th>最新消息內容</th>
+			                <th>最新消息時間</th>
+			            </tr>
+			        `;
+
+			        // 將noticeData添加到DOMNotice中
+			        for (let i = 0; i < noticeData.length; i++) {
+			            DOMNotice += `
+			                <tr>
+			                    <td>${noticeData[i].noticeNo}</td>
+			                    <td>${noticeData[i].noticeContent}</td>
+			                    <td>${noticeData[i].noticeTime}</td>
+			                </tr>
+			            `;
+			        }
+			        
+			        DOMNotice += '</table>';
+					
+			        $("#noticesContainer").html(DOMNotice);
+			    },
+			    error: function(xhr, status, error) {
+			        // 錯誤處理
+			        console.error("發生錯誤：" + error);
+			    }
+			});
+		}
+		
+		function updatePaginationButtons() {
+		    const totalItems = noticeData.length;
+		    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+		    // 更新上一頁按鈕
+		    if (currentPage === 1) {
+		        $("#prevPage").prop("disabled", true);
+		    } else {
+		        $("#prevPage").prop("disabled", false);
+		    }
+
+		    // 更新下一頁按鈕
+		    if (currentPage === totalPages) {
+		        $("#nextPage").prop("disabled", true);
+		    } else {
+		        $("#nextPage").prop("disabled", false);
+		    }
+		}
+
+		// 綁定上一頁按鈕點擊事件
+		$("#prevPage").click(function() {
+		    if (currentPage > 1) {
+		        currentPage--;
+		        IndexNotice(); // 重新載入當前頁的消息
+		    }
+		});
+
+		// 綁定下一頁按鈕點擊事件
+		$("#nextPage").click(function() {
+		    const totalItems = noticeData.length;
+		    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+		    if (currentPage < totalPages) {
+		        currentPage++;
+		        IndexNotice(); // 重新載入當前頁的消息
+		    }
+		});
+
+		// 初始化載入第一頁的消息
+		IndexNotice();
+
+	</script>
+	<!-- Core theme JS-->
+	<!-- 	<script src="js/scripts.js"></script> -->
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!-- * *                               SB Forms JS                               * *-->
+	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+
+</body>
+</html>

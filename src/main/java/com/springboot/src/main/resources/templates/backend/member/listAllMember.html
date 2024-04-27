@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/backend/member/try.css}" />
+    <link rel="stylesheet" th:href="@{/css/backend/member/try2.css}" />
+    <link th:href="@{/css/backend/index/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/backend/index/index.css}" rel="stylesheet" />
+    <style>
+        h1 {
+            text-align: center;
+            color: red;
+        }
+
+        main{
+            margin-top: 50px;
+            padding: 20px 20px;
+        }
+
+    </style>
+    <title>會員管理</title>
+</head>
+<body>
+<div th:replace="backend/HTMLTool/nav :: nav"></div>
+
+
+<main>
+    <h1 style="text-align: center;
+			 font-size: 2em !important;
+			 border-radius: 10px;
+			 width:80%;
+             color: #fff; /* 字體顏色 */
+             background-color: #5bc0de; /* 背景顏色 */
+             padding: 20px; /* 內邊距 */
+             margin: 0px auto; /* 邊距 */
+             margin-bottom: 20px;
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9); /* 底部陰影效果 */">會員查詢</h1>
+    <table id="example" class="display" style="width: 100%">
+        <thead>
+        <tr>
+            <th>會員編號</th>
+            <th>會員姓名</th>
+            <th>會員帳號</th>
+            <th>會員密碼</th>
+            <th>手機號碼</th>
+            <th>性別</th>
+            <th>email</th>
+            <th>地址</th>
+            <th>會員生日</th>
+            <th>第三方平台</th>
+<!--            <th>會員大頭照</th>-->
+            <th>修改</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:eack="member : ${memListData}">
+            <tr>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+                <td th:text="${member.memNo}"></td>
+            </tr>
+        </th:block>
+
+
+
+        </tbody>
+    </table>
+    <br>
+
+    <script th:src="@{/jquery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/backend/member/the.js}"></script>
+    <script th:src="@{/js/backend/member/the2.js}"></script>
+    <script>
+        let table = new DataTable("#example");
+        console.log($(".test"));
+        // table.on("click", "tbody tr", function () {
+        //   let data = table.row(this).data();
+
+        //   alert("You clicked on " + data[3] + "'s row");
+        // });
+    </script>
+</main>
+</body>
+</html>
