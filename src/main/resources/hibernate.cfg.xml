@@ -44,13 +44,13 @@
         <mapping class="com.ren.title.model.TitleAdmVO"/>
         <mapping class="com.ren.title.model.TitleVO"/>
 
-        <mapping class="com.roger.articlecollection.vo.ArticleCollectionVO"/>
-        <mapping class="com.roger.clicklike.vo.ClickLikeVO"/>
-        <mapping class="com.roger.columnarticle.vo.ColumnArticleVO"/>
-        <mapping class="com.roger.columnreply.vo.ColumnReplyVO"/>
-        <mapping class="com.roger.member.vo.MemberVO"/>
-        <mapping class="com.roger.notice.vo.NoticeVO"/>
-        <mapping class="com.roger.report.vo.ReportVO"/>
+        <mapping class="com.roger_hibernate.articlecollection.vo.ArticleCollectionVO"/>
+        <mapping class="com.roger_hibernate.clicklike.vo.ClickLikeVO"/>
+        <mapping class="com.roger_hibernate.columnarticle.vo.ColumnArticleVO"/>
+        <mapping class="com.roger_hibernate.columnreply.vo.ColumnReplyVO"/>
+        <mapping class="com.roger_hibernate.member.vo.MemberVO"/>
+        <mapping class="com.roger_hibernate.notice.vo.NoticeVO"/>
+        <mapping class="com.roger_hibernate.report.vo.ReportVO"/>
 
         <mapping class="com.snpooy.studioorder.model.StudioOrder"/>
 

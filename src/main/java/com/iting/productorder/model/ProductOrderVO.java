@@ -1,6 +1,6 @@
 package com.iting.productorder.model;
 
-import com.roger.member.model.MemberVO;
+import com.roger_hibernate.member.model.MemberVO;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
